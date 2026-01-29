@@ -91,10 +91,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-10 pt-8 text-center">
+        <div className="border-t border-primary-foreground/10 mt-10 pt-8 flex items-center justify-between">
+          <Link 
+            to="/admin/login" 
+            className="text-[10px] text-primary-foreground/30 hover:text-primary-foreground/50 transition-colors"
+          >
+            adm
+          </Link>
           <p className="text-sm text-primary-foreground/50">
             © {new Date().getFullYear()} Invox Mídia. Todos os direitos reservados.
           </p>
+          <div className="w-6" /> {/* Spacer for balance */}
         </div>
       </div>
     </footer>

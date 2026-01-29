@@ -9,6 +9,8 @@ import Contato from "./pages/Contato";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import NovoPedido from "./pages/NovoPedido";
+import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 import { Chatbot } from "./components/Chatbot";
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/novo-pedido" element={<NovoPedido />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
