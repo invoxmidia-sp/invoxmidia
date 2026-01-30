@@ -9,6 +9,7 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Início" },
+    { href: "/apresentacao", label: "Apresentação" },
     { href: "/planos", label: "Planos" },
     { href: "/contato", label: "Contato" },
   ];
