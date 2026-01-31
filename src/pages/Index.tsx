@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
 import { 
   Radio, 
   Music, 
@@ -109,7 +110,7 @@ export default function Index() {
       {/* Features Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <AnimatedSection className="text-center max-w-2xl mx-auto mb-12" direction="up">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
               Tudo que Você Precisa para{" "}
               <span className="text-secondary">Transformar</span> seu Comércio
@@ -117,25 +118,26 @@ export default function Index() {
             <p className="text-muted-foreground text-lg">
               Soluções completas de áudio que elevam a experiência do seu cliente
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <div
+              <AnimatedItem
                 key={feature.title}
-                className="group p-6 bg-card rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 hover:border-secondary/30"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                delay={index * 0.1}
               >
-                <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-gold">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="group p-6 bg-card rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 hover:border-secondary/30 h-full">
+                  <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-gold">
+                    <feature.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-foreground mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              </AnimatedItem>
             ))}
           </div>
         </div>
@@ -145,7 +147,7 @@ export default function Index() {
       <section className="py-16 md:py-24 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <AnimatedSection direction="left">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                 Por que Escolher a{" "}
                 <span className="text-secondary">Invox Mídia</span>?
@@ -156,10 +158,12 @@ export default function Index() {
               
               <ul className="space-y-4 mb-8">
                 {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
-                    <span className="text-foreground">{benefit}</span>
-                  </li>
+                  <AnimatedItem key={index} delay={index * 0.1}>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
+                      <span className="text-foreground">{benefit}</span>
+                    </li>
+                  </AnimatedItem>
                 ))}
               </ul>
 
@@ -169,41 +173,43 @@ export default function Index() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
-            </div>
+            </AnimatedSection>
 
-            <div className="relative">
-              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl hero-gradient flex items-center justify-center">
-                    <Mic className="w-8 h-8 text-secondary" />
+            <AnimatedSection direction="right" delay={0.2}>
+              <div className="relative">
+                <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 rounded-2xl hero-gradient flex items-center justify-center">
+                      <Mic className="w-8 h-8 text-secondary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Agora tocando</p>
+                      <p className="font-display font-semibold text-foreground">Vinheta Promocional</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Agora tocando</p>
-                    <p className="font-display font-semibold text-foreground">Vinheta Promocional</p>
+                  
+                  <div className="space-y-3">
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="h-full w-2/3 gold-gradient rounded-full shimmer" />
+                    </div>
+                    <div className="flex justify-between text-xs text-muted-foreground">
+                      <span>0:18</span>
+                      <span>0:30</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full w-2/3 gold-gradient rounded-full shimmer" />
-                  </div>
-                  <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>0:18</span>
-                    <span>0:30</span>
+
+                  <div className="mt-6 p-4 bg-muted/50 rounded-xl">
+                    <p className="text-sm text-muted-foreground italic">
+                      "Aproveite nossas ofertas especiais! Só esta semana, descontos imperdíveis em toda a loja..."
+                    </p>
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-muted/50 rounded-xl">
-                  <p className="text-sm text-muted-foreground italic">
-                    "Aproveite nossas ofertas especiais! Só esta semana, descontos imperdíveis em toda a loja..."
-                  </p>
-                </div>
+                {/* Decoration */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-2xl -z-10" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
               </div>
-
-              {/* Decoration */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-2xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -216,7 +222,7 @@ export default function Index() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection className="max-w-3xl mx-auto text-center" direction="up">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-invox-cream mb-4">
               Pronto para Transformar a Experiência Sonora do seu Negócio?
             </h2>
@@ -229,7 +235,7 @@ export default function Index() {
                 Falar com Especialista
               </Link>
             </Button>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </Layout>
