@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -85,7 +86,7 @@ export default function Contato() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Info */}
-            <div>
+            <AnimatedSection direction="left">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
                 Entre em Contato
               </h2>
@@ -95,123 +96,133 @@ export default function Contato() {
               </p>
 
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
+                <AnimatedItem delay={0.1}>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
+                      <Mail className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Email</h4>
+                      <p className="text-muted-foreground">contato@invoxmidia.com.br</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                    <p className="text-muted-foreground">contato@invoxmidia.com.br</p>
-                  </div>
-                </div>
+                </AnimatedItem>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                    <Phone className="w-5 h-5 text-primary" />
+                <AnimatedItem delay={0.2}>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">WhatsApp</h4>
+                      <p className="text-muted-foreground">(11) 99999-9999</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">WhatsApp</h4>
-                    <p className="text-muted-foreground">(11) 99999-9999</p>
-                  </div>
-                </div>
+                </AnimatedItem>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
+                <AnimatedItem delay={0.3}>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Localização</h4>
+                      <p className="text-muted-foreground">São Paulo, SP - Brasil</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Localização</h4>
-                    <p className="text-muted-foreground">São Paulo, SP - Brasil</p>
-                  </div>
-                </div>
+                </AnimatedItem>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                    <MessageSquare className="w-5 h-5 text-primary" />
+                <AnimatedItem delay={0.4}>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
+                      <MessageSquare className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">Atendimento</h4>
+                      <p className="text-muted-foreground">Segunda a Sexta, 9h às 18h</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Atendimento</h4>
-                    <p className="text-muted-foreground">Segunda a Sexta, 9h às 18h</p>
-                  </div>
-                </div>
+                </AnimatedItem>
               </div>
-            </div>
+            </AnimatedSection>
 
             {/* Contact Form */}
-            <div className="bg-card p-8 rounded-3xl shadow-card border border-border/50">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Nome completo</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Seu nome"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    maxLength={100}
-                  />
-                </div>
+            <AnimatedSection direction="right" delay={0.2}>
+              <div className="bg-card p-8 rounded-3xl shadow-card border border-border/50">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Nome completo</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      placeholder="Seu nome"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      maxLength={100}
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="seu@email.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    maxLength={255}
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="seu@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      maxLength={255}
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="whatsapp">WhatsApp</Label>
-                  <Input
-                    id="whatsapp"
-                    name="whatsapp"
-                    placeholder="(00) 00000-0000"
-                    value={formData.whatsapp}
-                    onChange={handleChange}
-                    required
-                    maxLength={20}
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="whatsapp">WhatsApp</Label>
+                    <Input
+                      id="whatsapp"
+                      name="whatsapp"
+                      placeholder="(00) 00000-0000"
+                      value={formData.whatsapp}
+                      onChange={handleChange}
+                      required
+                      maxLength={20}
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="message">Mensagem</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Como podemos ajudar?"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    required
-                    maxLength={1000}
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Mensagem</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Como podemos ajudar?"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={5}
+                      required
+                      maxLength={1000}
+                    />
+                  </div>
 
-                <Button
-                  type="submit"
-                  variant="gold"
-                  size="lg"
-                  className="w-full"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    "Enviando..."
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Enviar Mensagem
-                    </>
-                  )}
-                </Button>
-              </form>
-            </div>
+                  <Button
+                    type="submit"
+                    variant="gold"
+                    size="lg"
+                    className="w-full"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      "Enviando..."
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Enviar Mensagem
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
