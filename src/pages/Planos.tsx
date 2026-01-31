@@ -9,7 +9,8 @@ const plans = [
     id: "bronze",
     name: "Bronze",
     icon: Star,
-    price: "Consulte",
+    price: "R$ 199",
+    priceDetails: "/mês",
     description: "Ideal para começar a transformar seu ambiente sonoro",
     color: "from-amber-600 to-amber-700",
     features: [
@@ -24,7 +25,8 @@ const plans = [
     id: "prata",
     name: "Prata",
     icon: Zap,
-    price: "Consulte",
+    price: "R$ 299",
+    priceDetails: "/mês",
     description: "O equilíbrio perfeito entre recursos e investimento",
     color: "from-slate-400 to-slate-500",
     features: [
@@ -39,7 +41,8 @@ const plans = [
     id: "ouro",
     name: "Ouro",
     icon: Crown,
-    price: "Consulte",
+    price: "R$ 399",
+    priceDetails: "/mês",
     description: "A experiência completa para quem quer o melhor",
     color: "from-yellow-500 to-amber-500",
     features: [
@@ -117,6 +120,9 @@ export default function Planos() {
                     <div className="mb-6">
                       <span className="font-display text-3xl font-bold text-foreground">
                         {plan.price}
+                      </span>
+                      <span className="text-muted-foreground text-sm">
+                        {plan.priceDetails}
                       </span>
                     </div>
 
