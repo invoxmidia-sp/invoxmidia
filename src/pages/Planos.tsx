@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { Check, Star, Zap, Crown } from "lucide-react";
-
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51SvjXE0mbaBut7AJz7YGZAXeJ5sX4ohN9roGeWvPSVPYM45WBnfgvAgMmxNLPxUNp0OKXLWx7pIR29pwikq9hHrv00WHgFMMKR";
+import { Check, Star, Zap, Crown, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const plans = [
   {
@@ -62,6 +63,65 @@ const plans = [
 ];
 
 export default function Planos() {
+  const [searchParams] = useSearchParams();
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
+
+  useEffect(() => {
+    // Check for canceled payment
+    if (searchParams.get("canceled") === "true") {
+      toast.info("Pagamento cancelado. Você pode tentar novamente quando quiser.");
+    }
+
+    // Check auth status
+    supabase.auth.getUser().then(({ data }) => {
+      if (data.user) {
+        setUser({ id: data.user.id, email: data.user.email || "" });
+      }
+    });
+  }, [searchParams]);
+
+  const handleSubscribe = async (priceId: string, planId: string) => {
+    if (!user) {
+      // Redirect to login with plan info
+      window.location.href = `/login?signup=true&plan=${planId}`;
+      return;
+    }
+
+    setLoadingPlan(planId);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+
+      if (!token) {
+        toast.error("Sessão expirada. Por favor, faça login novamente.");
+        window.location.href = "/login";
+        return;
+      }
+
+      const { data, error } = await supabase.functions.invoke("create-checkout", {
+        body: { priceId },
+      });
+
+      if (error) {
+        console.error("Checkout error:", error);
+        toast.error("Erro ao iniciar pagamento. Tente novamente.");
+        return;
+      }
+
+      if (data?.url) {
+        window.open(data.url, "_blank");
+      } else {
+        toast.error("Erro ao criar sessão de pagamento.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Erro inesperado. Tente novamente.");
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
+
   return (
     <Layout>
       {/* Hero */}
@@ -146,11 +206,17 @@ export default function Planos() {
                       variant={plan.popular ? "gold" : "outline"}
                       className="w-full"
                       size="lg"
-                      asChild
+                      onClick={() => handleSubscribe(plan.priceId, plan.id)}
+                      disabled={loadingPlan === plan.id}
                     >
-                      <Link to={`/login?signup=true&plan=${plan.id}`}>
-                        Assinar {plan.name}
-                      </Link>
+                      {loadingPlan === plan.id ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Processando...
+                        </>
+                      ) : (
+                        `Assinar ${plan.name}`
+                      )}
                     </Button>
                   </div>
                 </div>
