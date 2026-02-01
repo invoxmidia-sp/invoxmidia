@@ -4,6 +4,8 @@ import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
 import { Check, Star, Zap, Crown } from "lucide-react";
 
+const STRIPE_PUBLISHABLE_KEY = "pk_test_51SvjXE0mbaBut7AJz7YGZAXeJ5sX4ohN9roGeWvPSVPYM45WBnfgvAgMmxNLPxUNp0OKXLWx7pIR29pwikq9hHrv00WHgFMMKR";
+
 const plans = [
   {
     id: "bronze",
@@ -11,6 +13,7 @@ const plans = [
     icon: Star,
     price: "R$ 199",
     priceDetails: "/mês",
+    priceId: "price_1SvjcL0mbaBut7AJh079cQ8Z",
     description: "Ideal para começar a transformar seu ambiente sonoro",
     color: "from-amber-600 to-amber-700",
     features: [
@@ -27,6 +30,7 @@ const plans = [
     icon: Zap,
     price: "R$ 299",
     priceDetails: "/mês",
+    priceId: "price_1Sw44L0mbaBut7AJ1MASschw",
     description: "O equilíbrio perfeito entre recursos e investimento",
     color: "from-slate-400 to-slate-500",
     features: [
@@ -43,6 +47,7 @@ const plans = [
     icon: Crown,
     price: "R$ 399",
     priceDetails: "/mês",
+    priceId: "price_1Sw44L0mbaBut7AJo22cwuGG",
     description: "A experiência completa para quem quer o melhor",
     color: "from-yellow-500 to-amber-500",
     features: [
