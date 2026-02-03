@@ -3,12 +3,18 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { Check, Star, Zap, Crown, Loader2, Copy, MessageCircle } from "lucide-react";
+import { Check, Star, Zap, Crown, Loader2, Copy, MessageCircle, CreditCard } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
-const PIX_KEY = "11937237949"; // Chave PIX
-const WHATSAPP_NUMBER = "5511937237949"; // WhatsApp para finalizar contrato
+const PIX_KEY = "11937237949";
+const WHATSAPP_NUMBER = "5511937237949";
 
 const plans = [
   {
@@ -65,18 +71,25 @@ const plans = [
   },
 ];
 
+type SelectedPlan = {
+  id: string;
+  name: string;
+  price: string;
+  priceId: string;
+} | null;
+
 export default function Planos() {
   const [searchParams] = useSearchParams();
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
   const [user, setUser] = useState<{ id: string; email: string } | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<SelectedPlan>(null);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   useEffect(() => {
-    // Check for canceled payment
     if (searchParams.get("canceled") === "true") {
       toast.info("Pagamento cancelado. Você pode tentar novamente quando quiser.");
     }
 
-    // Check auth status
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) {
         setUser({ id: data.user.id, email: data.user.email || "" });
@@ -84,14 +97,24 @@ export default function Planos() {
     });
   }, [searchParams]);
 
-  const handleSubscribe = async (priceId: string, planId: string) => {
+  const handleOpenPaymentModal = (plan: typeof plans[0]) => {
     if (!user) {
-      // Redirect to login with plan info
-      window.location.href = `/login?signup=true&plan=${planId}`;
+      window.location.href = `/login?signup=true&plan=${plan.id}`;
       return;
     }
+    setSelectedPlan({
+      id: plan.id,
+      name: plan.name,
+      price: plan.price,
+      priceId: plan.priceId,
+    });
+    setIsPaymentModalOpen(true);
+  };
 
-    setLoadingPlan(planId);
+  const handleStripeCheckout = async () => {
+    if (!selectedPlan) return;
+
+    setLoadingPlan(selectedPlan.id);
     try {
       const { data: sessionData } = await supabase.auth.getSession();
       const token = sessionData.session?.access_token;
@@ -103,7 +126,7 @@ export default function Planos() {
       }
 
       const { data, error } = await supabase.functions.invoke("create-checkout", {
-        body: { priceId },
+        body: { priceId: selectedPlan.priceId },
       });
 
       if (error) {
@@ -114,6 +137,7 @@ export default function Planos() {
 
       if (data?.url) {
         window.open(data.url, "_blank");
+        setIsPaymentModalOpen(false);
       } else {
         toast.error("Erro ao criar sessão de pagamento.");
       }
@@ -123,6 +147,11 @@ export default function Planos() {
     } finally {
       setLoadingPlan(null);
     }
+  };
+
+  const handleCopyPix = () => {
+    navigator.clipboard.writeText(PIX_KEY);
+    toast.success("Chave PIX copiada!");
   };
 
   return (
@@ -204,76 +233,15 @@ export default function Planos() {
                       ))}
                     </ul>
 
-                    {/* CTA - Cartão de Crédito */}
+                    {/* CTA */}
                     <Button
                       variant={plan.popular ? "gold" : "outline"}
-                      className="w-full mb-3"
+                      className="w-full"
                       size="lg"
-                      onClick={() => handleSubscribe(plan.priceId, plan.id)}
-                      disabled={loadingPlan === plan.id}
+                      onClick={() => handleOpenPaymentModal(plan)}
                     >
-                      {loadingPlan === plan.id ? (
-                        <>
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          Processando...
-                        </>
-                      ) : (
-                        `Assinar ${plan.name}`
-                      )}
+                      Assinar {plan.name}
                     </Button>
-
-                    {/* Divisor */}
-                    <div className="relative my-4">
-                      <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t border-border" />
-                      </div>
-                      <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-card px-2 text-muted-foreground">ou pague com</span>
-                      </div>
-                    </div>
-
-                    {/* PIX Section */}
-                    <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                      <div className="flex items-center justify-center gap-2 text-sm font-medium text-foreground">
-                        <span className="text-lg">💠</span>
-                        Pagar com PIX
-                      </div>
-                      
-                      {/* Chave PIX */}
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-background rounded-lg px-3 py-2 text-sm font-mono text-muted-foreground truncate border border-border">
-                          {PIX_KEY}
-                        </div>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="shrink-0"
-                          onClick={() => {
-                            navigator.clipboard.writeText(PIX_KEY);
-                            toast.success("Chave PIX copiada!");
-                          }}
-                        >
-                          <Copy className="w-4 h-4" />
-                        </Button>
-                      </div>
-
-                      {/* WhatsApp */}
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        className="w-full bg-green-600 hover:bg-green-700 text-white"
-                        asChild
-                      >
-                        <a
-                          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá! Gostaria de assinar o Plano ${plan.name} (${plan.price}/mês) via PIX.`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <MessageCircle className="w-4 h-4 mr-2" />
-                          Finalizar no WhatsApp
-                        </a>
-                      </Button>
-                    </div>
                   </div>
                 </div>
               </AnimatedItem>
@@ -281,6 +249,97 @@ export default function Planos() {
           </div>
         </div>
       </section>
+
+      {/* Payment Method Modal */}
+      <Dialog open={isPaymentModalOpen} onOpenChange={setIsPaymentModalOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl">
+              Escolha a forma de pagamento
+            </DialogTitle>
+            {selectedPlan && (
+              <p className="text-center text-muted-foreground">
+                Plano {selectedPlan.name} - {selectedPlan.price}/mês
+              </p>
+            )}
+          </DialogHeader>
+
+          <div className="space-y-4 pt-4">
+            {/* Cartão de Crédito */}
+            <Button
+              variant="gold"
+              className="w-full h-14 text-base"
+              onClick={handleStripeCheckout}
+              disabled={loadingPlan === selectedPlan?.id}
+            >
+              {loadingPlan === selectedPlan?.id ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Processando...
+                </>
+              ) : (
+                <>
+                  <CreditCard className="w-5 h-5 mr-2" />
+                  Pagar com Cartão
+                </>
+              )}
+            </Button>
+
+            {/* Divisor */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-border" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">ou</span>
+              </div>
+            </div>
+
+            {/* PIX Section */}
+            <div className="bg-muted/50 rounded-xl p-5 space-y-4">
+              <div className="flex items-center justify-center gap-2 text-base font-medium text-foreground">
+                <span className="text-xl">💠</span>
+                Pagar com PIX
+              </div>
+              
+              {/* Chave PIX */}
+              <div className="space-y-2">
+                <p className="text-sm text-muted-foreground text-center">
+                  Copie a chave PIX abaixo:
+                </p>
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 bg-background rounded-lg px-4 py-3 text-sm font-mono text-foreground text-center border border-border">
+                    {PIX_KEY}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="shrink-0 h-11 w-11"
+                    onClick={handleCopyPix}
+                  >
+                    <Copy className="w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* WhatsApp */}
+              <Button
+                className="w-full h-12 bg-green-600 hover:bg-green-700 text-white"
+                asChild
+              >
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá! Gostaria de assinar o Plano ${selectedPlan?.name} (${selectedPlan?.price}/mês) via PIX.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Finalizar no WhatsApp
+                </a>
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-muted/50">
