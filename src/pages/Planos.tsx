@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { Check, Star, Zap, Crown, Loader2 } from "lucide-react";
+import { Check, Star, Zap, Crown, Loader2, Copy, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+
+const PIX_KEY = "11937237949"; // Chave PIX
+const WHATSAPP_NUMBER = "5511937237949"; // WhatsApp para finalizar contrato
 
 const plans = [
   {
@@ -201,10 +204,10 @@ export default function Planos() {
                       ))}
                     </ul>
 
-                    {/* CTA */}
+                    {/* CTA - Cartão de Crédito */}
                     <Button
                       variant={plan.popular ? "gold" : "outline"}
-                      className="w-full"
+                      className="w-full mb-3"
                       size="lg"
                       onClick={() => handleSubscribe(plan.priceId, plan.id)}
                       disabled={loadingPlan === plan.id}
@@ -218,6 +221,59 @@ export default function Planos() {
                         `Assinar ${plan.name}`
                       )}
                     </Button>
+
+                    {/* Divisor */}
+                    <div className="relative my-4">
+                      <div className="absolute inset-0 flex items-center">
+                        <span className="w-full border-t border-border" />
+                      </div>
+                      <div className="relative flex justify-center text-xs uppercase">
+                        <span className="bg-card px-2 text-muted-foreground">ou pague com</span>
+                      </div>
+                    </div>
+
+                    {/* PIX Section */}
+                    <div className="bg-muted/50 rounded-xl p-4 space-y-3">
+                      <div className="flex items-center justify-center gap-2 text-sm font-medium text-foreground">
+                        <span className="text-lg">💠</span>
+                        Pagar com PIX
+                      </div>
+                      
+                      {/* Chave PIX */}
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 bg-background rounded-lg px-3 py-2 text-sm font-mono text-muted-foreground truncate border border-border">
+                          {PIX_KEY}
+                        </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="shrink-0"
+                          onClick={() => {
+                            navigator.clipboard.writeText(PIX_KEY);
+                            toast.success("Chave PIX copiada!");
+                          }}
+                        >
+                          <Copy className="w-4 h-4" />
+                        </Button>
+                      </div>
+
+                      {/* WhatsApp */}
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white"
+                        asChild
+                      >
+                        <a
+                          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá! Gostaria de assinar o Plano ${plan.name} (${plan.price}/mês) via PIX.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="w-4 h-4 mr-2" />
+                          Finalizar no WhatsApp
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </AnimatedItem>
