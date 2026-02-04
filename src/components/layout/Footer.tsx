@@ -77,11 +77,18 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Mail className="w-4 h-4 text-secondary" />
-                contato@invoxmidia.com.br
+                invoxmidia@proimagedesign.com.br
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4 text-secondary" />
-                (11) 99999-9999
+                <a 
+                  href="https://wa.me/5511937237949" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary transition-colors"
+                >
+                  (11) 93723-7949
+                </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 text-secondary mt-0.5" />

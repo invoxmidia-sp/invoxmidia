@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
@@ -15,6 +16,7 @@ const contactSchema = z.object({
   email: z.string().email("Email inválido").max(255),
   whatsapp: z.string().min(10, "WhatsApp inválido").max(20),
   message: z.string().min(10, "Mensagem deve ter pelo menos 10 caracteres").max(1000),
+  contactPreference: z.enum(["email", "whatsapp"]),
 });
 
 export default function Contato() {
@@ -24,6 +26,7 @@ export default function Contato() {
     email: "",
     whatsapp: "",
     message: "",
+    contactPreference: "whatsapp" as "email" | "whatsapp",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,13 +45,13 @@ export default function Contato() {
         name: validated.name,
         email: validated.email,
         whatsapp: validated.whatsapp,
-        message: validated.message,
+        message: `[Prefere contato via: ${validated.contactPreference === "email" ? "Email" : "WhatsApp"}]\n\n${validated.message}`,
       });
 
       if (error) throw error;
 
       toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-      setFormData({ name: "", email: "", whatsapp: "", message: "" });
+      setFormData({ name: "", email: "", whatsapp: "", message: "", contactPreference: "whatsapp" });
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.error(error.errors[0].message);
@@ -103,7 +106,7 @@ export default function Contato() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <p className="text-muted-foreground">contato@invoxmidia.com.br</p>
+                      <p className="text-muted-foreground">invoxmidia@proimagedesign.com.br</p>
                     </div>
                   </div>
                 </AnimatedItem>
@@ -115,7 +118,14 @@ export default function Contato() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">WhatsApp</h4>
-                      <p className="text-muted-foreground">(11) 99999-9999</p>
+                      <a 
+                        href="https://wa.me/5511937237949" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-secondary transition-colors"
+                      >
+                        (11) 93723-7949
+                      </a>
                     </div>
                   </div>
                 </AnimatedItem>
@@ -188,6 +198,30 @@ export default function Contato() {
                       required
                       maxLength={20}
                     />
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label>Como prefere ser contatado?</Label>
+                    <RadioGroup
+                      value={formData.contactPreference}
+                      onValueChange={(value: "email" | "whatsapp") =>
+                        setFormData({ ...formData, contactPreference: value })
+                      }
+                      className="flex gap-6"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="email" id="pref-email" />
+                        <Label htmlFor="pref-email" className="cursor-pointer font-normal">
+                          Email
+                        </Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="whatsapp" id="pref-whatsapp" />
+                        <Label htmlFor="pref-whatsapp" className="cursor-pointer font-normal">
+                          WhatsApp
+                        </Label>
+                      </div>
+                    </RadioGroup>
                   </div>
 
                   <div className="space-y-2">
