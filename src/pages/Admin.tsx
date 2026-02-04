@@ -8,15 +8,17 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Users, FileText, LogOut, Loader2, Phone, Mail } from "lucide-react";
+import { Shield, Users, FileText, LogOut, Loader2, Phone, Mail, MessageSquare } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Profile = Tables<"profiles">;
 type RecordingOrder = Tables<"recording_orders">;
+type Contact = Tables<"contacts">;
 
 export default function Admin() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [orders, setOrders] = useState<RecordingOrder[]>([]);
+  const [contacts, setContacts] = useState<Contact[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const navigate = useNavigate();
@@ -75,6 +77,15 @@ export default function Admin() {
 
       if (ordersError) throw ordersError;
       setOrders(ordersData || []);
+
+      // Load contacts
+      const { data: contactsData, error: contactsError } = await supabase
+        .from('contacts')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (contactsError) throw contactsError;
+      setContacts(contactsData || []);
     } catch (error) {
       console.error('Error loading data:', error);
       toast({
@@ -153,6 +164,16 @@ export default function Admin() {
     });
   };
 
+  const getContactPreference = (message: string) => {
+    if (message.includes("[Prefere contato via: Email]")) return "Email";
+    if (message.includes("[Prefere contato via: WhatsApp]")) return "WhatsApp";
+    return "-";
+  };
+
+  const cleanMessage = (message: string) => {
+    return message.replace(/\[Prefere contato via: (Email|WhatsApp)\]\n\n/, "");
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -189,7 +210,7 @@ export default function Admin() {
       {/* Content */}
       <main className="container mx-auto px-4 py-8">
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Total de Clientes</CardTitle>
@@ -219,6 +240,15 @@ export default function Admin() {
               </div>
             </CardContent>
           </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Mensagens</CardTitle>
+              <MessageSquare className="w-4 h-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-blue-600">{contacts.length}</div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Tabs */}
@@ -231,6 +261,13 @@ export default function Admin() {
             <TabsTrigger value="orders">
               <FileText className="w-4 h-4 mr-2" />
               Pedidos
+            </TabsTrigger>
+            <TabsTrigger value="messages">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              Mensagens
+              {contacts.length > 0 && (
+                <Badge variant="secondary" className="ml-2">{contacts.length}</Badge>
+              )}
             </TabsTrigger>
           </TabsList>
 
@@ -346,6 +383,75 @@ export default function Admin() {
                                   <SelectItem value="cancelado">Cancelado</SelectItem>
                                 </SelectContent>
                               </Select>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="messages">
+            <Card>
+              <CardHeader>
+                <CardTitle>Mensagens de Contato</CardTitle>
+                <CardDescription>Mensagens recebidas pelo formulário de contato do site</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {contacts.length === 0 ? (
+                  <p className="text-center text-muted-foreground py-8">
+                    Nenhuma mensagem recebida ainda.
+                  </p>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Nome</TableHead>
+                          <TableHead>E-mail</TableHead>
+                          <TableHead>WhatsApp</TableHead>
+                          <TableHead>Preferência</TableHead>
+                          <TableHead>Mensagem</TableHead>
+                          <TableHead>Data</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {contacts.map((contact) => (
+                          <TableRow key={contact.id}>
+                            <TableCell className="font-medium">{contact.name}</TableCell>
+                            <TableCell>
+                              <a 
+                                href={`mailto:${contact.email}`}
+                                className="flex items-center gap-1 hover:text-primary transition-colors"
+                              >
+                                <Mail className="w-3 h-3 text-muted-foreground" />
+                                {contact.email}
+                              </a>
+                            </TableCell>
+                            <TableCell>
+                              <a 
+                                href={`https://wa.me/55${contact.whatsapp.replace(/\D/g, '')}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1 hover:text-green-600 transition-colors"
+                              >
+                                <Phone className="w-3 h-3 text-muted-foreground" />
+                                {contact.whatsapp}
+                              </a>
+                            </TableCell>
+                            <TableCell>
+                              <Badge variant={getContactPreference(contact.message) === "WhatsApp" ? "default" : "secondary"}>
+                                {getContactPreference(contact.message)}
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="max-w-xs truncate" title={cleanMessage(contact.message)}>
+                              {cleanMessage(contact.message)}
+                            </TableCell>
+                            <TableCell className="text-sm text-muted-foreground">
+                              {formatDate(contact.created_at)}
                             </TableCell>
                           </TableRow>
                         ))}
