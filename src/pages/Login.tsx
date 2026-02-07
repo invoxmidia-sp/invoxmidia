@@ -55,8 +55,12 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      // Validate form data
-      authSchema.parse(formData);
+      // Validate form data - only require companyName for signup
+      if (isSignup) {
+        authSchema.parse(formData);
+      } else {
+        authSchema.omit({ companyName: true }).parse(formData);
+      }
 
       if (isSignup) {
         const redirectUrl = `${window.location.origin}/`;
