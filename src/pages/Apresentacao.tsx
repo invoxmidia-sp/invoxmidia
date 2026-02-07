@@ -491,7 +491,7 @@ export default function Apresentacao() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="gold" size="xl" asChild>
                 <Link to="/login?signup=true">
-                  Começar Agora
+                  Cadastrar Loja
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
