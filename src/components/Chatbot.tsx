@@ -57,7 +57,7 @@ export function Chatbot() {
         ...prev,
         {
           role: "assistant",
-          content: "Desculpe, ocorreu um erro. Tente novamente ou entre em contato pelo formulário.",
+          content: "Estamos sobrecarregados no momento, favor chamar no WhatsApp (11) 93723-7949.",
         },
       ]);
     } finally {
