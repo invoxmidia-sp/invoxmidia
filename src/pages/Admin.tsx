@@ -8,7 +8,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Users, FileText, LogOut, Loader2, Phone, Mail, MessageSquare } from "lucide-react";
+import { Shield, Users, FileText, LogOut, Loader2, Phone, Mail, MessageSquare, Minimize2, Maximize2 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Profile = Tables<"profiles">;
@@ -19,6 +21,8 @@ export default function Admin() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [orders, setOrders] = useState<RecordingOrder[]>([]);
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [isDialogMinimized, setIsDialogMinimized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const navigate = useNavigate();
@@ -420,34 +424,30 @@ export default function Admin() {
                       </TableHeader>
                       <TableBody>
                         {contacts.map((contact) => (
-                          <TableRow key={contact.id}>
+                          <TableRow 
+                            key={contact.id} 
+                            className="cursor-pointer hover:bg-muted/50"
+                            onClick={() => { setSelectedContact(contact); setIsDialogMinimized(false); }}
+                          >
                             <TableCell className="font-medium">{contact.name}</TableCell>
                             <TableCell>
-                              <a 
-                                href={`mailto:${contact.email}`}
-                                className="flex items-center gap-1 hover:text-primary transition-colors"
-                              >
+                              <span className="flex items-center gap-1">
                                 <Mail className="w-3 h-3 text-muted-foreground" />
                                 {contact.email}
-                              </a>
+                              </span>
                             </TableCell>
                             <TableCell>
-                              <a 
-                                href={`https://wa.me/55${contact.whatsapp.replace(/\D/g, '')}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-1 hover:text-green-600 transition-colors"
-                              >
+                              <span className="flex items-center gap-1">
                                 <Phone className="w-3 h-3 text-muted-foreground" />
                                 {contact.whatsapp}
-                              </a>
+                              </span>
                             </TableCell>
                             <TableCell>
                               <Badge variant={getContactPreference(contact.message) === "WhatsApp" ? "default" : "secondary"}>
                                 {getContactPreference(contact.message)}
                               </Badge>
                             </TableCell>
-                            <TableCell className="max-w-xs truncate" title={cleanMessage(contact.message)}>
+                            <TableCell className="max-w-xs truncate">
                               {cleanMessage(contact.message)}
                             </TableCell>
                             <TableCell className="text-sm text-muted-foreground">
@@ -463,6 +463,72 @@ export default function Admin() {
             </Card>
           </TabsContent>
         </Tabs>
+        {/* Message Detail Dialog */}
+        <Dialog open={!!selectedContact} onOpenChange={(open) => { if (!open) setSelectedContact(null); }}>
+          <DialogContent className={cn(
+            "transition-all duration-300",
+            isDialogMinimized 
+              ? "fixed bottom-4 right-4 left-auto top-auto translate-x-0 translate-y-0 w-80 max-w-80 p-4" 
+              : "sm:max-w-lg"
+          )}>
+            <DialogHeader className="flex flex-row items-start justify-between gap-2">
+              <div className="flex-1 min-w-0">
+                <DialogTitle className={isDialogMinimized ? "text-sm truncate" : ""}>
+                  {selectedContact?.name}
+                </DialogTitle>
+                {!isDialogMinimized && (
+                  <DialogDescription>
+                    Recebida em {selectedContact ? formatDate(selectedContact.created_at) : ""}
+                  </DialogDescription>
+                )}
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 shrink-0"
+                onClick={() => setIsDialogMinimized(!isDialogMinimized)}
+              >
+                {isDialogMinimized ? <Maximize2 className="h-3.5 w-3.5" /> : <Minimize2 className="h-3.5 w-3.5" />}
+              </Button>
+            </DialogHeader>
+
+            {!isDialogMinimized && selectedContact && (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">E-mail</p>
+                    <a href={`mailto:${selectedContact.email}`} className="text-sm hover:text-primary transition-colors">
+                      {selectedContact.email}
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">WhatsApp</p>
+                    <a 
+                      href={`https://wa.me/55${selectedContact.whatsapp.replace(/\D/g, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm hover:text-green-600 transition-colors"
+                    >
+                      {selectedContact.whatsapp}
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Preferência de contato</p>
+                  <Badge variant={getContactPreference(selectedContact.message) === "WhatsApp" ? "default" : "secondary"}>
+                    {getContactPreference(selectedContact.message)}
+                  </Badge>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Mensagem</p>
+                  <p className="text-sm whitespace-pre-wrap bg-muted/50 rounded-lg p-3">
+                    {cleanMessage(selectedContact.message)}
+                  </p>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </main>
     </div>
   );
