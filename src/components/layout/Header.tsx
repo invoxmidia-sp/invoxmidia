@@ -61,7 +61,7 @@ export function Header() {
               </Link>
             </Button>
             <Button variant="gold" size="sm" asChild>
-              <Link to="/login?signup=true">Começar Agora</Link>
+              <Link to="/login?signup=true">Cadastrar Loja</Link>
             </Button>
           </div>
 
@@ -101,7 +101,7 @@ export function Header() {
                 </Button>
                 <Button variant="gold" size="sm" asChild>
                   <Link to="/login?signup=true" onClick={() => setIsMenuOpen(false)}>
-                    Começar Agora
+                    Cadastrar Loja
                   </Link>
                 </Button>
               </div>
