@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { MessageCircle, X, Bot, ChevronDown, HelpCircle } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { MessageCircle, X, Bot, HelpCircle } from "lucide-react";
 
 const FAQ_ITEMS = [
   {
     question: "Quais são os planos disponíveis?",
     answer:
-      "Temos 3 planos:\n\n🥉 Bronze (R$ 199/mês) — Player personalizado, 1 vinheta/mês, suporte por WhatsApp.\n\n🥈 Prata (R$ 299/mês) — Tudo do Bronze + 3 vinhetas/mês, atualização musical mensal e suporte prioritário.\n\n🥇 Ouro (R$ 399/mês) — Tudo do Prata + vinhetas ilimitadas, atualização musical semanal e gerente de conta dedicado.",
+      "Temos 3 planos:\n\n🥉 Bronze (R$ 199/mês) — Player personalizado, 1 vinheta/mês, suporte por WhatsApp.\n\n🥈 Prata (R$ 299/mês) — Tudo do Bronze + 3 vinhetas/mês e atualização musical mensal.\n\n🥇 Ouro (R$ 399/mês) — Tudo do Prata + vinhetas ilimitadas, atualização musical semanal e gerente de conta dedicado.",
   },
   {
     question: "Como funciona a rádio indoor?",
@@ -20,21 +20,43 @@ const FAQ_ITEMS = [
   {
     question: "Como solicitar uma vinheta?",
     answer:
-      "Após contratar um plano, acesse seu painel e clique em 'Novo Pedido'. Preencha as informações da campanha, escolha o tom de voz e o tipo de gravação. Nossa equipe produz e entrega em até 48h úteis.",
+      "Após contratar um plano, acesse seu painel e clique em 'Novo Pedido'. Preencha as informações da campanha, escolha o tom de voz e o tipo de gravação. Nossa equipe produz e entrega em até 4 horas!",
   },
   {
     question: "O que está incluso no plano?",
     answer:
-      "Todos os planos incluem player personalizado com a sua marca, programação musical curada e suporte técnico. Os planos superiores adicionam mais vinhetas, atualizações musicais frequentes e atendimento prioritário.",
+      "Todos os planos incluem player personalizado com a sua marca, programação musical curada e suporte técnico. Os planos superiores adicionam mais vinhetas, atualizações musicais frequentes e gerente de conta dedicado.",
   },
 ];
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [conversation, setConversation] = useState<
+    { type: "bot" | "user" | "typing"; content: string }[]
+  >([
+    {
+      type: "bot",
+      content:
+        "Olá! 👋 Sou a assistente virtual da Invox Mídia. Selecione uma pergunta abaixo para saber mais!",
+    },
+  ]);
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [conversation, isTyping]);
+
+  const handleFaqClick = (item: (typeof FAQ_ITEMS)[0]) => {
+    if (isTyping) return;
+
+    setConversation((prev) => [...prev, { type: "user", content: item.question }]);
+    setIsTyping(true);
+
+    setTimeout(() => {
+      setIsTyping(false);
+      setConversation((prev) => [...prev, { type: "bot", content: item.answer }]);
+    }, 1500);
   };
 
   const openWhatsApp = () => {
@@ -75,39 +97,72 @@ export function Chatbot() {
             </div>
           </div>
 
-          {/* FAQ */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-2 max-h-[400px] min-h-[200px]">
-            <div className="flex gap-2 mb-3">
-              <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                <Bot className="w-4 h-4 text-secondary" />
-              </div>
-              <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-2.5 text-sm text-foreground">
-                Olá! 👋 Sou a assistente virtual da Invox Mídia. Selecione uma
-                pergunta abaixo para saber mais!
-              </div>
-            </div>
-
-            {FAQ_ITEMS.map((item, i) => (
-              <div key={i} className="rounded-xl border border-border/50 overflow-hidden">
-                <button
-                  onClick={() => toggleFaq(i)}
-                  className="w-full flex items-center gap-2 text-left text-sm px-4 py-3 bg-secondary/5 hover:bg-secondary/15 transition-colors"
-                >
-                  <HelpCircle className="w-4 h-4 text-secondary flex-shrink-0" />
-                  <span className="flex-1 font-medium">{item.question}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-muted-foreground transition-transform ${
-                      openIndex === i ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openIndex === i && (
-                  <div className="px-4 py-3 text-sm text-foreground/80 bg-muted/50 whitespace-pre-line border-t border-border/30">
-                    {item.answer}
+          {/* Messages + FAQ */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 max-h-[400px] min-h-[250px]">
+            {/* Conversation messages */}
+            {conversation.map((msg, i) => (
+              <div
+                key={i}
+                className={`flex gap-2 ${
+                  msg.type === "user" ? "justify-end" : "justify-start"
+                } animate-fade-in`}
+              >
+                {msg.type === "bot" && (
+                  <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-4 h-4 text-secondary" />
                   </div>
                 )}
+                <div
+                  className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line ${
+                    msg.type === "user"
+                      ? "bg-primary text-primary-foreground rounded-br-md"
+                      : "bg-muted text-foreground rounded-bl-md"
+                  }`}
+                >
+                  {msg.content}
+                </div>
               </div>
             ))}
+
+            {/* Typing indicator */}
+            {isTyping && (
+              <div className="flex gap-2 justify-start animate-fade-in">
+                <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-4 h-4 text-secondary" />
+                </div>
+                <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" />
+                    <span
+                      className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.15s" }}
+                    />
+                    <span
+                      className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.3s" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* FAQ buttons */}
+            {!isTyping && (
+              <div className="flex flex-col gap-2 pl-10">
+                {FAQ_ITEMS.map((item, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleFaqClick(item)}
+                    className="flex items-center gap-2 text-left text-xs px-3 py-2 rounded-xl border border-secondary/30 bg-secondary/5 text-foreground hover:bg-secondary/15 hover:border-secondary/50 transition-colors"
+                  >
+                    <HelpCircle className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
+                    {item.question}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
           </div>
 
           {/* WhatsApp */}
