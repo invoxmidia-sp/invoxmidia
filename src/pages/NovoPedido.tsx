@@ -168,6 +168,11 @@ export default function NovoPedido() {
               <p className="text-muted-foreground">
                 Seu pedido de gravação foi registrado. Envie também pelo WhatsApp para agilizar o atendimento.
               </p>
+              <div className="bg-secondary/10 rounded-xl p-4 inline-block">
+                <p className="text-sm text-foreground font-medium">
+                  ⏱️ <strong>Prazo de Entrega:</strong> até 4 horas
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button
                   variant="gold"
