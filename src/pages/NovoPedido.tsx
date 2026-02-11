@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Radio, ArrowLeft, Send } from "lucide-react";
+import { Radio, ArrowLeft, Send, CheckCircle, MessageCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -30,6 +30,8 @@ export default function NovoPedido() {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [orderSent, setOrderSent] = useState(false);
+  const [sentOrderData, setSentOrderData] = useState<typeof formData | null>(null);
   const [formData, setFormData] = useState({
     companyName: "",
     productCampaign: "",
@@ -99,8 +101,9 @@ export default function NovoPedido() {
 
       if (error) throw error;
 
-      toast.success("Pedido enviado com sucesso! Entraremos em contato em breve.");
-      navigate("/dashboard");
+      setSentOrderData({ ...formData });
+      setOrderSent(true);
+      toast.success("Pedido enviado com sucesso!");
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.error(error.errors[0].message);
@@ -110,6 +113,22 @@ export default function NovoPedido() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const toneLabels: Record<string, string> = { serio: "Sério", animado: "Animado", promocional: "Promocional" };
+  const typeLabels: Record<string, string> = { oferta: "Oferta", institucional: "Institucional", sazonal: "Sazonal" };
+
+  const handleSendWhatsApp = () => {
+    if (!sentOrderData) return;
+    const message = `🎙️ *Novo Pedido de Gravação - Invox Mídia*\n\n` +
+      `🏢 *Empresa:* ${sentOrderData.companyName}\n` +
+      `📦 *Produto/Campanha:* ${sentOrderData.productCampaign}\n` +
+      `🎤 *Tipo:* ${typeLabels[sentOrderData.recordingType] || sentOrderData.recordingType}\n` +
+      `🎵 *Tom:* ${toneLabels[sentOrderData.tone] || sentOrderData.tone}\n` +
+      `⏱️ *Duração:* ${sentOrderData.duration}\n\n` +
+      `📝 *Texto da Oferta:*\n${sentOrderData.offerText}`;
+    const url = `https://wa.me/5511937237949?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -140,6 +159,36 @@ export default function NovoPedido() {
         </Link>
 
         <div className="max-w-2xl mx-auto">
+          {orderSent ? (
+            <div className="bg-card p-8 rounded-3xl shadow-card border border-border/50 text-center space-y-6">
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+              <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                Pedido Enviado com Sucesso!
+              </h1>
+              <p className="text-muted-foreground">
+                Seu pedido de gravação foi registrado. Envie também pelo WhatsApp para agilizar o atendimento.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Button
+                  variant="gold"
+                  size="lg"
+                  onClick={handleSendWhatsApp}
+                  className="gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Enviar no WhatsApp
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => navigate("/dashboard")}
+                >
+                  Voltar ao Painel
+                </Button>
+              </div>
+            </div>
+          ) : (
+          <>
           <div className="mb-8">
             <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
               Nova Solicitação de Gravação
@@ -277,6 +326,8 @@ export default function NovoPedido() {
               </div>
             </form>
           </div>
+          </>
+          )}
         </div>
       </main>
     </div>
