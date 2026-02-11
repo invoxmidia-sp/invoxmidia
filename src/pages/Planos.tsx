@@ -90,11 +90,23 @@ export default function Planos() {
       toast.info("Pagamento cancelado. Você pode tentar novamente quando quiser.");
     }
 
-    supabase.auth.getUser().then(({ data }) => {
-      if (data.user) {
-        setUser({ id: data.user.id, email: data.user.email || "" });
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser({ id: session.user.id, email: session.user.email || "" });
+      }
+    };
+    checkUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser({ id: session.user.id, email: session.user.email || "" });
+      } else {
+        setUser(null);
       }
     });
+
+    return () => subscription.unsubscribe();
   }, [searchParams]);
 
   const handleOpenPaymentModal = (plan: typeof plans[0]) => {
