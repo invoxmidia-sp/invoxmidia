@@ -372,10 +372,14 @@ export default function Planos() {
                 q: "Como funciona a implementação?",
                 a: "Nossa equipe técnica orienta você em todo o processo de configuração do sistema de som e do player musical. No plano Ouro, oferecemos assistência presencial.",
               },
-              {
-                q: "Quanto tempo leva para começar?",
-                a: "Após a confirmação do plano, em até 48 horas sua rádio estará pronta para começar a tocar.",
-              },
+               {
+                 q: "Quanto tempo leva para começar?",
+                 a: "Após a confirmação do plano, em até 48 horas sua rádio estará pronta para começar a tocar.",
+               },
+               {
+                 q: "Qual é o prazo de entrega das gravações?",
+                 a: "O prazo padrão para entrega de todas as gravações solicitadas é de até 4 horas.",
+               },
               {
                 q: "Posso cancelar quando quiser?",
                 a: "Sim, não há fidelidade. Você pode cancelar a qualquer momento sem multa.",
