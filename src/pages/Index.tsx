@@ -2,59 +2,59 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { 
-  Radio, 
-  Music, 
-  Mic, 
-  Calendar, 
-  RefreshCw, 
-  Headphones, 
+import {
+  Radio,
+  Music,
+  Mic,
+  Calendar,
+  RefreshCw,
+  Headphones,
   Settings,
   CheckCircle2,
   ArrowRight,
   Play,
-  Volume2
-} from "lucide-react";
+  Volume2 } from
+"lucide-react";
 
 const features = [
-  {
-    icon: Music,
-    title: "Player Musical Personalizado",
-    description: "Playlist exclusiva para o perfil do seu negócio, criando a atmosfera perfeita.",
-  },
-  {
-    icon: Radio,
-    title: "Vinhetas com sua Marca",
-    description: "Locução profissional com o nome da sua empresa em todos os intervalos.",
-  },
-  {
-    icon: Calendar,
-    title: "Spots Sazonais",
-    description: "Campanhas especiais para datas comemorativas e promoções.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Músicas Atualizadas",
-    description: "Renovação semanal do repertório para manter o ambiente sempre fresco.",
-  },
-  {
-    icon: Headphones,
-    title: "Locutores Profissionais",
-    description: "Vozes treinadas para transmitir sua mensagem com clareza e impacto.",
-  },
-  {
-    icon: Settings,
-    title: "Assistência Técnica",
-    description: "Suporte na implementação e manutenção do sistema de som.",
-  },
-];
+{
+  icon: Music,
+  title: "Player Musical Personalizado",
+  description: "Playlist exclusiva para o perfil do seu negócio, criando a atmosfera perfeita."
+},
+{
+  icon: Radio,
+  title: "Vinhetas com sua Marca",
+  description: "Locução profissional com o nome da sua empresa em todos os intervalos."
+},
+{
+  icon: Calendar,
+  title: "Spots Sazonais",
+  description: "Campanhas especiais para datas comemorativas e promoções."
+},
+{
+  icon: RefreshCw,
+  title: "Músicas Atualizadas",
+  description: "Renovação semanal do repertório para manter o ambiente sempre fresco."
+},
+{
+  icon: Headphones,
+  title: "Locutores Profissionais",
+  description: "Vozes treinadas para transmitir sua mensagem com clareza e impacto."
+},
+{
+  icon: Settings,
+  title: "Assistência Técnica",
+  description: "Suporte na implementação e manutenção do sistema de som."
+}];
+
 
 const benefits = [
-  "Aumente o tempo de permanência dos clientes",
-  "Reforce a identidade da sua marca",
-  "Comunique ofertas no momento certo",
-  "Crie uma experiência de compra memorável",
-];
+"Aumente o tempo de permanência dos clientes",
+"Reforce a identidade da sua marca",
+"Comunique ofertas no momento certo",
+"Crie uma experiência de compra memorável"];
+
 
 export default function Index() {
   return (
@@ -102,7 +102,7 @@ export default function Index() {
         {/* Wave decoration */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="hsl(220, 15%, 97%)"/>
+            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="hsl(220, 15%, 97%)" />
           </svg>
         </div>
       </section>
@@ -115,17 +115,17 @@ export default function Index() {
               Tudo que Você Precisa para{" "}
               <span className="text-secondary">Transformar</span> seu Comércio
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Soluções completas de áudio que elevam a experiência do seu cliente
+            <p className="text-muted-foreground text-lg">Locução no PDV (Ponto de Venda) vende muito mais!
+
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <AnimatedItem
-                key={feature.title}
-                delay={index * 0.1}
-              >
+            {features.map((feature, index) =>
+            <AnimatedItem
+              key={feature.title}
+              delay={index * 0.1}>
+
                 <div className="group p-6 bg-card rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 border border-border/50 hover:border-secondary/30 h-full">
                   <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-gold">
                     <feature.icon className="w-6 h-6 text-primary" />
@@ -138,7 +138,7 @@ export default function Index() {
                   </p>
                 </div>
               </AnimatedItem>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -157,14 +157,14 @@ export default function Index() {
               </p>
               
               <ul className="space-y-4 mb-8">
-                {benefits.map((benefit, index) => (
-                  <AnimatedItem key={index} delay={index * 0.1}>
+                {benefits.map((benefit, index) =>
+                <AnimatedItem key={index} delay={index * 0.1}>
                     <li className="flex items-start gap-3">
                       <CheckCircle2 className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
                       <span className="text-foreground">{benefit}</span>
                     </li>
                   </AnimatedItem>
-                ))}
+                )}
               </ul>
 
               <Button variant="gold" size="lg" asChild>
@@ -238,6 +238,6 @@ export default function Index() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>);
+
 }

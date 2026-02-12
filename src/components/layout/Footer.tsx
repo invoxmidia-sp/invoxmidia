@@ -61,9 +61,9 @@ export function Footer() {
               Serviços
             </h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li>Player Musical Personalizado</li>
-              <li>Vinhetas com sua Marca</li>
-              <li>Spots Sazonais</li>
+              <li>Player Musical </li>
+              <li>Vinhetas Personalizadas</li>
+              <li>Atualização Musical Semanal</li>
               <li>Locução Profissional</li>
               <li>Implementação de Som</li>
             </ul>
@@ -81,16 +81,16 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4 text-secondary" />
-                <a 
-                  href="https://wa.me/5511937237949" 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/5511937237949"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-secondary transition-colors"
-                >
+                  className="hover:text-secondary transition-colors">
+
                   (11) 93723-7949
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-primary-foreground/70">
+              <li className="flex items-start gap-2 text-sm text-primary-foreground/70">Santos, SP - Brasil
                 <MapPin className="w-4 h-4 text-secondary mt-0.5" />
                 São Paulo, SP - Brasil
               </li>
@@ -99,10 +99,10 @@ export function Footer() {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-10 pt-8 flex items-center justify-between">
-          <Link 
-            to="/admin/login" 
-            className="text-[10px] text-primary-foreground/30 hover:text-primary-foreground/50 transition-colors"
-          >
+          <Link
+            to="/admin/login"
+            className="text-[10px] text-primary-foreground/30 hover:text-primary-foreground/50 transition-colors">
+
             adm
           </Link>
           <p className="text-sm text-primary-foreground/50">
@@ -111,6 +111,6 @@ export function Footer() {
           <div className="w-6" /> {/* Spacer for balance */}
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
