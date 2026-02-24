@@ -496,7 +496,7 @@ export default function Apresentacao() {
                 </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
-                <Link to="/contato">Solicitar Demonstração</Link>
+                <Link to="/contato">Cadastrar Loja</Link>
               </Button>
             </div>
           </AnimatedSection>
