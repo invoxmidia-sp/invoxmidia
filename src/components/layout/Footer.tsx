@@ -90,9 +90,9 @@ export function Footer() {
                   (11) 93723-7949
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-primary-foreground/70">Santos, SP - Brasil
+              <li className="flex items-start gap-2 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 text-secondary mt-0.5" />
-                São Paulo, SP - Brasil
+                Santos, SP - Brasil
               </li>
             </ul>
           </div>

@@ -137,7 +137,7 @@ export default function Contato() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Localização</h4>
-                      <p className="text-muted-foreground">São Paulo, SP - Brasil</p>
+                      <p className="text-muted-foreground">Santos, SP - Brasil</p>
                     </div>
                   </div>
                 </AnimatedItem>
@@ -201,20 +201,10 @@ export default function Contato() {
                   </div>
 
                   <div className="space-y-3">
-                    <Label>Como prefere ser contatado?</Label>
                     <RadioGroup
-                      value={formData.contactPreference}
-                      onValueChange={(value: "email" | "whatsapp") =>
-                        setFormData({ ...formData, contactPreference: value })
-                      }
+                      value="whatsapp"
                       className="flex gap-6"
                     >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="email" id="pref-email" />
-                        <Label htmlFor="pref-email" className="cursor-pointer font-normal">
-                          Email
-                        </Label>
-                      </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="whatsapp" id="pref-whatsapp" />
                         <Label htmlFor="pref-whatsapp" className="cursor-pointer font-normal">
