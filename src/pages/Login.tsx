@@ -257,7 +257,7 @@ export default function Login() {
                 fill="#EA4335"
               />
             </svg>
-            Google
+            {isSignup ? "Cadastrar com Google" : "Entrar com Google"}
           </Button>
 
           <div className="mt-6 text-center">
