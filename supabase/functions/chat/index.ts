@@ -27,27 +27,30 @@ A Invox Mídia oferece soluções completas de áudio para pontos de venda. Somo
 
 ## Planos disponíveis:
 
-**Plano Bronze - R$ 199/mês:**
+**Plano Bronze - R$ 49,90/mês:**
 - 1 gravação de oferta por semana
 - Player musical personalizado
-- Vinhetas da marca
+- Vinhetas Personalizadas
 - Atualização musical semanal
-- Ideal para começar a transformar o ambiente sonoro
+- Suporte Whatsapp
+- Gravação extra: R$ 50,00
 
-**Plano Prata - R$ 299/mês (Mais Popular):**
-- 2 gravações por semana
-- Tudo do Bronze
-- Spots sazonais
-- Prioridade no atendimento
-- O equilíbrio perfeito entre recursos e investimento
+**Plano Prata - R$ 69,90/mês (Mais Popular):**
+- 2 gravações de oferta por semana
+- Player musical personalizado
+- Vinhetas Personalizadas
+- Atualização musical semanal
+- Suporte Whatsapp
+- Gravação extra: R$ 50,00
 
-**Plano Ouro - R$ 399/mês:**
-- 4 gravações por semana
-- Tudo do Prata
-- Assistência na implementação do sistema de som
-- Suporte prioritário 24/7
-- Relatórios mensais de desempenho
-- A experiência completa para quem quer o melhor
+**Plano Ouro - R$ 99,90/mês:**
+- 3 gravações de oferta por semana
+- Player musical personalizado
+- Vinhetas Personalizadas
+- Spots Sazonais
+- Atualização musical semanal
+- Suporte Whatsapp
+- Gravação extra: R$ 30,00
 
 ## Formas de pagamento:
 - Cartão de crédito (via checkout online)

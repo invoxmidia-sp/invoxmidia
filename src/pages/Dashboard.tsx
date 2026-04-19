@@ -53,9 +53,9 @@ interface PlanChange {
 }
 
 const plans = [
-  { id: "bronze", name: "Bronze", icon: Star, price: "R$ 199/mês", color: "from-amber-600 to-amber-700" },
-  { id: "prata", name: "Prata", icon: Zap, price: "R$ 299/mês", color: "from-slate-400 to-slate-500" },
-  { id: "ouro", name: "Ouro", icon: Crown, price: "R$ 399/mês", color: "from-yellow-500 to-amber-500" },
+  { id: "bronze", name: "Bronze", icon: Star, price: "R$ 49,90/mês", color: "from-amber-600 to-amber-700" },
+  { id: "prata", name: "Prata", icon: Zap, price: "R$ 69,90/mês", color: "from-slate-400 to-slate-500" },
+  { id: "ouro", name: "Ouro", icon: Crown, price: "R$ 99,90/mês", color: "from-yellow-500 to-amber-500" },
 ];
 
 export default function Dashboard() {

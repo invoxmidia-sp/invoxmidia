@@ -5,7 +5,7 @@ const FAQ_ITEMS = [
   {
     question: "Quais são os planos disponíveis?",
     answer:
-      "Temos 3 planos:\n\n🥉 Bronze (R$ 199/mês) — Player personalizado, 1 vinheta/mês, suporte por WhatsApp.\n\n🥈 Prata (R$ 299/mês) — Tudo do Bronze + 3 vinhetas/mês e atualização musical mensal.\n\n🥇 Ouro (R$ 399/mês) — Tudo do Prata + vinhetas ilimitadas, atualização musical semanal e gerente de conta dedicado.",
+      "Temos 3 planos:\n\n🥉 Bronze (R$ 49,90/mês) — Player personalizado, 1 gravação de oferta/semana, vinhetas personalizadas, atualização semanal e suporte via WhatsApp.\n\n🥈 Prata (R$ 69,90/mês) — 2 gravações de oferta/semana e tudo do Bronze.\n\n🥇 Ouro (R$ 99,90/mês) — 3 gravações de oferta/semana, tudo do Prata + Spots Sazonais.\n\n*Gravação extra: Bronze/Prata R$ 50, Ouro R$ 30.",
   },
   {
     question: "Como funciona a rádio indoor?",
@@ -54,7 +54,7 @@ const KNOWLEDGE_BASE = [
   {
     keywords: ["preço", "preco", "valor", "custo", "quanto", "custa", "investimento"],
     answer:
-      "💰 Nossos planos:\n\n🥉 Bronze — R$ 199/mês\n🥈 Prata — R$ 299/mês (Mais Popular!)\n🥇 Ouro — R$ 399/mês\n\nTodos incluem player personalizado e programação musical curada. Aceitamos PIX, boleto e cartão de crédito.",
+      "💰 Nossos planos:\n\n🥉 Bronze — R$ 49,90/mês\n🥈 Prata — R$ 69,90/mês (Mais Popular!)\n🥇 Ouro — R$ 99,90/mês\n\nTodos incluem player personalizado e programação musical curada. Aceitamos PIX, boleto e cartão de crédito.",
   },
   {
     keywords: ["pix", "boleto", "cartão", "cartao", "pagamento", "pagar"],
@@ -69,17 +69,17 @@ const KNOWLEDGE_BASE = [
   {
     keywords: ["bronze"],
     answer:
-      "🥉 Plano Bronze (R$ 199/mês):\n• Player personalizado com sua marca\n• 1 vinheta por mês\n• Suporte por WhatsApp\n\nIdeal para quem está começando com rádio indoor!",
+      "🥉 Plano Bronze (R$ 49,90/mês):\n• 1 gravação de oferta por semana\n• Player musical personalizado\n• Vinhetas Personalizadas\n• Atualização musical semanal\n• Suporte WhatsApp\n• Gravação extra: R$ 50,00",
   },
   {
     keywords: ["prata"],
     answer:
-      "🥈 Plano Prata (R$ 299/mês) — Nosso mais popular!\n• Tudo do Bronze\n• 3 vinhetas por mês\n• Atualização musical mensal\n\nPerfeito para manter seu ambiente sempre atualizado!",
+      "🥈 Plano Prata (R$ 69,90/mês) — Nosso mais popular!\n• 2 gravações de oferta por semana\n• Player musical personalizado\n• Vinhetas Personalizadas\n• Atualização musical semanal\n• Suporte WhatsApp\n• Gravação extra: R$ 50,00",
   },
   {
     keywords: ["ouro", "premium", "completo"],
     answer:
-      "🥇 Plano Ouro (R$ 399/mês):\n• Tudo do Prata\n• Vinhetas ilimitadas\n• Atualização musical semanal\n• Gerente de conta dedicado\n\nA experiência completa para sua marca!",
+      "🥇 Plano Ouro (R$ 99,90/mês):\n• 3 gravações de oferta por semana\n• Player musical personalizado\n• Vinhetas Personalizadas\n• Spots Sazonais\n• Atualização musical semanal\n• Suporte WhatsApp\n• Gravação extra: R$ 30,00",
   },
   {
     keywords: ["contato", "telefone", "whatsapp", "falar", "atendimento", "suporte"],
