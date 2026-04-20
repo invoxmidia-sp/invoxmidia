@@ -27,7 +27,7 @@ const plans = [
     description: "Ideal para começar a transformar seu ambiente sonoro",
     color: "from-amber-600 to-amber-700",
     features: [
-      "1 gravação de oferta por semana",
+      "2 gravações de oferta por mês",
       "Player musical personalizado",
       "Vinhetas Personalizadas",
       "Atualização musical semanal",
@@ -46,7 +46,7 @@ const plans = [
     description: "O equilíbrio perfeito entre recursos e investimento",
     color: "from-slate-400 to-slate-500",
     features: [
-      "2 gravações de oferta por semana",
+      "1 gravação de oferta por semana",
       "Player musical personalizado",
       "Vinhetas Personalizadas",
       "Atualização musical semanal",
@@ -65,7 +65,7 @@ const plans = [
     description: "A experiência completa para quem quer o melhor",
     color: "from-yellow-500 to-amber-500",
     features: [
-      "3 gravações de oferta por semana",
+      "2 gravações de oferta por semana",
       "Player musical personalizado",
       "Vinhetas Personalizadas",
       "Spots Sazonais",
