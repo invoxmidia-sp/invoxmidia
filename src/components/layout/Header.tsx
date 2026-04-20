@@ -36,8 +36,8 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-invox-navy-deep/80 backdrop-blur-xl border-b border-invox-cream/10 shadow-lg"
-          : "bg-invox-navy-deep/40 backdrop-blur-md border-b border-transparent",
+          ? "bg-background/80 backdrop-blur-xl border-b border-invox-cream/10 shadow-lg"
+          : "bg-background/40 backdrop-blur-md border-b border-transparent",
       )}
     >
       <div className="container mx-auto px-4">
@@ -54,10 +54,10 @@ export function Header() {
               />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-display font-bold text-lg text-invox-cream tracking-tight">
+              <span className="font-display font-bold text-lg text-invox-navy tracking-tight">
                 Invox<span className="text-secondary">.</span>
               </span>
-              <span className="mono-label text-invox-cream/50 text-[0.6rem] mt-0.5">
+              <span className="mono-label text-invox-navy/50 text-[0.6rem] mt-0.5">
                 Mídia · Studio
               </span>
             </div>
@@ -73,7 +73,7 @@ export function Header() {
                   "relative px-4 py-2 text-sm font-medium transition-colors rounded-lg",
                   isActive(link.href)
                     ? "text-secondary"
-                    : "text-invox-cream/75 hover:text-invox-cream",
+                    : "text-invox-navy/75 hover:text-invox-navy",
                 )}
               >
                 {link.label}
@@ -92,7 +92,7 @@ export function Header() {
             <OnAir className="opacity-90" />
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 text-sm text-invox-cream/75 hover:text-invox-cream transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-invox-navy/75 hover:text-invox-navy transition-colors"
             >
               <User className="w-4 h-4" />
               Entrar
@@ -104,7 +104,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-invox-cream"
+            className="md:hidden p-2 text-invox-navy"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={isMenuOpen}
@@ -125,7 +125,7 @@ export function Header() {
                     "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                     isActive(link.href)
                       ? "bg-secondary/10 text-secondary"
-                      : "text-invox-cream/80 hover:bg-invox-cream/5",
+                      : "text-invox-navy/80 hover:bg-invox-navy/5",
                   )}
                 >
                   {link.label}

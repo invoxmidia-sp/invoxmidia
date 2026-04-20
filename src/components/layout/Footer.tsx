@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/broadcast/SectionLabel";
 
 export function Footer() {
   return (
-    <footer className="relative bg-invox-navy-deep text-primary-foreground overflow-hidden border-t border-invox-cream/10">
+    <footer className="relative bg-background text-invox-navy overflow-hidden border-t border-invox-cream/10">
       {/* Decorative top wave */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
 
@@ -39,12 +39,12 @@ export function Footer() {
                 <span className="font-display font-bold text-lg">
                   Invox<span className="text-secondary">.</span>
                 </span>
-                <span className="mono-label text-invox-cream/50 text-[0.6rem] mt-0.5">
+                <span className="mono-label text-invox-navy/50 text-[0.6rem] mt-0.5">
                   Mídia · Studio
                 </span>
               </div>
             </Link>
-            <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
+            <p className="text-sm text-invox-navy/60 leading-relaxed mb-4">
               Transformamos o ambiente sonoro do seu comércio em uma poderosa ferramenta de vendas.
             </p>
             <OnAir />
@@ -64,7 +64,7 @@ export function Footer() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="text-sm text-primary-foreground/60 hover:text-secondary transition-colors story-link"
+                    className="text-sm text-invox-navy/60 hover:text-secondary transition-colors story-link"
                   >
                     {l.label}
                   </Link>
@@ -76,7 +76,7 @@ export function Footer() {
           {/* Serviços */}
           <div>
             <h4 className="mono-label text-secondary mb-5">Serviços</h4>
-            <ul className="space-y-2.5 text-sm text-primary-foreground/60">
+            <ul className="space-y-2.5 text-sm text-invox-navy/60">
               <li>Player Musical</li>
               <li>Vinhetas Personalizadas</li>
               <li>Atualização Musical Semanal</li>
@@ -89,11 +89,11 @@ export function Footer() {
           <div>
             <h4 className="mono-label text-secondary mb-5">Contato</h4>
             <ul className="space-y-3.5">
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/60">
+              <li className="flex items-start gap-3 text-sm text-invox-navy/60">
                 <Mail className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
                 <span className="break-all">invoxmidia@proimagedesign.com.br</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/60">
+              <li className="flex items-center gap-3 text-sm text-invox-navy/60">
                 <Phone className="w-4 h-4 text-secondary shrink-0" />
                 <a
                   href="https://wa.me/5511937237949"
@@ -104,7 +104,7 @@ export function Footer() {
                   (11) 93723-7949
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/60">
+              <li className="flex items-start gap-3 text-sm text-invox-navy/60">
                 <MapPin className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
                 Santos, SP — Brasil
               </li>
@@ -115,11 +115,11 @@ export function Footer() {
         <div className="border-t border-primary-foreground/10 mt-12 pt-6 flex items-center justify-between gap-4 flex-wrap">
           <Link
             to="/admin/login"
-            className="text-[10px] text-primary-foreground/25 hover:text-primary-foreground/50 transition-colors mono-label"
+            className="text-[10px] text-invox-navy/25 hover:text-invox-navy/50 transition-colors mono-label"
           >
             adm
           </Link>
-          <p className="text-xs text-primary-foreground/40 mono-label">
+          <p className="text-xs text-invox-navy/40 mono-label">
             © {new Date().getFullYear()} · Invox Mídia · Frequência exclusiva do varejo
           </p>
           <div className="w-6" />
