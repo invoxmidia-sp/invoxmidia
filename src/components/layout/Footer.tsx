@@ -120,7 +120,7 @@ export function Footer() {
             adm
           </Link>
           <p className="text-xs text-invox-navy/40 mono-label">
-            © {new Date().getFullYear()} · Invox Mídia · Frequência exclusiva do varejo
+            © {new Date().getFullYear()} · Clube Invox Mídia · O Clube que sabe vender!
           </p>
           <div className="w-6" />
         </div>
