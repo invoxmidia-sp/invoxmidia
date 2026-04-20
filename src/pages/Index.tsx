@@ -93,28 +93,22 @@ export default function Index() {
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-invox-cream leading-[0.95] mb-6 tracking-tight animate-slide-up">
-                Sua loja no{" "}
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-invox-cream leading-[1.05] mb-6 tracking-tight animate-slide-up">
+                Faça Parte do Clube Invox e Venda muito mais com nossa{" "}
                 <span className="relative inline-block">
-                  <span className="text-gradient-gold">ar</span>
+                  <span className="text-gradient-gold">Rádio Interna</span>
                   <span
                     aria-hidden="true"
                     className="absolute -inset-x-2 -bottom-1 h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
                   />
                 </span>
-                ,
-                <br />
-                vendendo no{" "}
-                <span className="animate-shimmer-text">ritmo certo.</span>
               </h1>
 
               <p
                 className="text-lg lg:text-xl text-invox-cream/70 max-w-xl mb-10 leading-relaxed animate-fade-in"
                 style={{ animationDelay: "0.2s" }}
               >
-                Rádio interna profissional para o varejo. Música selecionada, vinhetas
-                com sua marca e ofertas que tocam na hora certa — tudo entregue em até{" "}
-                <span className="text-secondary font-semibold">4 horas</span>.
+                Assine nossos planos, pague muito mais barato em gravações avulsas extras, além de cota semanal inclusa, instalação e suporte do sistema com Vinhetas personalizadas, atualização musical semanal e muito mais!
               </p>
 
               <div
