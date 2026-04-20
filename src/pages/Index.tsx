@@ -76,8 +76,8 @@ export default function Index() {
             </div>
             
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-invox-cream leading-tight mb-6 animate-slide-up">
-              Faça parte do Clube Invox: A Rádio Interna que{" "}
-              <span className="text-gradient-gold">Transforma sua Loja</span>
+              Faça Parte do Clube Invox e Venda muito mais com nossa{" "}
+              <span className="text-gradient-gold">Rádio Interna</span>
             </h1>
             
             <p className="text-lg md:text-xl text-invox-cream/80 max-w-2xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
