@@ -19,7 +19,7 @@ const WHATSAPP_NUMBER = "5511937237949";
 const plans = [
   {
     id: "bronze",
-    name: "Bronze",
+    name: "Clube Bronze",
     icon: Star,
     price: "R$ 49,90",
     priceDetails: "/mês",
@@ -38,7 +38,7 @@ const plans = [
   },
   {
     id: "prata",
-    name: "Prata",
+    name: "Clube Prata",
     icon: Zap,
     price: "R$ 69,90",
     priceDetails: "/mês",
@@ -57,7 +57,7 @@ const plans = [
   },
   {
     id: "ouro",
-    name: "Ouro",
+    name: "Clube Ouro",
     icon: Crown,
     price: "R$ 99,90",
     priceDetails: "/mês",

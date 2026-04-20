@@ -462,6 +462,84 @@ export default function Apresentacao() {
           </div>
         </div>
       </section>
+      {/* Slide 9.5 - Clube Invox */}
+      <section className="min-h-screen flex items-center py-20 relative overflow-hidden bg-background">
+        <div className="absolute inset-0 gold-gradient opacity-[0.03]" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/10 via-background to-background" />
+        <div className="container mx-auto px-4 relative z-10">
+          <AnimatedSection className="text-center mb-16">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-secondary/20 text-secondary font-semibold text-sm uppercase tracking-widest mb-6 animate-pulse border border-secondary/30">
+              NOVIDADE EXCLUSIVA
+            </span>
+            <h2 className="font-display text-5xl md:text-7xl font-bold text-foreground mt-4 leading-tight">
+              Apresentamos o <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600">
+                Clube Invox
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground mt-6 max-w-2xl mx-auto">
+              Muito mais que uma rádio, uma comunidade de lojistas com benefícios reais e diretos para o seu negócio.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <AnimatedItem delay={0.1}>
+              <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10 text-center">
+                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Zap className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Valores Exclusivos</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Como membro, você paga uma fração do preço em gravações avulsas extras, economizando em cada campanha de ofertas.
+                  </p>
+                </div>
+              </div>
+            </AnimatedItem>
+
+            <AnimatedItem delay={0.2}>
+              <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all duration-500" />
+                <div className="relative z-10 text-center">
+                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Target className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Cota Inclusa</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Todo plano te dá direito a renovar suas mensagens de forma programada, garantindo frescor na comunicação da sua loja.
+                  </p>
+                </div>
+              </div>
+            </AnimatedItem>
+
+            <AnimatedItem delay={0.3}>
+              <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10 text-center">
+                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Music className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Suporte & Vinhetas</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Ganhe instalação rápida, suporte contínuo e vinhetas personalizadas grátis para fortalecer a identidade da sua marca.
+                  </p>
+                </div>
+              </div>
+            </AnimatedItem>
+          </div>
+          
+          <AnimatedSection delay={0.4} className="mt-16 text-center">
+            <Button variant="gold" size="xl" className="shadow-gold hover:scale-105 transition-transform" asChild>
+              <Link to="/planos">
+                Fazer Parte do Clube
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* Slide 10 - Encerramento / CTA */}
       <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary via-primary to-invox-navy-light text-invox-cream relative overflow-hidden">

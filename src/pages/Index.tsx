@@ -81,14 +81,14 @@ export default function Index() {
             </h1>
             
             <p className="text-lg md:text-xl text-invox-cream/80 max-w-2xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Assine nossos planos, pague muito mais barato em gravações avulsas extras e ganhe jingles gratuitos, playlists semanais e um sistema completo de som.
+              Assine nossos planos, pague muito mais barato em gravações avulsas extras, além de cota semanal inclusa, instalação e suporte do sistema com Vinhetas personalizadas, atualização musical semanal e muito mais!
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <Button variant="hero" size="xl" asChild>
-                <Link to="/contato" className="flex items-center gap-2">
+                <Link to="/login" className="flex items-center gap-2">
                   <Play className="w-5 h-5" />
-                  Solicitar Demonstração
+                  Entrar Agora
                 </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
