@@ -68,10 +68,10 @@ const benefits = [
 ];
 
 const stats = [
-  { value: "+500", label: "Lojas conectadas" },
-  { value: "+10K", label: "Gravações no ar" },
+  { value: "Player", label: "Musical Personalizado" },
+  { value: "Vinhetas", label: "Personalizadas" },
   { value: "4h", label: "Entrega máxima" },
-  { value: "98.7", label: "FM · Frequência" },
+  { value: "Vozes", label: "Humanas" },
 ];
 
 export default function Index() {
