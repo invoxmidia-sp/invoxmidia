@@ -184,24 +184,32 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-card border-b border-border sticky top-0 z-50">
+      <header className="bg-invox-navy-deep/95 backdrop-blur-xl border-b border-invox-cream/10 sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl hero-gradient flex items-center justify-center">
-                <Radio className="w-5 h-5 text-secondary" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-invox-navy to-invox-navy-light flex items-center justify-center border border-secondary/30">
+                  <Radio className="w-5 h-5 text-secondary" />
+                </div>
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--invox-gold))]" />
               </div>
-              <span className="font-display font-bold text-lg text-foreground">
-                Invox Mídia
-              </span>
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-bold text-lg text-invox-cream">
+                  Invox<span className="text-secondary">.</span>
+                </span>
+                <span className="mono-label text-invox-cream/50 text-[0.6rem] mt-0.5">
+                  Mídia · Studio
+                </span>
+              </div>
             </Link>
 
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
-                <User className="w-4 h-4" />
+              <div className="hidden md:flex items-center gap-2 text-sm text-invox-cream/70">
+                <User className="w-4 h-4 text-secondary" />
                 {profile?.company_name || user?.email}
               </div>
-              <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <Button variant="ghost" size="sm" onClick={handleLogout} className="text-invox-cream/80 hover:text-invox-cream hover:bg-invox-cream/10">
                 <LogOut className="w-4 h-4" />
                 <span className="hidden md:inline ml-2">Sair</span>
               </Button>
