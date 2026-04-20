@@ -94,9 +94,9 @@ export default function Index() {
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-invox-cream leading-[1.05] mb-6 tracking-tight animate-slide-up">
-                Faça Parte do Clube Invox e Venda muito mais com nossa{" "}
+                Faça Parte do{" "}
                 <span className="relative inline-block">
-                  <span className="text-gradient-gold">Rádio Interna</span>
+                  <span className="text-gradient-gold">Clube Invox</span>
                   <span
                     aria-hidden="true"
                     className="absolute -inset-x-2 -bottom-1 h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
