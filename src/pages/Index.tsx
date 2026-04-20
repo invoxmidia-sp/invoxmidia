@@ -50,10 +50,10 @@ const features = [
 
 
 const benefits = [
-"Aumente o tempo de permanência dos clientes",
-"Reforce a identidade da sua marca",
-"Comunique ofertas no momento certo",
-"Crie uma experiência de compra memorável"];
+"Pague valores exclusivos em qualquer gravação avulsa extra",
+"Campanhas completas com jingles personalizados gratuitos",
+"Atualização musical semanal e locução profissional",
+"Sistema completo de rádio interna incluído em todos os planos"];
 
 
 export default function Index() {
@@ -72,17 +72,16 @@ export default function Index() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-6 animate-fade-in">
               <Volume2 className="w-4 h-4" />
-              Rádio Interna Profissional
+              Clube Invox
             </div>
             
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-invox-cream leading-tight mb-6 animate-slide-up">
-              Rádio Interna Profissional para{" "}
-              <span className="text-gradient-gold">Lojas que Vendem Mais</span>{" "}
-              Todos os Dias
+              Faça parte do Clube Invox: A Rádio Interna que{" "}
+              <span className="text-gradient-gold">Transforma sua Loja</span>
             </h1>
             
             <p className="text-lg md:text-xl text-invox-cream/80 max-w-2xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Música certa, locução profissional e campanhas que influenciam o cliente no ponto de venda.
+              Assine nossos planos, pague muito mais barato em gravações avulsas extras e ganhe jingles gratuitos, playlists semanais e um sistema completo de som.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
@@ -112,11 +111,10 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-12" direction="up">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Tudo que Você Precisa para{" "}
-              <span className="text-secondary">Transformar</span> seu Comércio
+              Benefícios de ser Membro do{" "}
+              <span className="text-secondary">Clube Invox</span>
             </h2>
-            <p className="text-muted-foreground text-lg">Locução no PDV (Ponto de Venda) vende muito mais!
-
+            <p className="text-muted-foreground text-lg">Ao participar do Clube, você garante vantagens exclusivas que farão suas vendas decolarem.
             </p>
           </AnimatedSection>
 

@@ -32,7 +32,7 @@ const plans = [
       "Vinhetas Personalizadas",
       "Atualização musical semanal",
       "Suporte Whatsapp",
-      "Gravação extra: R$ 50,00",
+      "Gravação avulsa para o Clube: R$ 50,00",
     ],
     popular: false,
   },
@@ -51,7 +51,7 @@ const plans = [
       "Vinhetas Personalizadas",
       "Atualização musical semanal",
       "Suporte Whatsapp",
-      "Gravação extra: R$ 50,00",
+      "Gravação avulsa para o Clube: R$ 50,00",
     ],
     popular: true,
   },
@@ -71,7 +71,7 @@ const plans = [
       "Spots Sazonais",
       "Atualização musical semanal",
       "Suporte Whatsapp",
-      "Gravação extra: R$ 30,00",
+      "Gravação avulsa para o Clube: R$ 30,00",
     ],
     popular: false,
   },
@@ -184,11 +184,11 @@ export default function Planos() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-invox-cream mb-4">
-              Escolha o Plano Ideal para seu{" "}
-              <span className="text-gradient-gold">Negócio</span>
+              Escolha seu Plano e Entre para o{" "}
+              <span className="text-gradient-gold">Clube Invox</span>
             </h1>
             <p className="text-invox-cream/80 text-lg">
-              Soluções flexíveis que se adaptam às necessidades do seu comércio
+              Ao assinar qualquer plano, você se torna membro exclusivo. Aproveite todos os benefícios do nosso sistema completo de Rádio Interna, ganhe jingles em campanhas e pague valores muito menores em gravações avulsas extras!
             </p>
           </div>
         </div>
