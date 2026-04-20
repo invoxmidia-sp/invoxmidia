@@ -8,6 +8,11 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Radio, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { z } from "zod";
+import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
+import { SectionLabel } from "@/components/broadcast/SectionLabel";
+import { OnAir } from "@/components/broadcast/OnAir";
+import { SoundWave } from "@/components/broadcast/SoundWave";
+import { Equalizer } from "@/components/broadcast/Equalizer";
 
 const authSchema = z.object({
   email: z.string().email("Email inválido").max(255),
@@ -140,27 +145,30 @@ export default function Login() {
   return (
     <div className="min-h-screen flex">
       {/* Left side - Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-background">
-        <div className="w-full max-w-md">
+      <div className="flex-1 flex items-center justify-center p-8 mesh-light-gradient relative">
+        <div className="w-full max-w-md relative z-10">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 story-link"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar ao site
           </Link>
 
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl hero-gradient flex items-center justify-center shadow-md">
-              <Radio className="w-6 h-6 text-secondary" />
+            <div className="relative">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-invox-navy to-invox-navy-light flex items-center justify-center shadow-md border border-secondary/30">
+                <Radio className="w-6 h-6 text-secondary" />
+              </div>
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--invox-gold))]" />
             </div>
             <div>
-              <h1 className="font-display text-2xl font-bold text-foreground">
-                {isSignup ? "Criar Conta" : "Bem-vindo de Volta"}
+              <SectionLabel withBar={false} className="mb-1">
+                {isSignup ? "Nova conta" : "Sua conta"}
+              </SectionLabel>
+              <h1 className="font-display text-2xl font-bold text-foreground tracking-tight">
+                {isSignup ? "Cadastrar Loja" : "Bem-vindo de volta"}
               </h1>
-              <p className="text-muted-foreground text-sm">
-                {isSignup ? "Comece a transformar seu negócio" : "Acesse sua área de cliente"}
-              </p>
             </div>
           </div>
 
@@ -291,31 +299,46 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Right side - Hero */}
-      <div className="hidden lg:flex flex-1 hero-gradient items-center justify-center p-12 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-60 h-60 bg-secondary/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
-        </div>
+      {/* Right side - Broadcast Studio */}
+      <div className="hidden lg:flex flex-1 items-center justify-center p-12 relative overflow-hidden noise-overlay">
+        <BroadcastBackdrop />
 
         <div className="relative z-10 text-center max-w-lg">
-          <h2 className="font-display text-4xl font-bold text-invox-cream mb-4">
-            Sua Rádio Interna <span className="text-gradient-gold">Profissional</span>
+          <div className="flex justify-center mb-6">
+            <OnAir />
+          </div>
+          <h2 className="font-display text-4xl xl:text-5xl font-bold text-invox-cream mb-4 tracking-tight leading-[1.05]">
+            Sua rádio interna <br />
+            <span className="text-gradient-gold">no ar agora</span>.
           </h2>
-          <p className="text-invox-cream/80 text-lg mb-8">
+          <p className="text-invox-cream/70 text-lg mb-10 max-w-md mx-auto">
             Acesse sua área de cliente, solicite gravações e acompanhe o histórico de pedidos.
           </p>
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* Live console card */}
+          <div className="rounded-2xl bg-invox-navy-deep/60 backdrop-blur-xl border border-invox-cream/10 p-5 mb-8 border-gradient-cream">
+            <div className="flex items-center justify-between mb-3">
+              <span className="mono-label text-invox-cream/50">Studio · Live</span>
+              <Equalizer className="text-secondary h-5" />
+            </div>
+            <SoundWave bars={40} className="h-10 text-secondary" />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
             {[
               { number: "+500", label: "Clientes ativos" },
-              { number: "+10k", label: "Gravações entregues" },
-              { number: "48h", label: "Tempo de entrega" },
+              { number: "+10K", label: "Gravações no ar" },
+              { number: "4h", label: "Entrega máx." },
               { number: "24/7", label: "Suporte dedicado" },
             ].map((stat, index) => (
-              <div key={index} className="bg-invox-cream/10 rounded-xl p-4 backdrop-blur-sm">
-                <p className="font-display text-2xl font-bold text-secondary">{stat.number}</p>
-                <p className="text-invox-cream/70 text-sm">{stat.label}</p>
+              <div
+                key={index}
+                className="rounded-xl bg-invox-cream/5 border border-invox-cream/10 px-4 py-3 text-left backdrop-blur-sm"
+              >
+                <p className="font-display tabular text-2xl font-bold text-secondary leading-none">
+                  {stat.number}
+                </p>
+                <p className="mono-label text-invox-cream/60 mt-1">{stat.label}</p>
               </div>
             ))}
           </div>

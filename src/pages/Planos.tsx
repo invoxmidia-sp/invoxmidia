@@ -12,6 +12,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
+import { SectionLabel } from "@/components/broadcast/SectionLabel";
+import { SoundWave } from "@/components/broadcast/SoundWave";
 
 const PIX_KEY = "11937237949";
 const WHATSAPP_NUMBER = "5511937237949";
@@ -175,83 +178,94 @@ export default function Planos() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 right-20 w-40 h-40 bg-secondary/10 rounded-full blur-2xl" />
-          <div className="absolute bottom-10 left-20 w-60 h-60 bg-secondary/5 rounded-full blur-3xl" />
-        </div>
+      <section className="relative py-20 md:py-28 overflow-hidden noise-overlay">
+        <BroadcastBackdrop />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-invox-cream mb-4">
-              Escolha seu Plano e Entre para o{" "}
-              <span className="text-gradient-gold">Clube Invox</span>
+            <SectionLabel className="justify-center mb-5">Tabela de frequências</SectionLabel>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-invox-cream mb-5 tracking-tight leading-[1.05]">
+              Sintonize o plano do{" "}
+              <span className="text-gradient-gold">seu negócio</span>.
             </h1>
-            <p className="text-invox-cream/80 text-lg">
-              Ao assinar qualquer plano, você se torna membro exclusivo. Aproveite todos os benefícios do nosso sistema completo de Rádio Interna, ganhe jingles em campanhas e pague valores muito menores em gravações avulsas extras!
+            <p className="text-invox-cream/70 text-lg max-w-2xl mx-auto">
+              Ao assinar qualquer plano, você entra para o Clube Invox. Sistema completo de
+              rádio interna, jingles em campanhas e valores exclusivos em gravações avulsas.
             </p>
           </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <SoundWave bars={120} amplitude={0.4} className="h-10 text-secondary/30" />
         </div>
       </section>
 
       {/* Plans Grid */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-20 md:py-28 mesh-light-gradient">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
             {plans.map((plan, index) => (
-              <AnimatedItem
-                key={plan.id}
-                delay={index * 0.15}
-              >
+              <AnimatedItem key={plan.id} delay={index * 0.15}>
                 <div
-                  className={`relative bg-card rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-300 border-2 h-full ${
-                    plan.popular 
-                      ? "border-secondary scale-105 md:scale-110" 
-                      : "border-border/50 hover:border-secondary/30"
+                  className={`relative h-full rounded-3xl bg-card shadow-card border transition-all duration-500 lift-on-hover overflow-hidden ${
+                    plan.popular
+                      ? "border-secondary/60 md:scale-[1.04] shadow-gold-glow"
+                      : "border-border/40 border-gradient-gold-hover"
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <span className="gold-gradient text-primary text-sm font-semibold px-4 py-1.5 rounded-full shadow-gold">
-                        Mais Popular
-                      </span>
-                    </div>
+                    <>
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                        <span className="gold-gradient text-invox-navy-deep mono-label px-4 py-1.5 rounded-full shadow-gold inline-flex items-center gap-2">
+                          <span className="on-air-dot scale-75" />
+                          Mais Popular
+                        </span>
+                      </div>
+                    </>
                   )}
 
-                  <div className="p-8">
-                    {/* Plan Header */}
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${plan.color} flex items-center justify-center mb-4`}>
-                      <plan.icon className="w-7 h-7 text-white" />
+                  <div className="p-7 md:p-8">
+                    {/* Header row */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${plan.color} flex items-center justify-center shadow-md`}>
+                        <plan.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <span className="mono-label text-muted-foreground/60 tabular">
+                        {String(index + 1).padStart(2, "0")} / 03
+                      </span>
                     </div>
-                    
-                    <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-                      Plano {plan.name}
+
+                    <h3 className="font-display text-2xl font-bold text-foreground mb-2 tracking-tight">
+                      {plan.name}
                     </h3>
-                    <p className="text-muted-foreground text-sm mb-6">
+                    <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                       {plan.description}
                     </p>
 
-                    {/* Price */}
-                    <div className="mb-6">
-                      <span className="font-display text-3xl font-bold text-foreground">
-                        {plan.price}
-                      </span>
-                      <span className="text-muted-foreground text-sm">
-                        {plan.priceDetails}
-                      </span>
+                    {/* Price block */}
+                    <div className="mb-7 pb-6 border-b border-border/50">
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-display text-4xl font-bold text-foreground tabular tracking-tight">
+                          {plan.price}
+                        </span>
+                        <span className="text-muted-foreground text-sm">
+                          {plan.priceDetails}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Features */}
                     <ul className="space-y-3 mb-8">
                       {plan.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                          <span className="text-foreground text-sm">{feature}</span>
+                          <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md bg-secondary/15 flex items-center justify-center">
+                            <Check className="w-3 h-3 text-secondary" />
+                          </span>
+                          <span className="text-foreground/90 text-sm leading-relaxed">{feature}</span>
                         </li>
                       ))}
                     </ul>
 
-                    {/* CTA */}
                     <Button
                       variant={plan.popular ? "gold" : "outline"}
                       className="w-full"
@@ -405,14 +419,16 @@ export default function Planos() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 hero-gradient">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative py-20 overflow-hidden noise-overlay">
+        <BroadcastBackdrop rings={false} />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection direction="down">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-invox-cream mb-4">
-              Ainda tem dúvidas?
+            <SectionLabel className="justify-center mb-4">Próxima frequência</SectionLabel>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-invox-cream mb-4 tracking-tight">
+              Ainda tem <span className="text-gradient-gold">dúvidas</span>?
             </h2>
-            <p className="text-invox-cream/80 mb-6">
-              Entre em contato e receba uma proposta personalizada
+            <p className="text-invox-cream/70 mb-8 max-w-md mx-auto">
+              Entre em contato e receba uma proposta personalizada para o seu negócio.
             </p>
             <Button variant="hero" size="lg" asChild>
               <Link to="/contato">Falar com Especialista</Link>

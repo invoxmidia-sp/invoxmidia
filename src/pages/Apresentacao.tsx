@@ -2,12 +2,17 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { 
-  Radio, 
-  TrendingUp, 
-  Users, 
-  Target, 
-  ShoppingCart, 
+import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
+import { SectionLabel } from "@/components/broadcast/SectionLabel";
+import { OnAir } from "@/components/broadcast/OnAir";
+import { SoundWave } from "@/components/broadcast/SoundWave";
+import { Equalizer } from "@/components/broadcast/Equalizer";
+import {
+  Radio,
+  TrendingUp,
+  Users,
+  Target,
+  ShoppingCart,
   Megaphone,
   Music,
   Award,
@@ -18,39 +23,41 @@ import {
   Zap,
   Volume2,
   Clock,
-  Heart
+  Heart,
 } from "lucide-react";
 
 export default function Apresentacao() {
   return (
     <Layout>
       {/* Slide 1 - Capa */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-primary via-primary to-invox-navy-light">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-secondary rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-secondary rounded-full blur-3xl animate-pulse delay-1000" />
-        </div>
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden noise-overlay">
+        <BroadcastBackdrop />
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection delay={0.1}>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center shadow-gold">
-                <Radio className="w-10 h-10 text-primary" />
-              </div>
+            <div className="flex justify-center mb-8">
+              <OnAir label="Transmissão ao vivo" />
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-invox-cream mb-6">
-              INVOX <span className="text-secondary">MÍDIA</span>
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-invox-cream mb-6 tracking-tight leading-[0.95]">
+              INVOX <span className="text-gradient-gold">MÍDIA</span>
             </h1>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <p className="text-xl md:text-3xl text-invox-cream/90 max-w-4xl mx-auto leading-relaxed">
-              Rádio Interna para Lojas que <span className="text-secondary font-semibold">Vendem Mais</span> Todos os Dias
+            <p className="text-xl md:text-2xl text-invox-cream/75 max-w-3xl mx-auto leading-relaxed">
+              Rádio interna para lojas que{" "}
+              <span className="text-secondary font-semibold">vendem mais</span>{" "}
+              todos os dias.
             </p>
           </AnimatedSection>
+          <AnimatedSection delay={0.4}>
+            <div className="max-w-2xl mx-auto mt-10 opacity-70">
+              <SoundWave bars={56} amplitude={0.7} className="h-12" />
+            </div>
+          </AnimatedSection>
           <AnimatedSection delay={0.5}>
-            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="gold" size="xl" asChild>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="xl" asChild>
                 <Link to="/planos">
                   Conheça Nossos Planos
                   <ArrowRight className="w-5 h-5" />
@@ -63,8 +70,8 @@ export default function Apresentacao() {
           </AnimatedSection>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-8 h-12 border-2 border-invox-cream/50 rounded-full flex items-start justify-center p-2">
-            <div className="w-2 h-3 bg-secondary rounded-full animate-pulse" />
+          <div className="w-7 h-11 border border-invox-cream/40 rounded-full flex items-start justify-center p-1.5">
+            <div className="w-1.5 h-2.5 bg-secondary rounded-full" />
           </div>
         </div>
       </section>
@@ -542,32 +549,30 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 10 - Encerramento / CTA */}
-      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary via-primary to-invox-navy-light text-invox-cream relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-secondary rounded-full blur-3xl animate-pulse delay-700" />
-        </div>
+      <section className="min-h-screen flex items-center py-20 relative overflow-hidden noise-overlay">
+        <BroadcastBackdrop />
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection delay={0.1}>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-24 h-24 rounded-2xl gold-gradient flex items-center justify-center shadow-gold">
-                <Radio className="w-12 h-12 text-primary" />
-              </div>
+            <div className="flex justify-center mb-8">
+              <Equalizer className="text-secondary h-10" />
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
-              INVOX <span className="text-secondary">MÍDIA</span>
+            <SectionLabel className="justify-center mb-5">Encerramento</SectionLabel>
+            <h2 className="font-display text-4xl md:text-7xl font-bold mb-6 text-invox-cream tracking-tight leading-[0.95]">
+              INVOX <span className="text-gradient-gold">MÍDIA</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <p className="text-xl md:text-2xl text-invox-cream/90 max-w-3xl mx-auto mb-12">
-              A rádio interna que transforma <span className="text-secondary font-semibold">movimento em vendas</span> todos os dias.
+            <p className="text-xl md:text-2xl text-invox-cream/75 max-w-3xl mx-auto mb-12">
+              A rádio interna que transforma{" "}
+              <span className="text-secondary font-semibold">movimento em vendas</span>{" "}
+              todos os dias.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.4}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="gold" size="xl" asChild>
+              <Button variant="hero" size="xl" asChild>
                 <Link to="/login?signup=true">
                   Cadastrar Loja
                   <ArrowRight className="w-5 h-5" />
@@ -579,8 +584,8 @@ export default function Apresentacao() {
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.5}>
-            <p className="mt-12 text-invox-cream/60 text-sm">
-              Junte-se a centenas de lojas que já aumentaram suas vendas com a INVOX MÍDIA
+            <p className="mt-12 mono-label text-invox-cream/50">
+              + 500 lojas já estão no ar com a INVOX MÍDIA
             </p>
           </AnimatedSection>
         </div>

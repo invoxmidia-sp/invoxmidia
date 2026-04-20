@@ -10,6 +10,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
 import { z } from "zod";
+import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
+import { SectionLabel } from "@/components/broadcast/SectionLabel";
+import { SoundWave } from "@/components/broadcast/SoundWave";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres").max(100),
@@ -38,7 +41,6 @@ export default function Contato() {
     setIsLoading(true);
 
     try {
-      // Validate form data
       const validated = contactSchema.parse(formData);
 
       const { error } = await supabase.from("contacts").insert({
@@ -50,7 +52,7 @@ export default function Contato() {
 
       if (error) throw error;
 
-      toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+      toast.success("Mensagem enviada! Entraremos em contato em breve.");
       setFormData({ name: "", email: "", whatsapp: "", message: "", contactPreference: "whatsapp" });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -63,163 +65,177 @@ export default function Contato() {
     }
   };
 
+  const contactItems = [
+    { icon: Mail, label: "Email", value: "invoxmidia@proimagedesign.com.br", code: "01" },
+    { icon: Phone, label: "WhatsApp", value: "(11) 93723-7949", href: "https://wa.me/5511937237949", code: "02" },
+    { icon: MapPin, label: "Localização", value: "Santos, SP — Brasil", code: "03" },
+    { icon: MessageSquare, label: "Atendimento", value: "Seg–Sex · 9h às 18h", code: "04" },
+  ];
+
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 right-20 w-40 h-40 bg-secondary/10 rounded-full blur-2xl" />
-          <div className="absolute bottom-10 left-20 w-60 h-60 bg-secondary/5 rounded-full blur-3xl" />
-        </div>
-
+      <section className="relative py-20 md:py-28 overflow-hidden noise-overlay">
+        <BroadcastBackdrop />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-invox-cream mb-4">
-              Fale <span className="text-gradient-gold">Conosco</span>
+            <SectionLabel className="justify-center mb-5">Linha aberta</SectionLabel>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-invox-cream mb-4 tracking-tight leading-[1.05]">
+              Fale <span className="text-gradient-gold">conosco</span>.
             </h1>
-            <p className="text-invox-cream/80 text-lg">
-              Estamos prontos para transformar o ambiente sonoro do seu negócio
+            <p className="text-invox-cream/70 text-lg max-w-xl mx-auto">
+              Estamos prontos para transformar o ambiente sonoro do seu negócio.
+              Resposta em até <span className="text-secondary font-semibold">24 horas úteis</span>.
             </p>
           </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <SoundWave bars={120} amplitude={0.4} className="h-10 text-secondary/30" />
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-20 md:py-28 mesh-light-gradient">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
             {/* Contact Info */}
-            <AnimatedSection direction="left">
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-                Entre em Contato
+            <AnimatedSection direction="left" className="lg:col-span-2">
+              <SectionLabel className="mb-4">Canais</SectionLabel>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-5 tracking-tight">
+                Vamos conversar.
               </h2>
               <p className="text-muted-foreground mb-8">
-                Preencha o formulário ou use um dos nossos canais de atendimento. 
-                Responderemos em até 24 horas úteis.
+                Preencha o formulário ou use um dos nossos canais de atendimento.
               </p>
 
-              <div className="space-y-6">
-                <AnimatedItem delay={0.1}>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                      <Mail className="w-5 h-5 text-primary" />
+              <div className="space-y-3">
+                {contactItems.map((item, i) => (
+                  <AnimatedItem key={item.label} delay={i * 0.1}>
+                    <div className="relative bg-card rounded-2xl border border-border/50 p-4 lift-on-hover border-gradient-gold-hover">
+                      <span className="absolute top-4 right-4 mono-label text-muted-foreground/40 tabular">
+                        {item.code}
+                      </span>
+                      <div className="flex items-start gap-4">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-invox-navy to-invox-navy-light flex items-center justify-center shrink-0">
+                          <item.icon className="w-5 h-5 text-secondary" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="mono-label text-muted-foreground mb-1">{item.label}</p>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-foreground hover:text-secondary transition-colors story-link"
+                            >
+                              {item.value}
+                            </a>
+                          ) : (
+                            <p className="text-foreground break-words">{item.value}</p>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <p className="text-muted-foreground">invoxmidia@proimagedesign.com.br</p>
-                    </div>
-                  </div>
-                </AnimatedItem>
-
-                <AnimatedItem delay={0.2}>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                      <Phone className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">WhatsApp</h4>
-                      <a 
-                        href="https://wa.me/5511937237949" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-secondary transition-colors"
-                      >
-                        (11) 93723-7949
-                      </a>
-                    </div>
-                  </div>
-                </AnimatedItem>
-
-                <AnimatedItem delay={0.3}>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">Localização</h4>
-                      <p className="text-muted-foreground">Santos, SP - Brasil</p>
-                    </div>
-                  </div>
-                </AnimatedItem>
-
-                <AnimatedItem delay={0.4}>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold flex-shrink-0">
-                      <MessageSquare className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">Atendimento</h4>
-                      <p className="text-muted-foreground">Segunda a Sexta, 9h às 18h</p>
-                    </div>
-                  </div>
-                </AnimatedItem>
+                  </AnimatedItem>
+                ))}
               </div>
             </AnimatedSection>
 
             {/* Contact Form */}
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className="bg-card p-8 rounded-3xl shadow-card border border-border/50">
-                <form onSubmit={handleSubmit} className="space-y-6">
+            <AnimatedSection direction="right" delay={0.2} className="lg:col-span-3">
+              <div className="relative bg-card p-8 md:p-10 rounded-3xl shadow-card border border-border/50 border-gradient-gold">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="mono-label text-muted-foreground">
+                    Transmissão · Mensagem nova
+                  </span>
+                  <span className="on-air-dot" />
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Nome completo</Label>
+                    <Label htmlFor="name" className="mono-label text-muted-foreground">
+                      Nome completo
+                    </Label>
                     <Input
                       id="name"
                       name="name"
-                      placeholder="Seu nome"
+                      placeholder="Seu nome…"
                       value={formData.name}
                       onChange={handleChange}
+                      autoComplete="name"
                       required
                       maxLength={100}
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="seu@email.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      maxLength={255}
-                    />
-                  </div>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="mono-label text-muted-foreground">
+                        Email
+                      </Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="seu@email.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        autoComplete="email"
+                        spellCheck={false}
+                        required
+                        maxLength={255}
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="whatsapp">WhatsApp</Label>
-                    <Input
-                      id="whatsapp"
-                      name="whatsapp"
-                      placeholder="(00) 00000-0000"
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      required
-                      maxLength={20}
-                    />
+                    <div className="space-y-2">
+                      <Label htmlFor="whatsapp" className="mono-label text-muted-foreground">
+                        WhatsApp
+                      </Label>
+                      <Input
+                        id="whatsapp"
+                        name="whatsapp"
+                        type="tel"
+                        inputMode="tel"
+                        placeholder="(00) 00000-0000"
+                        value={formData.whatsapp}
+                        onChange={handleChange}
+                        autoComplete="tel"
+                        required
+                        maxLength={20}
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-3">
+                    <Label className="mono-label text-muted-foreground">
+                      Preferência de contato
+                    </Label>
                     <RadioGroup
-                      value="whatsapp"
+                      value={formData.contactPreference}
+                      onValueChange={(v) =>
+                        setFormData({ ...formData, contactPreference: v as "email" | "whatsapp" })
+                      }
                       className="flex gap-6"
                     >
-                      <div className="flex items-center space-x-2">
+                      <label className="flex items-center space-x-2 cursor-pointer">
                         <RadioGroupItem value="whatsapp" id="pref-whatsapp" />
-                        <Label htmlFor="pref-whatsapp" className="cursor-pointer font-normal">
-                          WhatsApp
-                        </Label>
-                      </div>
+                        <span className="font-normal text-sm">WhatsApp</span>
+                      </label>
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <RadioGroupItem value="email" id="pref-email" />
+                        <span className="font-normal text-sm">Email</span>
+                      </label>
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Mensagem</Label>
+                    <Label htmlFor="message" className="mono-label text-muted-foreground">
+                      Mensagem
+                    </Label>
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Como podemos ajudar?"
+                      placeholder="Como podemos ajudar?…"
                       value={formData.message}
                       onChange={handleChange}
                       rows={5}
@@ -236,7 +252,7 @@ export default function Contato() {
                     disabled={isLoading}
                   >
                     {isLoading ? (
-                      "Enviando..."
+                      "Enviando…"
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
