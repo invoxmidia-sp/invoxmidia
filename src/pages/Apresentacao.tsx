@@ -24,6 +24,7 @@ import {
   Volume2,
   Clock,
   Heart,
+  Monitor,
 } from "lucide-react";
 
 export default function Apresentacao() {
