@@ -49,7 +49,7 @@ const features = [
   {
     icon: Headphones,
     title: "Locutores Profissionais",
-    description: "Vozes treinadas para transmitir sua mensagem com clareza e impacto.",
+    description: "Vozes Reais para resultados reais.",
     code: "05",
   },
   {

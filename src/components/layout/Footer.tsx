@@ -19,7 +19,7 @@ export function Footer() {
       <div className="container mx-auto px-4 pt-16 pb-10 relative z-10">
         {/* Top: SoundWave + tagline */}
         <div className="mb-12 text-center">
-          <SectionLabel className="justify-center mb-4">Stay tuned</SectionLabel>
+          <SectionLabel className="justify-center mb-4">Sintonia das Vendas</SectionLabel>
           <div className="max-w-3xl mx-auto opacity-60">
             <SoundWave bars={48} amplitude={0.7} className="h-10" />
           </div>
@@ -58,6 +58,7 @@ export function Footer() {
                 { to: "/", label: "Início" },
                 { to: "/apresentacao", label: "Apresentação" },
                 { to: "/planos", label: "Planos" },
+                { to: "/player", label: "Player" },
                 { to: "/contato", label: "Contato" },
                 { to: "/login", label: "Área do Cliente" },
               ].map((l) => (
@@ -77,7 +78,11 @@ export function Footer() {
           <div>
             <h4 className="mono-label text-secondary mb-5">Serviços</h4>
             <ul className="space-y-2.5 text-sm text-invox-navy/60">
-              <li>Player Musical</li>
+              <li>
+                <Link to="/player" className="hover:text-secondary transition-colors">
+                  Player Musical
+                </Link>
+              </li>
               <li>Vinhetas Personalizadas</li>
               <li>Atualização Musical Semanal</li>
               <li>Locução Profissional</li>

@@ -26,6 +26,7 @@ export function Header() {
     { href: "/", label: "Início" },
     { href: "/apresentacao", label: "Apresentação" },
     { href: "/planos", label: "Planos" },
+    { href: "/player", label: "Player" },
     { href: "/contato", label: "Contato" },
   ];
 

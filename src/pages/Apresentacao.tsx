@@ -469,6 +469,82 @@ export default function Apresentacao() {
           </div>
         </div>
       </section>
+
+      {/* Slide 9.2 - Invox Player */}
+      <section className="min-h-screen flex items-center py-20 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection direction="left" className="order-2 lg:order-1 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 glow-effect">
+                <img 
+                  src="/invox-player-mockup.png" 
+                  alt="Interface moderna do Invox Player" 
+                  className="w-full h-auto object-cover rounded-2xl hover:scale-105 transition-transform duration-700"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                   <div className="flex flex-col gap-2">
+                     <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 w-max">
+                       <Radio className="w-5 h-5 text-secondary animate-pulse" />
+                       <span className="text-sm font-medium text-white">Playlist Personalizada</span>
+                     </div>
+                   </div>
+                </div>
+              </div>
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/20 rounded-full blur-3xl -z-10" />
+            </AnimatedSection>
+
+            <AnimatedSection direction="right" className="order-1 lg:order-2" delay={0.2}>
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Tecnologia Própria</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
+                Conheça o <span className="text-secondary">INVOX PLAYER</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Esqueça softwares complicados ou taxas abusivas. Criamos um reprodutor moderno, simples e funcional, feito exclusivamente para facilitar a rotina da sua loja.
+              </p>
+              
+              <div className="space-y-6 mb-10">
+                <AnimatedItem delay={0.3}>
+                  <div className="flex items-start gap-4">
+                    <Monitor className="w-8 h-8 text-secondary shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-bold text-foreground">PC e Smartphones</h4>
+                      <p className="text-sm text-muted-foreground">Totalmente responsivo, gerencie e toque sua rádio de qualquer dispositivo.</p>
+                    </div>
+                  </div>
+                </AnimatedItem>
+                <AnimatedItem delay={0.4}>
+                  <div className="flex items-start gap-4">
+                    <Zap className="w-8 h-8 text-secondary shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-bold text-foreground">Sem Licença Extra</h4>
+                      <p className="text-sm text-muted-foreground">Economize! Você não paga licenças de software adicionais para usar nosso player.</p>
+                    </div>
+                  </div>
+                </AnimatedItem>
+                <AnimatedItem delay={0.5}>
+                  <div className="flex items-start gap-4">
+                    <Music className="w-8 h-8 text-secondary shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-bold text-foreground">Playlists Exclusivas</h4>
+                      <p className="text-sm text-muted-foreground">Músicas, vinhetas, spots e locução de ofertas em perfeita harmonia.</p>
+                    </div>
+                  </div>
+                </AnimatedItem>
+              </div>
+
+              <Button variant="gold" size="lg" asChild>
+                <Link to="/player">
+                  Ver Detalhes do Player
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* Slide 9.5 - Clube Invox */}
       <section className="min-h-screen flex items-center py-20 relative overflow-hidden bg-background">
         <div className="absolute inset-0 gold-gradient opacity-[0.03]" />

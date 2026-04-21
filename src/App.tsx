@@ -13,6 +13,7 @@ import NovoPedido from "./pages/NovoPedido";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
+import Player from "./pages/Player";
 import { Chatbot } from "./components/Chatbot";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { CookieConsent } from "./components/CookieConsent";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/novo-pedido" element={<NovoPedido />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/player" element={<Player />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
