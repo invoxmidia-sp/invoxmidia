@@ -5,7 +5,7 @@ const FAQ_ITEMS = [
   {
     question: "O que é o Clube Invox?",
     answer:
-      "O Clube Invox é uma comunidade exclusiva para lojistas. Ao assinar qualquer um de nossos planos, você ganha acesso a uma cota programada de gravações, sistema de som profissional, suporte e descontos muito agressivos em qualquer gravação avulsa extra."
+      "O Clube Invox é uma comunidade exclusiva para lojistas. Ao assinar qualquer um de nossos planos, você ganha acesso a uma cota programada de gravações, Player Personalizado, suporte e descontos muito agressivos em qualquer gravação avulsa extra."
   },
   {
     question: "Quais são os planos do Clube?",
