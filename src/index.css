@@ -189,14 +189,14 @@
       0 30px 80px -20px rgba(0,0,0,0.9),
       inset 0 1px 0 rgba(191,199,213,0.06);
 
-    --sidebar-background: 0 0% 2%;
-    --sidebar-foreground: 213 18% 82%;
-    --sidebar-primary: 194 100% 50%;
-    --sidebar-primary-foreground: 0 0% 2%;
-    --sidebar-accent: 210 8% 11%;
-    --sidebar-accent-foreground: 213 18% 82%;
-    --sidebar-border: 210 8% 14%;
-    --sidebar-ring: 194 100% 50%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 201 98% 62%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 220 12% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 12% 18%;
+    --sidebar-ring: 201 98% 62%;
   }
 }
 
@@ -215,7 +215,7 @@
   /* Dark mode: deep black body */
   .dark body,
   .dark {
-    background-color: #050505;
+    background-color: hsl(0 0% 4%);
   }
 
   h1, h2, h3, h4, h5, h6 {
