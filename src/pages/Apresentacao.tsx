@@ -180,7 +180,7 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 4 - Como a Rádio Aumenta Vendas */}
-      <section className="min-h-screen flex items-center py-20 bg-primary text-invox-cream">
+      <section className="min-h-screen flex items-center py-20 bg-primary dark:bg-invox-navy-deep text-invox-cream">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">O Poder do Som</span>
