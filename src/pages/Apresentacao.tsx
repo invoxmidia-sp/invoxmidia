@@ -179,19 +179,18 @@ export default function Apresentacao() {
         </div>
       </section>
 
-      {/* Slide 4 - Como a Rádio Aumenta Vendas */}
-      <section className="min-h-screen flex items-center py-20 bg-primary dark:bg-invox-navy-deep text-invox-cream dark:text-white">
+      <section className="min-h-screen flex items-center py-20 bg-primary dark:bg-background text-invox-cream dark:text-foreground">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <span className="text-secondary dark:text-primary font-semibold text-sm uppercase tracking-wider">O Poder do Som</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 text-invox-cream dark:text-white">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 text-invox-cream dark:text-foreground">
               Como a Rádio Interna <span className="text-secondary dark:text-primary">Aumenta as Vendas</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6">
                   <ShoppingCart className="w-10 h-10 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Compras por Impulso</h3>
@@ -202,7 +201,7 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6">
                   <Zap className="w-10 h-10 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Destaca Ofertas</h3>
@@ -213,7 +212,7 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6">
                   <Heart className="w-10 h-10 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Influencia Comportamento</h3>
@@ -405,7 +404,7 @@ export default function Apresentacao() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold">
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6 shadow-gold">
                   <BarChart3 className="w-12 h-12 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Aumento do Ticket Médio</h3>
@@ -416,7 +415,7 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold">
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6 shadow-gold">
                   <Target className="w-12 h-12 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Mais Atenção às Ofertas</h3>
@@ -427,7 +426,7 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold">
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6 shadow-gold">
                   <Award className="w-12 h-12 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Marca Fortalecida</h3>
@@ -571,7 +570,7 @@ export default function Apresentacao() {
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
                     <Zap className="w-10 h-10 text-black dark:text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Valores Exclusivos</h3>
@@ -587,7 +586,7 @@ export default function Apresentacao() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
                     <Target className="w-10 h-10 text-black dark:text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Cota Inclusa</h3>
@@ -602,7 +601,7 @@ export default function Apresentacao() {
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-primary/10 dark:border-2 dark:border-primary/30 flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
                     <Music className="w-10 h-10 text-black dark:text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Suporte & Vinhetas</h3>
