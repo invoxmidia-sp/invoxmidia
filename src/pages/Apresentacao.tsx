@@ -89,8 +89,8 @@ export default function Apresentacao() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="glass-effect p-8 rounded-2xl text-center hover:scale-105 transition-transform h-full">
-                <div className="w-16 h-16 rounded-xl bg-destructive/10 flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-8 h-8 text-destructive" />
+                <div className="w-16 h-16 rounded-xl bg-destructive/20 flex items-center justify-center mx-auto mb-6">
+                  <Target className="w-8 h-8 text-red-500" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">Concorrência Alta</h3>
                 <p className="text-muted-foreground">
@@ -100,8 +100,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="glass-effect p-8 rounded-2xl text-center hover:scale-105 transition-transform h-full">
-                <div className="w-16 h-16 rounded-xl bg-destructive/10 flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-destructive" />
+                <div className="w-16 h-16 rounded-xl bg-destructive/20 flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-8 h-8 text-red-500" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">Clientes Distraídos</h3>
                 <p className="text-muted-foreground">
@@ -111,8 +111,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="glass-effect p-8 rounded-2xl text-center hover:scale-105 transition-transform h-full">
-                <div className="w-16 h-16 rounded-xl bg-destructive/10 flex items-center justify-center mx-auto mb-6">
-                  <Clock className="w-8 h-8 text-destructive" />
+                <div className="w-16 h-16 rounded-xl bg-destructive/20 flex items-center justify-center mx-auto mb-6">
+                  <Clock className="w-8 h-8 text-red-500" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">Pouco Tempo para Decisão</h3>
                 <p className="text-muted-foreground">
@@ -166,7 +166,7 @@ export default function Apresentacao() {
               <div className="relative">
                 <div className="w-full aspect-square max-w-md mx-auto rounded-3xl hero-gradient p-8 flex items-center justify-center">
                   <div className="text-center">
-                    <Volume2 className="w-24 h-24 text-secondary mx-auto mb-6 animate-pulse" />
+                    <Volume2 className="w-24 h-24 text-black dark:text-black mx-auto mb-6 animate-pulse" />
                     <p className="text-invox-cream text-xl font-semibold">
                       Sua marca no ouvido do cliente
                     </p>
@@ -572,7 +572,7 @@ export default function Apresentacao() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
                   <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Zap className="w-10 h-10 text-primary" />
+                    <Zap className="w-10 h-10 text-black dark:text-black" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Valores Exclusivos</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -588,7 +588,7 @@ export default function Apresentacao() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all duration-500" />
                 <div className="relative z-10 text-center">
                   <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Target className="w-10 h-10 text-primary" />
+                    <Target className="w-10 h-10 text-black dark:text-black" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Cota Inclusa</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -603,7 +603,7 @@ export default function Apresentacao() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
                   <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Music className="w-10 h-10 text-primary" />
+                    <Music className="w-10 h-10 text-black dark:text-black" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Suporte & Vinhetas</h3>
                   <p className="text-muted-foreground leading-relaxed">
