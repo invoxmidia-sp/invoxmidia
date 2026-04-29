@@ -180,12 +180,12 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 4 - Como a Rádio Aumenta Vendas */}
-      <section className="min-h-screen flex items-center py-20 bg-primary dark:bg-invox-navy-deep text-invox-cream">
+      <section className="min-h-screen flex items-center py-20 bg-primary dark:bg-invox-navy-deep text-invox-cream dark:text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">O Poder do Som</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4">
-              Como a Rádio Interna <span className="text-primary">Aumenta as Vendas</span>
+            <span className="text-secondary dark:text-primary font-semibold text-sm uppercase tracking-wider">O Poder do Som</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 text-invox-cream dark:text-white">
+              Como a Rádio Interna <span className="text-secondary dark:text-primary">Aumenta as Vendas</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -336,20 +336,20 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 7 - Diferenciais */}
-      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary to-invox-navy-light dark:from-invox-navy-deep dark:to-invox-navy-light text-invox-cream">
+      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary to-invox-navy-light dark:from-invox-navy-deep dark:to-invox-navy-light text-invox-cream dark:text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4">
-              Diferenciais da <span className="text-primary">INVOX MÍDIA</span>
+            <span className="text-secondary dark:text-primary font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 text-invox-cream dark:text-white">
+              Diferenciais da <span className="text-secondary dark:text-primary">INVOX MÍDIA</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-primary shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Conteúdo Profissional</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Conteúdo Profissional</h3>
                   <p className="text-invox-cream/80">
                     Locução e produção de alta qualidade que transmite credibilidade para sua marca
                   </p>
@@ -358,9 +358,9 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-primary shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Linguagem Comercial Estratégica</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Linguagem Comercial Estratégica</h3>
                   <p className="text-invox-cream/80">
                     Textos criados para converter ouvintes em compradores
                   </p>
@@ -369,9 +369,9 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-primary shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Atualizações Frequentes</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Atualizações Frequentes</h3>
                   <p className="text-invox-cream/80">
                     Programação sempre renovada para manter o interesse e relevância
                   </p>
@@ -380,9 +380,9 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.4}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-primary shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Personalização Total</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Personalização Total</h3>
                   <p className="text-invox-cream/80">
                     Adaptamos o conteúdo para cada loja ou rede, respeitando suas particularidades
                   </p>
