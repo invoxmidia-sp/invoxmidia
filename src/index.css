@@ -6,98 +6,119 @@
 
 @layer base {
   :root {
-    /* New Vibrant Light Mode Palette */
-    --background: 0 0% 100%;
-    --foreground: 196 56% 15%; /* Dark Teal for text */
+    /* ── Unified Premium Dark Palette (Applied to Light Root) ─────── */
+    --background: 0 0% 2%;
+    --foreground: 213 18% 82%; /* Silver */
 
-    --card: 0 0% 100%;
-    --card-foreground: 196 56% 15%;
+    --card: 210 8% 8%;
+    --card-foreground: 213 18% 82%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 196 56% 15%;
+    --popover: 210 8% 8%;
+    --popover-foreground: 213 18% 82%;
 
-    --primary: 196 56% 42%; /* Deep Teal #2F86A6 */
-    --primary-foreground: 0 0% 100%;
+    --primary: 201 98% 62%; /* Sky Blue #3FB9FE */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 154 57% 47%; /* Emerald Green #34BE82 */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 8% 12%; 
+    --secondary-foreground: 213 18% 82%;
 
-    --muted: 154 20% 96%;
-    --muted-foreground: 196 20% 40%;
+    --muted: 210 8% 11%;
+    --muted-foreground: 213 18% 85%;
 
-    --accent: 60 91% 51%; /* Electric Yellow #F2F013 */
-    --accent-foreground: 196 56% 15%;
+    --accent: 201 98% 62%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 196 20% 90%;
-    --input: 196 20% 90%;
-    --ring: 196 56% 42%;
+    --border: 210 8% 14%;
+    --input: 210 8% 11%;
+    --ring: 201 98% 62%;
 
     --radius: 0.75rem;
 
-    /* Custom Invox tokens (Updated to new palette) */
-    --invox-navy:        196 56% 15%; /* Now Dark Teal */
-    --invox-navy-deep:   196 56% 10%;
-    --invox-navy-light:  196 56% 42%;
-    --invox-gold:        60 91% 51%;  /* Now Electric Yellow */
-    --invox-gold-light:  60 91% 70%;
-    --invox-gold-deep:   60 91% 40%;
-    --invox-orange:      154 57% 47%; /* Now Emerald Green */
-    --invox-cream:       0 0% 100%;
-    --invox-gray:        196 10% 95%;
-    --invox-onair:       0 84% 55%;
+    /* Custom Invox tokens (Unified) */
+    --invox-navy:        213 18% 85%;
+    --invox-navy-deep:   0 0% 2%;
+    --invox-navy-light:  210 8% 14%;
+    --invox-gold:        201 98% 62%;
+    --invox-gold-light:  201 98% 75%;
+    --invox-gold-deep:   201 98% 50%;
+    --invox-orange:      201 80% 55%;
+    --invox-cream:       213 18% 85%;
+    --invox-gray:        210 8% 11%;
+    --invox-onair:       201 98% 62%;
 
-    /* Gradients - New Palette */
-    --gradient-hero: linear-gradient(135deg, hsl(196, 56%, 42%) 0%, hsl(154, 57%, 47%) 100%);
+    /* Gradients (Unified) */
+    --gradient-hero:
+      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
     --gradient-broadcast:
-      radial-gradient(at 20% 20%, hsl(196, 56%, 42%, 0.05) 0px, transparent 45%),
-      radial-gradient(at 85% 30%, hsl(154, 57%, 47%, 0.03) 0px, transparent 50%),
-      linear-gradient(135deg, #FFFFFF 0%, #F8FAFB 100%);
+      radial-gradient(at 20% 20%, rgba(63,185,254,0.08) 0px, transparent 50%),
+      radial-gradient(at 85% 30%, rgba(63,185,254,0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(191,199,213,0.04) 0px, transparent 40%),
+      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
     --gradient-mesh-light:
-      radial-gradient(at 15% 10%, hsl(196, 56%, 42%, 0.04) 0px, transparent 40%),
-      radial-gradient(at 90% 80%, hsl(154, 57%, 47%, 0.04) 0px, transparent 50%),
-      #FFFFFF;
-    --gradient-gold: linear-gradient(135deg, hsl(60, 91%, 51%) 0%, hsl(154, 57%, 47%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(196, 10% 98%) 100%);
-    --gradient-premium: linear-gradient(135deg, hsl(60, 91%, 51%) 0%, hsl(196, 56%, 42%) 100%);
+      radial-gradient(at 15% 10%, rgba(63,185,254,0.06) 0px, transparent 40%),
+      radial-gradient(at 85% 85%, rgba(191,199,213,0.04) 0px, transparent 40%),
+      #050505;
+    --gradient-gold: #3FB9FE;
+    --gradient-card: linear-gradient(145deg, #111315 0%, #050505 100%);
+    --gradient-premium: linear-gradient(135deg, #3FB9FE 0%, #2575fc 100%);
     --gradient-gold-border: linear-gradient(135deg,
-      hsl(60, 91%, 51%, 0.6) 0%,
-      hsl(60, 91%, 51%, 0.1) 35%,
-      hsl(60, 91%, 51%, 0.05) 65%,
-      hsl(60, 91%, 51%, 0.5) 100%);
+      rgba(63,185,254,0.6) 0%,
+      rgba(63,185,254,0.1) 35%,
+      rgba(63,185,254,0.05) 65%,
+      rgba(63,185,254,0.5) 100%);
     --gradient-cream-border: linear-gradient(135deg,
-      hsl(196, 56%, 15%, 0.2) 0%,
-      hsl(196, 56%, 15%, 0.05) 50%,
-      hsl(196, 56%, 15%, 0.15) 100%);
+      rgba(191,199,213,0.4) 0%,
+      rgba(191,199,213,0.05) 50%,
+      rgba(191,199,213,0.3) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(222, 68%, 18%, 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(222, 68%, 18%, 0.08), 0 2px 4px -2px hsl(222, 68%, 18%, 0.05);
-    --shadow-lg: 0 10px 15px -3px hsl(222, 68%, 18%, 0.1), 0 4px 6px -4px hsl(222, 68%, 18%, 0.08);
-    --shadow-xl: 0 20px 25px -5px hsl(222, 68%, 18%, 0.15), 0 8px 10px -6px hsl(222, 68%, 18%, 0.1);
-    --shadow-gold: 0 10px 30px -10px hsl(38, 92%, 50%, 0.5);
-    --shadow-gold-glow: 0 0 40px hsl(38, 92%, 50%, 0.3), 0 10px 30px -10px hsl(38, 92%, 50%, 0.4);
-    --shadow-card: 0 4px 20px 0 hsl(222, 68%, 18%, 0.06);
-    --shadow-broadcast: 0 30px 80px -20px hsl(222, 68%, 18%, 0.4), 0 0 60px hsl(38, 92%, 50%, 0.15);
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.6);
+    --shadow-gold: 0 10px 30px -10px rgba(63,185,254,0.3);
+    --shadow-broadcast: 0 30px 80px -20px rgba(0,0,0,0.8);
 
-    /* Easings */
-    --ease-out-broadcast: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    --sidebar-background: 222 68% 18%;
-    --sidebar-foreground: 45 100% 96%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 222 50% 28%;
-    --sidebar-accent-foreground: 45 100% 96%;
-    --sidebar-border: 222 50% 28%;
-    --sidebar-ring: 38 92% 50%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 213 18% 85%;
+    --sidebar-primary: 201 98% 62%;
+    --sidebar-border: 210 8% 14%;
+    --sidebar-ring: 201 98% 62%;
   }
 
   .dark {
-    /* ── Deep Dark Palette ────────────────────────────────────────── */
+    --background: 0 0% 2%;
+    --foreground: 213 18% 82%;
+    --card: 210 8% 8%;
+    --card-foreground: 213 18% 82%;
+    --popover: 210 8% 8%;
+    --popover-foreground: 213 18% 82%;
+    --primary: 201 98% 62%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 210 8% 12%; 
+    --secondary-foreground: 213 18% 82%;
+    --muted: 210 8% 11%;
+    --muted-foreground: 213 18% 85%;
+    --accent: 201 98% 62%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 8% 14%;
+    --input: 210 8% 11%;
+    --ring: 201 98% 62%;
+
+    --invox-navy:        213 18% 85%;
+    --invox-navy-deep:   0 0% 2%;
+    --invox-navy-light:  210 8% 14%;
+    --invox-cream:       213 18% 85%;
+    --invox-gold:        201 98% 62%;
+    --invox-gold-light:  201 98% 75%;
+    --invox-gold-deep:   201 98% 50%;
+    --invox-orange:      201 80% 55%;
+    --invox-onair:       201 98% 62%; 
+    
     /* Strict palette: BLUE · BLACK · WHITE only */
     /* Background: deep black */
     --background: 0 0% 4%;
