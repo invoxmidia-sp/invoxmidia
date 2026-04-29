@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, X, ChevronDown, ChevronUp, Bot } from "lucide-react";
+import { Headset, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const FAQ_ITEMS = [
   {
@@ -38,30 +38,30 @@ export function Chatbot() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full gold-gradient shadow-gold flex items-center justify-center transition-transform hover:scale-110 ${
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#22C55E] shadow-lg flex items-center justify-center transition-transform hover:scale-110 ${
           isOpen ? "rotate-90" : ""
         }`}
         aria-label="Abrir assistente"
       >
         {isOpen ? (
-          <X className="w-6 h-6 text-primary" />
+          <X className="w-6 h-6 text-white" />
         ) : (
-          <MessageCircle className="w-6 h-6 text-primary" />
+          <Headset className="w-6 h-6 text-white" />
         )}
       </button>
 
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] bg-card rounded-2xl shadow-xl border border-border/50 flex flex-col overflow-hidden animate-scale-in">
           {/* Header */}
-          <div className="hero-gradient p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
-              <Bot className="w-5 h-5 text-secondary" />
+          <div className="bg-[#22C55E] p-4 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+              <Headset className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-display font-semibold text-invox-cream">
-                Suporte Rápido
+              <h3 className="font-display font-semibold text-white">
+                Assistente Virtual
               </h3>
-              <p className="text-xs text-invox-cream/70">Tire suas dúvidas ou fale conosco</p>
+              <p className="text-xs text-white/80">Como posso ajudar você hoje?</p>
             </div>
           </div>
 
