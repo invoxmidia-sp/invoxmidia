@@ -139,7 +139,7 @@ export default function Index() {
                     key={s.label}
                     className="bg-invox-navy-deep/60 backdrop-blur px-4 py-4"
                   >
-                    <p className="font-display tabular text-2xl font-bold text-secondary leading-tight">
+                    <p className="font-display tabular text-2xl font-bold text-[#3FB9FE] leading-tight">
                       {s.value}
                     </p>
                     <p className="mono-label text-invox-cream/50 mt-1">{s.label}</p>
@@ -153,14 +153,14 @@ export default function Index() {
               <AnimatedSection direction="right" delay={0.3}>
                 <div className="relative">
                   {/* Decorative offset cards */}
-                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-2xl bg-secondary/20 blur-2xl" />
+                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-2xl bg-[#3FB9FE]/20 blur-2xl" />
                   <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-2xl bg-invox-navy-light/40 blur-2xl" />
 
                   <div className="relative rounded-3xl bg-invox-navy-deep/70 backdrop-blur-xl border border-invox-cream/10 p-7 shadow-broadcast border-gradient-cream noise-overlay">
                     {/* Console header */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-secondary/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#3FB9FE]/80" />
                         <span className="w-2.5 h-2.5 rounded-full bg-[#3FB9FE]/60" />
                         <span className="w-2.5 h-2.5 rounded-full bg-invox-cream/30" />
                       </div>
@@ -183,12 +183,12 @@ export default function Index() {
                           Playlist: Loja Premium
                         </p>
                       </div>
-                      <Equalizer className="text-secondary" />
+                      <Equalizer className="text-[#3FB9FE]" />
                     </div>
 
                     {/* Waveform */}
                     <div className="rounded-xl bg-invox-navy-deep/60 border border-invox-cream/5 p-4 mb-5">
-                      <SoundWave bars={48} className="h-12 text-secondary" />
+                      <SoundWave bars={48} className="h-12 text-[#3FB9FE]" />
                       <div className="flex justify-between mono-label text-invox-cream/40 mt-2">
                         <span className="tabular">02:45</span>
                         <span className="tabular">04:12</span>
@@ -204,17 +204,17 @@ export default function Index() {
                             Spot: Ofertas da Semana
                           </p>
                         </div>
-                        <Play className="w-4 h-4 text-secondary/60" />
+                        <Play className="w-4 h-4 text-[#3FB9FE]/60" />
                       </div>
                     </div>
 
                     {/* Frequency strip */}
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-invox-cream/10">
                       <div className="flex items-center gap-2 text-invox-cream/60">
-                        <Volume2 className="w-4 h-4 text-secondary" />
+                        <Volume2 className="w-4 h-4 text-[#3FB9FE]" />
                         <span className="mono-label">PLAYER PERSONALIZADO</span>
                       </div>
-                      <span className="mono-label text-secondary">HD AUDIO · 320kbps</span>
+                      <span className="mono-label text-[#3FB9FE]">HD AUDIO · 320kbps</span>
                     </div>
                   </div>
                 </div>
@@ -228,7 +228,7 @@ export default function Index() {
           <SoundWave
             bars={120}
             amplitude={0.5}
-            className="h-12 text-secondary/40"
+            className="h-12 text-[#3FB9FE]/40"
           />
         </div>
       </section>
@@ -239,7 +239,7 @@ export default function Index() {
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-16" direction="up">
             <SectionLabel className="justify-center mb-4">Clube Invox</SectionLabel>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-              Vantagens que <span className="text-secondary">soam alto</span>.
+              Vantagens que <span className="text-[#3FB9FE]">soam alto</span>.
             </h2>
             <p className="text-muted-foreground text-lg">
               Ao participar do Clube, você garante recursos exclusivos que farão suas
@@ -257,7 +257,7 @@ export default function Index() {
                   </span>
 
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-invox-navy to-invox-navy-light flex items-center justify-center mb-5 group-hover:from-secondary group-hover:to-invox-orange transition-all duration-500 shadow-md">
-                    <feature.icon className="w-6 h-6 text-secondary group-hover:text-invox-navy-deep transition-colors duration-500" />
+                    <feature.icon className="w-6 h-6 text-[#3FB9FE] group-hover:text-invox-navy-deep transition-colors duration-500" />
                   </div>
                   <h3 className="font-display font-semibold text-lg text-foreground mb-2 tracking-tight">
                     {feature.title}
@@ -293,7 +293,7 @@ export default function Index() {
               <SectionLabel className="mb-4">Por que Invox?</SectionLabel>
               <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
                 Mais do que som,{" "}
-                <span className="text-secondary">uma estratégia</span>.
+                <span className="text-[#3FB9FE]">uma estratégia</span>.
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
                 Nosso serviço de rádio interna vai além da música. Criamos uma
@@ -304,8 +304,8 @@ export default function Index() {
                 {benefits.map((benefit, index) => (
                   <AnimatedItem key={index} delay={index * 0.08}>
                     <li className="flex items-start gap-3">
-                      <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-secondary/15 flex items-center justify-center">
-                        <CheckCircle2 className="w-4 h-4 text-secondary" />
+                      <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-[#3FB9FE]/15 flex items-center justify-center">
+                        <CheckCircle2 className="w-4 h-4 text-[#3FB9FE]" />
                       </span>
                       <span className="text-foreground/90">{benefit}</span>
                     </li>
@@ -338,7 +338,7 @@ export default function Index() {
                 {/* Floating stat card */}
                 <div className="absolute -bottom-4 -left-4 rounded-2xl bg-card shadow-broadcast border border-border/50 p-5 w-56">
                   <div className="flex items-center gap-3 mb-2">
-                    <Equalizer className="text-secondary h-6" />
+                    <Equalizer className="text-[#3FB9FE] h-6" />
                     <span className="mono-label text-muted-foreground">Live · 24/7</span>
                   </div>
                   <p className="font-display font-bold text-foreground text-lg leading-tight">

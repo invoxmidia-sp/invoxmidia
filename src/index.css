@@ -111,9 +111,9 @@
     /* Primary action: bright sky blue #3FB9FE  →  hsl(201 98% 62%) */
     --primary: 201 98% 62%;
     --primary-foreground: 0 0% 0%; /* Solid black */
-    /* Secondary: sky blue highlight */
-    --secondary: 201 98% 62%;
-    --secondary-foreground: 0 0% 0%;
+    /* Secondary: graphite surface for cards/sections */
+    --secondary: 210 8% 12%; 
+    --secondary-foreground: 213 18% 82%;
     --muted: 210 8% 11%;
     --muted-foreground: 213 18% 85%; /* Light silver/white */
     --accent: 201 98% 62%;
@@ -127,7 +127,7 @@
     /* ── Dark custom tokens (Mapped to new palette) ──────────────── */
     --invox-navy:        213 18% 85%; /* Mapped to Silver for text visibility */
     --invox-navy-deep:   0 0% 2%;     /* Black #050505 */
-    --invox-navy-light:  213 18% 95%; /* Almost white */
+    --invox-navy-light:  210 8% 14%;  /* Dark graphite */
     --invox-cream:       213 18% 85%; /* Silver #BFC7D5 */
     --invox-gold:        201 98% 62%; /* Sky Blue #3FB9FE */
     --invox-gold-light:  201 98% 75%;
