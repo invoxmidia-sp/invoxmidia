@@ -20,7 +20,7 @@ const buttonVariants = cva(
         "hero-outline": "border-2 border-invox-cream bg-transparent text-invox-cream hover:bg-invox-cream/10",
         gold: "gold-gradient text-black font-semibold shadow-button hover:shadow-gold hover:brightness-110",
         "gold-outline": "border-2 border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-primary",
-        navy: "bg-invox-navy text-invox-cream hover:bg-invox-navy-light shadow-md hover:shadow-lg"
+        navy: "bg-invox-navy text-invox-cream hover:bg-invox-navy-light dark:bg-[#111315] dark:text-invox-cream shadow-md hover:shadow-lg"
       },
       size: {
         default: "h-11 px-6 py-2",
