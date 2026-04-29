@@ -93,7 +93,7 @@ export default function Index() {
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-invox-cream leading-[1.05] mb-6 tracking-tight animate-slide-up">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-6 tracking-tight animate-slide-up">
                 Faça Parte do{" "}
                 <span className="relative inline-block">
                   <span className="text-gradient-gold">Clube Invox</span>
@@ -105,7 +105,7 @@ export default function Index() {
               </h1>
 
               <p
-                className="text-lg lg:text-xl text-invox-cream/70 max-w-xl mb-10 leading-relaxed animate-fade-in"
+                className="text-lg lg:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-in"
                 style={{ animationDelay: "0.2s" }}
               >
                 Assine nossos planos, pague muito mais barato em gravações avulsas extras, além de cota semanal inclusa, instalação e suporte do sistema com Vinhetas personalizadas, atualização musical semanal e muito mais!
@@ -358,10 +358,10 @@ export default function Index() {
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="max-w-3xl mx-auto text-center" direction="up">
             <SectionLabel className="justify-center mb-5">Pronto?</SectionLabel>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-invox-cream mb-5 tracking-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5 tracking-tight">
               Coloque sua marca <span className="text-gradient-gold">no ar</span> hoje.
             </h2>
-            <p className="text-invox-cream/70 text-lg mb-10 max-w-xl mx-auto">
+            <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
               Agende uma demonstração gratuita e descubra como a Invox Mídia pode
               aumentar suas vendas.
             </p>
