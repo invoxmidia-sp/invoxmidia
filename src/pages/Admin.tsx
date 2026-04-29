@@ -89,16 +89,12 @@ export default function Admin() {
   const handleApproveSubscription = async (sub: Subscription, action: "approved" | "rejected") => {
     setApprovingId(sub.id);
     try {
-      await supabase.rpc("approve_subscription", {
+      const { error: rpcError } = await supabase.rpc("approve_subscription", {
         p_subscription_id: sub.id,
         p_action: action,
         p_admin_notes: null,
       });
-
-      // If subscription type and approved, update plan_status on profile
-      if (action === "approved" && sub.type === "subscription") {
-        await supabase.from("profiles").update({ plan_status: "active" }).eq("user_id", sub.user_id);
-      }
+      if (rpcError) throw rpcError;
 
       toast({ title: action === "approved" ? "Plano aprovado!" : "Assinatura rejeitada." });
       await loadData();
