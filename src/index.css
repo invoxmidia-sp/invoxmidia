@@ -19,8 +19,8 @@
     --primary: 201 98% 62%; /* Sky Blue #3FB9FE */
     --primary-foreground: 0 0% 0%;
 
-    --secondary: 210 8% 12%; 
-    --secondary-foreground: 213 18% 82%;
+    --secondary: 201 98% 62%; 
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 210 8% 11%;
     --muted-foreground: 213 18% 85%;
@@ -78,7 +78,7 @@
     --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.4);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.6);
-    --shadow-gold: 0 10px 30px -10px rgba(63,185,254,0.3);
+    --shadow-gold: 0 4px 12px rgba(0,0,0,0.5);
     --shadow-broadcast: 0 30px 80px -20px rgba(0,0,0,0.8);
 
     --sidebar-background: 0 0% 4%;
@@ -131,7 +131,7 @@
     --shadow-gold:
       0 4px 12px rgba(0,0,0,0.5); /* No neon glow */
     --shadow-gold-glow:
-      0 8px 24px rgba(0,0,0,0.6); /* No neon glow */
+      0 4px 12px rgba(0,0,0,0.5); /* Removed neon glow */
     --shadow-card:
       0 4px 20px 0 rgba(0,0,0,0.6),
       inset 0 1px 0 rgba(191,199,213,0.05),
