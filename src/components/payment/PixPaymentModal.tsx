@@ -209,7 +209,7 @@ export function PixPaymentModal({
             <div className="flex flex-col items-center gap-3">
               <div className="bg-white p-3 rounded-xl border border-border shadow-sm">
                 <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${PIX_KEY}`}
+                  src="/pix-qrcode.png"
                   alt="QR Code PIX"
                   className="w-48 h-48 object-contain"
                 />
