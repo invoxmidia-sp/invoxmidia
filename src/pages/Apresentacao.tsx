@@ -192,7 +192,7 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.1}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
                 <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <ShoppingCart className="w-10 h-10 text-primary" />
+                  <ShoppingCart className="w-10 h-10 text-black dark:text-black" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Compras por Impulso</h3>
                 <p className="text-invox-cream/80">
@@ -203,7 +203,7 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.2}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
                 <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-10 h-10 text-primary" />
+                  <Zap className="w-10 h-10 text-black dark:text-black" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Destaca Ofertas</h3>
                 <p className="text-invox-cream/80">
@@ -214,7 +214,7 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.3}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
                 <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-10 h-10 text-primary" />
+                  <Heart className="w-10 h-10 text-black dark:text-black" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Influencia Comportamento</h3>
                 <p className="text-invox-cream/80">
@@ -406,7 +406,7 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.1}>
               <div className="text-center">
                 <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <BarChart3 className="w-12 h-12 text-primary" />
+                  <BarChart3 className="w-12 h-12 text-black dark:text-black" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Aumento do Ticket Médio</h3>
                 <p className="text-muted-foreground">
@@ -417,7 +417,7 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.2}>
               <div className="text-center">
                 <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <Target className="w-12 h-12 text-primary" />
+                  <Target className="w-12 h-12 text-black dark:text-black" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Mais Atenção às Ofertas</h3>
                 <p className="text-muted-foreground">
@@ -428,7 +428,7 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.3}>
               <div className="text-center">
                 <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <Award className="w-12 h-12 text-primary" />
+                  <Award className="w-12 h-12 text-black dark:text-black" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Marca Fortalecida</h3>
                 <p className="text-muted-foreground">
