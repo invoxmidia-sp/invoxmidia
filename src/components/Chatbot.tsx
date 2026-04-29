@@ -3,6 +3,11 @@ import { Headset, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const FAQ_ITEMS = [
   {
+    question: "O que é Invox Mídia?",
+    answer:
+      "Somos uma Empresa de Implementação de Rádio Interna, instalação da Programação Musical e Comercial, Vinhetas e suporte em equipamentos se necessário etc."
+  },
+  {
     question: "O que é o Clube Invox?",
     answer:
       "O Clube Invox é uma comunidade exclusiva para lojistas. Ao assinar qualquer um de nossos planos, você ganha acesso a uma cota programada de gravações, Player Personalizado, suporte e descontos muito agressivos em qualquer gravação avulsa extra."
