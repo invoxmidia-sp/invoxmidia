@@ -65,6 +65,48 @@ export type Database = {
         }
         Relationships: []
       }
+      plan_subscriptions: {
+        Row: {
+          id: string
+          user_id: string
+          plan: string
+          type: string
+          status: string
+          proof_url: string | null
+          proof_filename: string | null
+          admin_notes: string | null
+          avulsa_price: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          plan: string
+          type?: string
+          status?: string
+          proof_url?: string | null
+          proof_filename?: string | null
+          admin_notes?: string | null
+          avulsa_price?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          plan?: string
+          type?: string
+          status?: string
+          proof_url?: string | null
+          proof_filename?: string | null
+          admin_notes?: string | null
+          avulsa_price?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string
@@ -73,6 +115,11 @@ export type Database = {
           id: string
           phone: string | null
           plan: Database["public"]["Enums"]["plan_type"] | null
+          plan_status: string | null
+          plan_expires_at: string | null
+          monthly_quota: number
+          recordings_used: number
+          recordings_balance: number
           updated_at: string
           user_id: string
         }
@@ -83,6 +130,11 @@ export type Database = {
           id?: string
           phone?: string | null
           plan?: Database["public"]["Enums"]["plan_type"] | null
+          plan_status?: string | null
+          plan_expires_at?: string | null
+          monthly_quota?: number
+          recordings_used?: number
+          recordings_balance?: number
           updated_at?: string
           user_id: string
         }
@@ -93,6 +145,11 @@ export type Database = {
           id?: string
           phone?: string | null
           plan?: Database["public"]["Enums"]["plan_type"] | null
+          plan_status?: string | null
+          plan_expires_at?: string | null
+          monthly_quota?: number
+          recordings_used?: number
+          recordings_balance?: number
           updated_at?: string
           user_id?: string
         }
@@ -175,6 +232,14 @@ export type Database = {
         Returns: boolean
       }
       register_first_admin: { Args: { _user_id: string }; Returns: boolean }
+      approve_subscription: {
+        Args: {
+          p_subscription_id: string
+          p_action: string
+          p_admin_notes?: string | null
+        }
+        Returns: void
+      }
     }
     Enums: {
       app_role: "admin" | "user"

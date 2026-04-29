@@ -44,26 +44,35 @@ export default function NovoPedido() {
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
-        navigate("/login");
-        return;
-      }
-
+      if (!session) { navigate("/login"); return; }
       setUser(session.user);
 
-      // Get company name from profile
       const { data: profile } = await supabase
         .from("profiles")
-        .select("company_name")
+        .select("company_name, plan_status, plan_expires_at, monthly_quota, recordings_used, recordings_balance")
         .eq("user_id", session.user.id)
         .single();
 
-      if (profile) {
-        setFormData(prev => ({ ...prev, companyName: profile.company_name }));
+      if (!profile) return;
+      setFormData(prev => ({ ...prev, companyName: profile.company_name }));
+
+      // Guard: must have active plan
+      const isActive = profile.plan_status === "active";
+      const notExpired = !profile.plan_expires_at || new Date(profile.plan_expires_at) > new Date();
+      if (!isActive || !notExpired) {
+        toast.error("Você precisa de um plano ativo para solicitar gravações.");
+        navigate("/planos");
+        return;
+      }
+
+      // Guard: quota
+      const totalCredits = (profile.monthly_quota - profile.recordings_used) + profile.recordings_balance;
+      if (totalCredits <= 0) {
+        toast.error("Sua cota de gravações está esgotada. Pague uma gravação avulsa no painel.");
+        navigate("/dashboard");
+        return;
       }
     };
-
     checkAuth();
   }, [navigate]);
 
@@ -78,16 +87,11 @@ export default function NovoPedido() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
     try {
-      // Validate form data
       const validated = orderSchema.parse(formData);
+      if (!user) { toast.error("Você precisa estar logado."); return; }
 
-      if (!user) {
-        toast.error("Você precisa estar logado.");
-        return;
-      }
-
+      // Insert order
       const { error } = await supabase.from("recording_orders").insert({
         user_id: user.id,
         company_name: validated.companyName,
@@ -98,8 +102,23 @@ export default function NovoPedido() {
         duration: validated.duration,
         status: "pendente",
       });
-
       if (error) throw error;
+
+      // Consume 1 quota credit
+      const { data: prof } = await supabase
+        .from("profiles")
+        .select("recordings_used, recordings_balance")
+        .eq("user_id", user.id)
+        .single();
+
+      if (prof) {
+        // Prefer consuming from balance first, then monthly used
+        if (prof.recordings_balance > 0) {
+          await supabase.from("profiles").update({ recordings_balance: prof.recordings_balance - 1 }).eq("user_id", user.id);
+        } else {
+          await supabase.from("profiles").update({ recordings_used: prof.recordings_used + 1 }).eq("user_id", user.id);
+        }
+      }
 
       setSentOrderData({ ...formData });
       setOrderSent(true);

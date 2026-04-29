@@ -3,21 +3,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { Check, Star, Zap, Crown, Loader2, Copy, MessageCircle, CreditCard } from "lucide-react";
+import { Check, Star, Zap, Crown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { PixPaymentModal } from "@/components/payment/PixPaymentModal";
 import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
 import { SectionLabel } from "@/components/broadcast/SectionLabel";
 import { SoundWave } from "@/components/broadcast/SoundWave";
-
-const PIX_KEY = "11937237949";
-const WHATSAPP_NUMBER = "5511937237949";
 
 const plans = [
   {
@@ -26,9 +17,10 @@ const plans = [
     icon: Star,
     price: "R$ 49,90",
     priceDetails: "/mês",
-    priceId: "price_1SvjcL0mbaBut7AJh079cQ8Z",
     description: "Ideal para começar a transformar seu ambiente sonoro",
     color: "from-amber-600 to-amber-700",
+    quota: 2,
+    avulsa: 50,
     features: [
       "2 gravações de oferta por mês",
       "Player musical personalizado",
@@ -45,9 +37,10 @@ const plans = [
     icon: Zap,
     price: "R$ 69,90",
     priceDetails: "/mês",
-    priceId: "price_1Sw44L0mbaBut7AJ1MASschw",
     description: "O equilíbrio perfeito entre recursos e investimento",
     color: "from-slate-400 to-slate-500",
+    quota: 4,
+    avulsa: 50,
     features: [
       "1 gravação de oferta por semana",
       "Player musical personalizado",
@@ -64,9 +57,10 @@ const plans = [
     icon: Crown,
     price: "R$ 99,90",
     priceDetails: "/mês",
-    priceId: "price_1Sw44L0mbaBut7AJo22cwuGG",
     description: "A experiência completa para quem quer o melhor",
     color: "from-yellow-500 to-amber-500",
+    quota: 8,
+    avulsa: 30,
     features: [
       "2 gravações de oferta por semana",
       "Player musical personalizado",
@@ -80,99 +74,46 @@ const plans = [
   },
 ];
 
-type SelectedPlan = {
-  id: string;
-  name: string;
-  price: string;
-  priceId: string;
-} | null;
+type UserInfo = { id: string; email: string; companyName: string } | null;
 
 export default function Planos() {
   const [searchParams] = useSearchParams();
-  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
-  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState<SelectedPlan>(null);
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState<UserInfo>(null);
+  const [selectedPlan, setSelectedPlan] = useState<typeof plans[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (searchParams.get("canceled") === "true") {
-      toast.info("Pagamento cancelado. Você pode tentar novamente quando quiser.");
-    }
-
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
-        setUser({ id: session.user.id, email: session.user.email || "" });
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("company_name")
+          .eq("user_id", session.user.id)
+          .single();
+        setUserInfo({
+          id: session.user.id,
+          email: session.user.email ?? "",
+          companyName: profile?.company_name ?? session.user.email ?? "",
+        });
       }
     };
     checkUser();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user) {
-        setUser({ id: session.user.id, email: session.user.email || "" });
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => subscription.unsubscribe();
+    // pre-select plan from URL
+    const planParam = searchParams.get("plan");
+    if (planParam) {
+      const found = plans.find(p => p.id === planParam);
+      if (found) { setSelectedPlan(found); setIsModalOpen(true); }
+    }
   }, [searchParams]);
 
-  const handleOpenPaymentModal = (plan: typeof plans[0]) => {
-    if (!user) {
+  const handleAssinar = (plan: typeof plans[0]) => {
+    if (!userInfo) {
       window.location.href = `/login?signup=true&plan=${plan.id}`;
       return;
     }
-    setSelectedPlan({
-      id: plan.id,
-      name: plan.name,
-      price: plan.price,
-      priceId: plan.priceId,
-    });
-    setIsPaymentModalOpen(true);
-  };
-
-  const handleStripeCheckout = async () => {
-    if (!selectedPlan) return;
-
-    setLoadingPlan(selectedPlan.id);
-    try {
-      const { data: sessionData } = await supabase.auth.getSession();
-      const token = sessionData.session?.access_token;
-
-      if (!token) {
-        toast.error("Sessão expirada. Por favor, faça login novamente.");
-        window.location.href = "/login";
-        return;
-      }
-
-      const { data, error } = await supabase.functions.invoke("create-checkout", {
-        body: { priceId: selectedPlan.priceId },
-      });
-
-      if (error) {
-        console.error("Checkout error:", error);
-        toast.error("Erro ao iniciar pagamento. Tente novamente.");
-        return;
-      }
-
-      if (data?.url) {
-        window.open(data.url, "_blank");
-        setIsPaymentModalOpen(false);
-      } else {
-        toast.error("Erro ao criar sessão de pagamento.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      toast.error("Erro inesperado. Tente novamente.");
-    } finally {
-      setLoadingPlan(null);
-    }
-  };
-
-  const handleCopyPix = () => {
-    navigator.clipboard.writeText(PIX_KEY);
-    toast.success("Chave PIX copiada!");
+    setSelectedPlan(plan);
+    setIsModalOpen(true);
   };
 
   return (
@@ -180,7 +121,6 @@ export default function Planos() {
       {/* Hero */}
       <section className="relative py-20 md:py-28 overflow-hidden noise-overlay">
         <BroadcastBackdrop />
-
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <SectionLabel className="justify-center mb-5">Tabela de frequências</SectionLabel>
@@ -194,7 +134,6 @@ export default function Planos() {
             </p>
           </div>
         </div>
-
         <div className="absolute bottom-0 left-0 right-0 z-10">
           <SoundWave bars={120} amplitude={0.4} className="h-10 text-secondary/30" />
         </div>
@@ -226,7 +165,6 @@ export default function Planos() {
                   )}
 
                   <div className="p-7 md:p-8">
-                    {/* Header row */}
                     <div className="flex items-center justify-between mb-5">
                       <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${plan.color} flex items-center justify-center shadow-md`}>
                         <plan.icon className="w-6 h-6 text-white" />
@@ -243,23 +181,23 @@ export default function Planos() {
                       {plan.description}
                     </p>
 
-                    {/* Price block */}
                     <div className="mb-7 pb-6 border-b border-border/50">
                       <div className="flex items-baseline gap-1">
                         <span className="font-display text-4xl font-bold text-foreground tabular tracking-tight">
                           {plan.price}
                         </span>
-                        <span className="text-muted-foreground text-sm">
-                          {plan.priceDetails}
-                        </span>
+                        <span className="text-muted-foreground text-sm">{plan.priceDetails}</span>
                       </div>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {plan.quota} gravações/mês · avulsa R$ {plan.avulsa}
+                      </p>
                     </div>
 
                     <ul className="space-y-3 mb-8">
                       {plan.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md bg-secondary/15 flex items-center justify-center">
-                            <Check className="w-3 h-3 text-secondary" />
+                          <span className="shrink-0 mt-0.5 w-5 h-5 rounded-md bg-primary/15 flex items-center justify-center">
+                            <Check className="w-3 h-3 text-primary" />
                           </span>
                           <span className="text-foreground/90 text-sm leading-relaxed">{feature}</span>
                         </li>
@@ -270,7 +208,7 @@ export default function Planos() {
                       variant={plan.popular ? "gold" : "outline"}
                       className="w-full"
                       size="lg"
-                      onClick={() => handleOpenPaymentModal(plan)}
+                      onClick={() => handleAssinar(plan)}
                     >
                       Assinar {plan.name}
                     </Button>
@@ -282,97 +220,6 @@ export default function Planos() {
         </div>
       </section>
 
-      {/* Payment Method Modal */}
-      <Dialog open={isPaymentModalOpen} onOpenChange={setIsPaymentModalOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-center text-xl">
-              Escolha a forma de pagamento
-            </DialogTitle>
-            {selectedPlan && (
-              <p className="text-center text-muted-foreground">
-                Plano {selectedPlan.name} - {selectedPlan.price}/mês
-              </p>
-            )}
-          </DialogHeader>
-
-          <div className="space-y-4 pt-4">
-            {/* Cartão de Crédito */}
-            <Button
-              variant="gold"
-              className="w-full h-14 text-base"
-              onClick={handleStripeCheckout}
-              disabled={loadingPlan === selectedPlan?.id}
-            >
-              {loadingPlan === selectedPlan?.id ? (
-                <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Processando...
-                </>
-              ) : (
-                <>
-                  <CreditCard className="w-5 h-5 mr-2" />
-                  Pagar com Cartão
-                </>
-              )}
-            </Button>
-
-            {/* Divisor */}
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-border" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">ou</span>
-              </div>
-            </div>
-
-            {/* PIX Section */}
-            <div className="bg-muted/50 rounded-xl p-5 space-y-4">
-              <div className="flex items-center justify-center gap-2 text-base font-medium text-foreground">
-                <span className="text-xl">💠</span>
-                Pagar com PIX
-              </div>
-              
-              {/* Chave PIX */}
-              <div className="space-y-2">
-                <p className="text-sm text-muted-foreground text-center">
-                  Copie a chave PIX abaixo:
-                </p>
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 bg-background rounded-lg px-4 py-3 text-sm font-mono text-foreground text-center border border-border">
-                    {PIX_KEY}
-                  </div>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="shrink-0 h-11 w-11"
-                    onClick={handleCopyPix}
-                  >
-                    <Copy className="w-5 h-5" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* WhatsApp */}
-              <Button
-                className="w-full h-12 bg-green-600 hover:bg-green-700 text-white"
-                asChild
-              >
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Olá! Gostaria de assinar o Plano ${selectedPlan?.name} (${selectedPlan?.price}/mês) via PIX.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Finalizar no WhatsApp
-                </a>
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-muted/50">
         <div className="container mx-auto px-4">
@@ -381,35 +228,17 @@ export default function Planos() {
               Perguntas Frequentes
             </h2>
           </AnimatedSection>
-
           <div className="max-w-2xl mx-auto space-y-4">
             {[
-              {
-                q: "Posso mudar de plano depois?",
-                a: "Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento. As alterações são aplicadas no próximo ciclo de faturamento.",
-              },
-              {
-                q: "Como funciona a implementação?",
-                a: "Nossa equipe técnica orienta você em todo o processo de configuração do sistema de som e do player musical. No plano Ouro, oferecemos assistência presencial.",
-              },
-               {
-                 q: "Quanto tempo leva para começar?",
-                 a: "Após a confirmação do plano, em até 48 horas sua rádio estará pronta para começar a tocar.",
-               },
-               {
-                 q: "Qual é o prazo de entrega das gravações?",
-                 a: "O prazo padrão para entrega de todas as gravações solicitadas é de até 4 horas.",
-               },
-              {
-                q: "Posso cancelar quando quiser?",
-                a: "Sim, não há fidelidade. Você pode cancelar a qualquer momento sem multa.",
-              },
+              { q: "Posso mudar de plano depois?", a: "Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento." },
+              { q: "Como funciona a implementação?", a: "Nossa equipe orienta você em todo o processo de configuração do sistema de som e do player." },
+              { q: "Quanto tempo leva para começar?", a: "Após a confirmação do pagamento, em até 48h sua rádio estará pronta." },
+              { q: "Qual é o prazo de entrega das gravações?", a: "O prazo padrão para entrega é de até 4 horas." },
+              { q: "Posso cancelar quando quiser?", a: "Sim, não há fidelidade. Você pode cancelar a qualquer momento sem multa." },
             ].map((faq, index) => (
               <AnimatedItem key={index} delay={index * 0.1}>
                 <div className="bg-card p-6 rounded-2xl shadow-card border border-border/50">
-                  <h4 className="font-display font-semibold text-foreground mb-2">
-                    {faq.q}
-                  </h4>
+                  <h4 className="font-display font-semibold text-foreground mb-2">{faq.q}</h4>
                   <p className="text-muted-foreground text-sm">{faq.a}</p>
                 </div>
               </AnimatedItem>
@@ -436,6 +265,20 @@ export default function Planos() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* PIX Modal */}
+      {selectedPlan && userInfo && (
+        <PixPaymentModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          userId={userInfo.id}
+          userEmail={userInfo.email}
+          companyName={userInfo.companyName}
+          plan={selectedPlan.id}
+          type="subscription"
+          onSuccess={() => setTimeout(() => setIsModalOpen(false), 3000)}
+        />
+      )}
     </Layout>
   );
 }
