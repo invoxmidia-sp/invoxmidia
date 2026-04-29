@@ -209,7 +209,7 @@ export function PixPaymentModal({
             <div className="flex flex-col items-center gap-3">
               <div className="bg-white p-3 rounded-xl border border-border shadow-sm">
                 <img
-                  src="/pix-qrcode.png"
+                  src="/pix-qrcode.jpeg"
                   alt="QR Code PIX"
                   className="w-48 h-48 object-contain"
                 />
