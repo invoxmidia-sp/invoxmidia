@@ -6,72 +6,72 @@
 
 @layer base {
   :root {
-    /* Invox Mídia - Studio Broadcast aesthetic */
-    --background: 220 15% 97%;
-    --foreground: 222 47% 11%;
+    /* New Vibrant Light Mode Palette */
+    --background: 0 0% 100%;
+    --foreground: 196 56% 15%; /* Dark Teal for text */
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 196 56% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 196 56% 15%;
 
-    --primary: 222 68% 18%;
-    --primary-foreground: 45 100% 96%;
+    --primary: 196 56% 42%; /* Deep Teal #2F86A6 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 92% 50%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 154 57% 47%; /* Emerald Green #34BE82 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 14% 92%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 154 20% 96%;
+    --muted-foreground: 196 20% 40%;
 
-    --accent: 32 95% 54%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 60 91% 51%; /* Electric Yellow #F2F013 */
+    --accent-foreground: 196 56% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 87%;
-    --input: 220 13% 87%;
-    --ring: 222 68% 18%;
+    --border: 196 20% 90%;
+    --input: 196 20% 90%;
+    --ring: 196 56% 42%;
 
     --radius: 0.75rem;
 
-    /* Custom Invox tokens */
-    --invox-navy: 222 68% 18%;
-    --invox-navy-deep: 222 60% 10%;
-    --invox-navy-light: 222 50% 28%;
-    --invox-gold: 38 92% 50%;
-    --invox-gold-light: 43 96% 60%;
-    --invox-gold-deep: 35 95% 42%;
-    --invox-orange: 25 95% 53%;
-    --invox-cream: 45 100% 96%;
-    --invox-gray: 220 14% 92%;
-    --invox-onair: 0 84% 55%;
+    /* Custom Invox tokens (Updated to new palette) */
+    --invox-navy:        196 56% 15%; /* Now Dark Teal */
+    --invox-navy-deep:   196 56% 10%;
+    --invox-navy-light:  196 56% 42%;
+    --invox-gold:        60 91% 51%;  /* Now Electric Yellow */
+    --invox-gold-light:  60 91% 70%;
+    --invox-gold-deep:   60 91% 40%;
+    --invox-orange:      154 57% 47%; /* Now Emerald Green */
+    --invox-cream:       0 0% 100%;
+    --invox-gray:        196 10% 95%;
+    --invox-onair:       0 84% 55%;
 
-    /* Gradients - Studio Broadcast */
-    --gradient-hero: linear-gradient(135deg, hsl(222, 68%, 18%) 0%, hsl(222, 50%, 28%) 50%, hsl(200, 60%, 25%) 100%);
+    /* Gradients - New Palette */
+    --gradient-hero: linear-gradient(135deg, hsl(196, 56%, 42%) 0%, hsl(154, 57%, 47%) 100%);
     --gradient-broadcast:
-      radial-gradient(at 20% 20%, hsl(38, 92%, 50%, 0.18) 0px, transparent 45%),
-      radial-gradient(at 85% 30%, hsl(25, 95%, 53%, 0.12) 0px, transparent 50%),
-      radial-gradient(at 50% 95%, hsl(222, 50%, 28%, 0.4) 0px, transparent 55%),
-      linear-gradient(135deg, hsl(222, 60%, 10%) 0%, hsl(222, 68%, 18%) 60%, hsl(222, 50%, 22%) 100%);
+      radial-gradient(at 20% 20%, hsl(60, 91%, 51%, 0.15) 0px, transparent 45%),
+      radial-gradient(at 85% 30%, hsl(154, 57%, 47%, 0.1) 0px, transparent 50%),
+      radial-gradient(at 50% 95%, hsl(196, 56%, 42%, 0.05) 0px, transparent 55%),
+      linear-gradient(135deg, hsl(196, 56%, 98%) 0%, hsl(196, 56%, 92%) 100%);
     --gradient-mesh-light:
-      radial-gradient(at 15% 10%, hsl(38, 92%, 50%, 0.08) 0px, transparent 40%),
-      radial-gradient(at 90% 80%, hsl(222, 68%, 18%, 0.06) 0px, transparent 50%),
-      hsl(220, 15%, 97%);
-    --gradient-gold: linear-gradient(135deg, hsl(38, 92%, 50%) 0%, hsl(25, 95%, 53%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(220, 15%, 97%) 100%);
-    --gradient-premium: linear-gradient(135deg, hsl(38, 92%, 50%) 0%, hsl(43, 96%, 60%) 100%);
+      radial-gradient(at 15% 10%, hsl(154, 57%, 47%, 0.08) 0px, transparent 40%),
+      radial-gradient(at 90% 80%, hsl(196, 56%, 42%, 0.06) 0px, transparent 50%),
+      hsl(0, 0%, 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(60, 91%, 51%) 0%, hsl(154, 57%, 47%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(196, 10% 98%) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(60, 91%, 51%) 0%, hsl(196, 56%, 42%) 100%);
     --gradient-gold-border: linear-gradient(135deg,
-      hsl(38, 92%, 50%, 0.6) 0%,
-      hsl(38, 92%, 50%, 0.1) 35%,
-      hsl(38, 92%, 50%, 0.05) 65%,
-      hsl(38, 92%, 50%, 0.5) 100%);
+      hsl(60, 91%, 51%, 0.6) 0%,
+      hsl(60, 91%, 51%, 0.1) 35%,
+      hsl(60, 91%, 51%, 0.05) 65%,
+      hsl(60, 91%, 51%, 0.5) 100%);
     --gradient-cream-border: linear-gradient(135deg,
-      hsl(45, 100%, 96%, 0.4) 0%,
-      hsl(45, 100%, 96%, 0.05) 50%,
-      hsl(45, 100%, 96%, 0.3) 100%);
+      hsl(196, 56%, 15%, 0.2) 0%,
+      hsl(196, 56%, 15%, 0.05) 50%,
+      hsl(196, 56%, 15%, 0.15) 100%);
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(222, 68%, 18%, 0.05);
