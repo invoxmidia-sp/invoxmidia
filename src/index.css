@@ -103,19 +103,19 @@
     --background: 0 0% 2%;
     /* Surfaces: #111315  →  hsl(210 8% 8%) */
     --card: 210 8% 8%;
-    --card-foreground: 213 18% 82%;
+    --card-foreground: 0 0% 100%;
     --popover: 210 8% 8%;
-    --popover-foreground: 213 18% 82%;
-    /* Foreground: silver metallic #BFC7D5  →  hsl(213 18% 82%) */
-    --foreground: 213 18% 82%;
+    --popover-foreground: 0 0% 100%;
+    /* Foreground: pure white for max readability in dark mode */
+    --foreground: 0 0% 100%;
     /* Primary action: bright sky blue #3FB9FE  →  hsl(201 98% 62%) */
     --primary: 201 98% 62%;
     --primary-foreground: 0 0% 0%; /* Solid black */
     /* Secondary: graphite surface for cards/sections */
     --secondary: 210 8% 12%; 
-    --secondary-foreground: 213 18% 82%;
+    --secondary-foreground: 0 0% 100%;
     --muted: 210 8% 11%;
-    --muted-foreground: 213 18% 85%; /* Light silver/white */
+    --muted-foreground: 0 0% 100%; /* Pure white (was silver) */
     --accent: 201 98% 62%;
     --accent-foreground: 0 0% 0%;
     --destructive: 0 62% 30%;
@@ -125,10 +125,10 @@
     --ring: 201 98% 62%;
 
     /* ── Dark custom tokens (Mapped to new palette) ──────────────── */
-    --invox-navy:        213 18% 85%; /* Mapped to Silver for text visibility */
+    --invox-navy:        0 0% 100%; /* Pure white for text visibility */
     --invox-navy-deep:   0 0% 2%;     /* Black #050505 */
     --invox-navy-light:  210 8% 14%;  /* Dark graphite */
-    --invox-cream:       213 18% 85%; /* Silver #BFC7D5 */
+    --invox-cream:       0 0% 100%; /* Pure white */
     --invox-gold:        201 98% 62%; /* Sky Blue #3FB9FE */
     --invox-gold-light:  201 98% 75%;
     --invox-gold-deep:   201 98% 50%;
