@@ -6,15 +6,66 @@
 
 @layer base {
   :root {
-    /* ── Permanent Premium Dark Palette ─────────────────────────── */
+    /* ── Fresh Light Palette (Teal & Emerald) ────────────────── */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 160 84% 39%; /* Emerald */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 190 90% 40%; /* Teal */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 45 93% 47%; /* Yellow */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* Custom Invox tokens (Unified for Light) */
+    --invox-navy:        222.2 47.4% 11.2%;
+    --invox-navy-deep:   222.2 47.4% 5.2%;
+    --invox-navy-light:  222.2 47.4% 20.2%;
+    --invox-gold:        160 84% 39%;
+    --invox-gold-light:  160 84% 50%;
+    --invox-gold-deep:   160 84% 30%;
+    --invox-orange:      45 93% 47%;
+    --invox-cream:       0 0% 100%;
+    --invox-gray:        210 40% 96.1%;
+    --invox-onair:       160 84% 39%;
+
+    /* Shadows (Light) */
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+    --shadow-gold: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .dark {
+    /* ── High-Contrast Dark Palette (Images Inspired) ────────── */
     --background: 0 0% 2%;
-    --foreground: 213 18% 82%; /* Silver */
+    --foreground: 213 18% 90%;
 
-    --card: 210 8% 8%;
-    --card-foreground: 213 18% 82%;
+    --card: 220 18% 6%;
+    --card-foreground: 213 18% 90%;
 
-    --popover: 210 8% 8%;
-    --popover-foreground: 213 18% 82%;
+    --popover: 220 18% 6%;
+    --popover-foreground: 213 18% 90%;
 
     --primary: 201 98% 62%; /* Sky Blue #3FB9FE */
     --primary-foreground: 0 0% 0%;
@@ -22,73 +73,32 @@
     --secondary: 201 98% 62%; 
     --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 8% 11%;
-    --muted-foreground: 213 18% 85%;
+    --muted: 220 12% 10%;
+    --muted-foreground: 213 18% 70%;
 
     --accent: 201 98% 62%;
     --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 8% 14%;
-    --input: 210 8% 11%;
+    --border: 220 12% 12%;
+    --input: 220 12% 12%;
     --ring: 201 98% 62%;
 
-    --radius: 0.75rem;
-
-    /* Custom Invox tokens (Unified) */
+    /* Custom Invox tokens (Unified for Dark) */
     --invox-navy:        213 18% 85%;
     --invox-navy-deep:   0 0% 2%;
-    --invox-navy-light:  210 8% 14%;
+    --invox-navy-light:  220 12% 12%;
     --invox-gold:        201 98% 62%;
     --invox-gold-light:  201 98% 75%;
     --invox-gold-deep:   201 98% 50%;
     --invox-orange:      201 80% 55%;
     --invox-cream:       213 18% 85%;
-    --invox-gray:        210 8% 11%;
+    --invox-gray:        220 12% 10%;
     --invox-onair:       201 98% 62%;
 
-    /* Gradients (Permanent) */
-    --gradient-hero:
-      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
-    --gradient-broadcast:
-      radial-gradient(at 20% 20%, rgba(63,185,254,0.08) 0px, transparent 50%),
-      radial-gradient(at 85% 30%, rgba(63,185,254,0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(191,199,213,0.04) 0px, transparent 40%),
-      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
-    --gradient-mesh-light:
-      radial-gradient(at 15% 10%, rgba(63,185,254,0.06) 0px, transparent 40%),
-      radial-gradient(at 85% 85%, rgba(191,199,213,0.04) 0px, transparent 40%),
-      #050505;
-    --gradient-gold: #3FB9FE;
-    --gradient-card: linear-gradient(145deg, #111315 0%, #050505 100%);
-    --gradient-premium: linear-gradient(135deg, #3FB9FE 0%, #2575fc 100%);
-    --gradient-gold-border: linear-gradient(135deg,
-      rgba(63,185,254,0.6) 0%,
-      rgba(63,185,254,0.1) 35%,
-      rgba(63,185,254,0.05) 65%,
-      rgba(63,185,254,0.5) 100%);
-    --gradient-cream-border: linear-gradient(135deg,
-      rgba(191,199,213,0.4) 0%,
-      rgba(191,199,213,0.05) 50%,
-      rgba(191,199,213,0.3) 100%);
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.4);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.6);
-    --shadow-gold: 0 4px 12px rgba(0,0,0,0.5);
-    --shadow-broadcast: 0 30px 80px -20px rgba(0,0,0,0.8);
-
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 213 18% 85%;
-    --sidebar-primary: 201 98% 62%;
-    --sidebar-border: 210 8% 14%;
-    --sidebar-ring: 201 98% 62%;
-  }
-
-    /* ── Gradients (dark) ────────────────────────────────────────── */
+    /* Gradients (Dark Mode Only) */
     --gradient-hero:
       linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(220 18% 8%) 60%, hsl(220 14% 12%) 100%);
     --gradient-broadcast:
@@ -114,31 +124,14 @@
         rgba(255,255,255,0.04) 50%,
         rgba(255,255,255,0.15) 100%);
 
-    /* ── Shadows (dark — removed neon glow) ──────────────────────── */
-    --shadow-sm:
-      0 1px 3px 0 rgba(0,0,0,0.6);
-    --shadow-md:
-      0 4px 12px -2px rgba(0,0,0,0.7),
-      0 2px 4px -2px rgba(0,0,0,0.5);
-    --shadow-lg:
-      0 10px 25px -4px rgba(0,0,0,0.8),
-      0 4px 8px -4px rgba(0,0,0,0.6),
-      inset 0 1px 0 rgba(191,199,213,0.05);
-    --shadow-xl:
-      0 25px 50px -8px rgba(0,0,0,0.9),
-      0 12px 20px -6px rgba(0,0,0,0.7),
-      inset 0 1px 0 rgba(191,199,213,0.07);
-    --shadow-gold:
-      0 4px 12px rgba(0,0,0,0.5); /* No neon glow */
-    --shadow-gold-glow:
-      0 4px 12px rgba(0,0,0,0.5); /* Removed neon glow */
-    --shadow-card:
-      0 4px 20px 0 rgba(0,0,0,0.6),
-      inset 0 1px 0 rgba(191,199,213,0.05),
-      inset 0 0 0 1px rgba(191,199,213,0.04);
-    --shadow-broadcast:
-      0 30px 80px -20px rgba(0,0,0,0.9),
-      inset 0 1px 0 rgba(191,199,213,0.06);
+    /* Shadows (Dark — Removed Neon) */
+    --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.6);
+    --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.7);
+    --shadow-lg: 0 10px 25px -4px rgba(0,0,0,0.8);
+    --shadow-gold: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-gold-glow: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-card: 0 4px 20px 0 rgba(0,0,0,0.6);
+    --shadow-broadcast: 0 30px 80px -20px rgba(0,0,0,0.9);
 
     --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 100%;

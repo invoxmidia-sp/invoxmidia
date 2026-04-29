@@ -96,7 +96,7 @@ export default function Index() {
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-6 tracking-tight animate-slide-up">
                 Faça Parte do{" "}
                 <span className="relative inline-block">
-                  <span className="text-gradient-gold">Clube Invox</span>
+                  <span className="text-primary">Clube Invox</span>
                   <span
                     aria-hidden="true"
                     className="absolute -inset-x-2 -bottom-1 h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
@@ -359,7 +359,7 @@ export default function Index() {
           <AnimatedSection className="max-w-3xl mx-auto text-center" direction="up">
             <SectionLabel className="justify-center mb-5">Pronto?</SectionLabel>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5 tracking-tight">
-              Coloque sua marca <span className="text-gradient-gold">no ar</span> hoje.
+              Coloque sua marca <span className="text-primary">no ar</span> hoje.
             </h2>
             <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
               Agende uma demonstração gratuita e descubra como a Invox Mídia pode

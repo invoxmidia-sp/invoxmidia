@@ -186,7 +186,7 @@ export default function Planos() {
             <SectionLabel className="justify-center mb-5">Tabela de frequências</SectionLabel>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-invox-cream mb-5 tracking-tight leading-[1.05]">
               Sintonize o plano do{" "}
-              <span className="text-gradient-gold">seu negócio</span>.
+              <span className="text-primary">seu negócio</span>.
             </h1>
             <p className="text-invox-cream/70 text-lg max-w-2xl mx-auto">
               Ao assinar qualquer plano, você entra para o Clube Invox. Sistema completo de
@@ -209,15 +209,15 @@ export default function Planos() {
                 <div
                   className={`relative h-full rounded-3xl bg-card shadow-card border transition-all duration-500 lift-on-hover overflow-hidden ${
                     plan.popular
-                      ? "border-secondary/60 md:scale-[1.04] shadow-gold-glow"
-                      : "border-border/40 border-gradient-gold-hover"
+                      ? "border-secondary/60 md:scale-[1.04] shadow-lg"
+                      : "border-border/40 hover:border-primary/50"
                   }`}
                 >
                   {plan.popular && (
                     <>
                       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span className="gold-gradient text-invox-navy-deep mono-label px-4 py-1.5 rounded-full shadow-gold inline-flex items-center gap-2">
+                        <span className="bg-primary text-black mono-label px-4 py-1.5 rounded-full shadow-md inline-flex items-center gap-2">
                           <span className="on-air-dot scale-75" />
                           Mais Popular
                         </span>
@@ -425,7 +425,7 @@ export default function Planos() {
           <AnimatedSection direction="down">
             <SectionLabel className="justify-center mb-4">Próxima frequência</SectionLabel>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-invox-cream mb-4 tracking-tight">
-              Ainda tem <span className="text-gradient-gold">dúvidas</span>?
+              Ainda tem <span className="text-primary">dúvidas</span>?
             </h2>
             <p className="text-invox-cream/70 mb-8 max-w-md mx-auto">
               Entre em contato e receba uma proposta personalizada para o seu negócio.

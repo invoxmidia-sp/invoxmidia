@@ -41,7 +41,7 @@ export default function Apresentacao() {
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-invox-cream mb-6 tracking-tight leading-[0.95]">
-              INVOX <span className="text-gradient-gold">MÍDIA</span>
+              <span className="text-primary">INVOX MÍDIA</span>
             </h1>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
@@ -637,7 +637,7 @@ export default function Apresentacao() {
           <AnimatedSection delay={0.2}>
             <SectionLabel className="justify-center mb-5">Encerramento</SectionLabel>
             <h2 className="font-display text-4xl md:text-7xl font-bold mb-6 text-invox-cream tracking-tight leading-[0.95]">
-              INVOX <span className="text-gradient-gold">MÍDIA</span>
+              <span className="text-primary">INVOX MÍDIA</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
