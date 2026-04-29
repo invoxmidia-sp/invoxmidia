@@ -160,27 +160,27 @@ export default function Index() {
                     {/* Console header */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-destructive/80" />
                         <span className="w-2.5 h-2.5 rounded-full bg-secondary/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-invox-gold-light/60" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#3FB9FE]/60" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-invox-cream/30" />
                       </div>
                       <span className="mono-label text-invox-cream/40">
-                        STUDIO 01 · LIVE
+                        INVOX PLAYER · v2.4
                       </span>
                     </div>
 
                     {/* Now playing */}
                     <div className="flex items-center gap-4 mb-5">
-                      <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-invox-orange flex items-center justify-center shadow-gold">
-                        <Mic className="w-6 h-6 text-invox-navy-deep" />
-                        <span className="absolute -top-1 -right-1 on-air-dot" />
+                      <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-[#3FB9FE] flex items-center justify-center shadow-gold">
+                        <Music className="w-6 h-6 text-invox-navy-deep" />
+                        <span className="absolute -top-1 -right-1 on-air-dot bg-[#3FB9FE]" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="mono-label text-invox-cream/50 mb-1">
-                          Now playing
+                          Executando agora
                         </p>
                         <p className="font-display font-semibold text-invox-cream truncate">
-                          Vinheta Promocional
+                          Playlist: Loja Premium
                         </p>
                       </div>
                       <Equalizer className="text-secondary" />
@@ -190,26 +190,31 @@ export default function Index() {
                     <div className="rounded-xl bg-invox-navy-deep/60 border border-invox-cream/5 p-4 mb-5">
                       <SoundWave bars={48} className="h-12 text-secondary" />
                       <div className="flex justify-between mono-label text-invox-cream/40 mt-2">
-                        <span className="tabular">00:18</span>
-                        <span className="tabular">00:30</span>
+                        <span className="tabular">02:45</span>
+                        <span className="tabular">04:12</span>
                       </div>
                     </div>
 
-                    {/* Quote */}
+                    {/* Next track */}
                     <div className="rounded-xl bg-invox-cream/[0.04] border border-invox-cream/10 p-4">
-                      <p className="text-sm text-invox-cream/70 italic leading-relaxed">
-                        "Aproveite nossas ofertas especiais! Só esta semana, descontos
-                        imperdíveis em toda a loja…"
-                      </p>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="mono-label text-invox-cream/30 text-[0.6rem] mb-1">Próxima faixa</p>
+                          <p className="text-sm text-invox-cream/70 font-medium">
+                            Spot: Ofertas da Semana
+                          </p>
+                        </div>
+                        <Play className="w-4 h-4 text-secondary/60" />
+                      </div>
                     </div>
 
                     {/* Frequency strip */}
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-invox-cream/10">
                       <div className="flex items-center gap-2 text-invox-cream/60">
                         <Volume2 className="w-4 h-4 text-secondary" />
-                        <span className="mono-label">98.7 FM</span>
+                        <span className="mono-label">PLAYER PERSONALIZADO</span>
                       </div>
-                      <span className="mono-label text-secondary">SIGNAL · A+</span>
+                      <span className="mono-label text-secondary">HD AUDIO · 320kbps</span>
                     </div>
                   </div>
                 </div>
