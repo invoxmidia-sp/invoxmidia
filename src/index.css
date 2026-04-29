@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* ── Unified Premium Dark Palette (Applied to Light Root) ─────── */
+    /* ── Permanent Premium Dark Palette ─────────────────────────── */
     --background: 0 0% 2%;
     --foreground: 213 18% 82%; /* Silver */
 
@@ -49,7 +49,7 @@
     --invox-gray:        210 8% 11%;
     --invox-onair:       201 98% 62%;
 
-    /* Gradients (Unified) */
+    /* Gradients (Permanent) */
     --gradient-hero:
       linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
     --gradient-broadcast:
@@ -87,75 +87,6 @@
     --sidebar-border: 210 8% 14%;
     --sidebar-ring: 201 98% 62%;
   }
-
-  .dark {
-    --background: 0 0% 2%;
-    --foreground: 213 18% 82%;
-    --card: 210 8% 8%;
-    --card-foreground: 213 18% 82%;
-    --popover: 210 8% 8%;
-    --popover-foreground: 213 18% 82%;
-    --primary: 201 98% 62%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 210 8% 12%; 
-    --secondary-foreground: 213 18% 82%;
-    --muted: 210 8% 11%;
-    --muted-foreground: 213 18% 85%;
-    --accent: 201 98% 62%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 210 8% 14%;
-    --input: 210 8% 11%;
-    --ring: 201 98% 62%;
-
-    --invox-navy:        213 18% 85%;
-    --invox-navy-deep:   0 0% 2%;
-    --invox-navy-light:  210 8% 14%;
-    --invox-cream:       213 18% 85%;
-    --invox-gold:        201 98% 62%;
-    --invox-gold-light:  201 98% 75%;
-    --invox-gold-deep:   201 98% 50%;
-    --invox-orange:      201 80% 55%;
-    --invox-onair:       201 98% 62%; 
-    
-    /* Strict palette: BLUE · BLACK · WHITE only */
-    /* Background: deep black */
-    --background: 0 0% 4%;
-    /* Surfaces: slightly lifted near-black */
-    --card: 220 12% 9%;
-    --card-foreground: 0 0% 100%;
-    --popover: 220 12% 9%;
-    --popover-foreground: 0 0% 100%;
-    /* Foreground: pure white */
-    --foreground: 0 0% 100%;
-    /* Primary action: signature sky blue #3FB9FE */
-    --primary: 201 98% 62%;
-    --primary-foreground: 0 0% 0%;
-    /* Secondary now ALSO blue (no gold in dark) */
-    --secondary: 201 98% 62%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 220 12% 12%;
-    --muted-foreground: 0 0% 88%;
-    --accent: 201 98% 62%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 12% 18%;
-    --input: 220 12% 14%;
-    --ring: 201 98% 62%;
-
-    /* ── Dark custom tokens (BLUE / BLACK / WHITE only) ──────────── */
-    --invox-navy:        220 15% 9%;   /* near-black surface base */
-    --invox-navy-deep:   0 0% 4%;       /* deepest black */
-    --invox-navy-light:  220 14% 14%;   /* lifted black surface */
-    --invox-cream:       0 0% 100%;     /* pure white text */
-    --invox-gold:        201 98% 62%;   /* sky blue accent */
-    --invox-gold-light:  201 98% 75%;
-    --invox-gold-deep:   201 98% 50%;
-    --invox-orange:      201 98% 62%;   /* alias to blue */
-    --invox-gray:        220 12% 12%;
-    --invox-onair:       0 84% 60%;     /* keep red for ON AIR dot */
 
     /* ── Gradients (dark) ────────────────────────────────────────── */
     --gradient-hero:

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Radio, User } from "lucide-react";
 import { OnAir } from "@/components/broadcast/OnAir";
 import { cn } from "@/lib/utils";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,7 +91,6 @@ export function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <OnAir className="opacity-90" />
-            <DarkModeToggle />
             <Link
               to="/login"
               className="inline-flex items-center gap-2 text-sm text-invox-navy/75 hover:text-invox-navy dark:text-invox-cream/75 dark:hover:text-invox-cream transition-colors"
@@ -107,7 +105,6 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
-            <DarkModeToggle />
             <button
               className="p-2 text-invox-navy dark:text-invox-cream"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
