@@ -41,7 +41,7 @@ export function DarkModeToggle({ className }: DarkModeToggleProps) {
       <span
         className={cn(
           "relative z-10 transition-all duration-500",
-          isDark ? "rotate-0 scale-100" : "rotate-90 scale-90 opacity-0 absolute",
+          !isDark ? "rotate-0 scale-100" : "rotate-90 scale-90 opacity-0 absolute",
         )}
       >
         <Moon className="w-4 h-4 stroke-[1.8]" />
@@ -49,7 +49,7 @@ export function DarkModeToggle({ className }: DarkModeToggleProps) {
       <span
         className={cn(
           "relative z-10 transition-all duration-500",
-          !isDark ? "rotate-0 scale-100" : "rotate-90 scale-90 opacity-0 absolute",
+          isDark ? "rotate-0 scale-100" : "rotate-90 scale-90 opacity-0 absolute",
         )}
       >
         <Sun className="w-4 h-4 stroke-[1.8]" />
