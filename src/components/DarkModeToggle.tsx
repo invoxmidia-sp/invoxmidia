@@ -22,11 +22,10 @@ export function DarkModeToggle({ className }: DarkModeToggleProps) {
         "border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
         isDark
           ? [
-              // Dark mode button style — neon glow
-              "bg-[#111315] border-[#00C2FF]/30 text-[#00C2FF]",
-              "shadow-[0_0_12px_rgba(0,194,255,0.25),inset_0_1px_0_rgba(191,199,213,0.08)]",
-              "hover:border-[#00C2FF]/70 hover:shadow-[0_0_24px_rgba(0,194,255,0.45),inset_0_1px_0_rgba(191,199,213,0.12)]",
-              "focus-visible:ring-[#00C2FF]/50",
+              // Dark mode button style — solid sky blue
+              "bg-[#111315] border-[#3FB9FE]/30 text-[#3FB9FE]",
+              "shadow-md hover:border-[#3FB9FE]/70 hover:shadow-lg",
+              "focus-visible:ring-[#3FB9FE]/50",
             ]
           : [
               // Light mode button style — gold glow
@@ -38,19 +37,6 @@ export function DarkModeToggle({ className }: DarkModeToggleProps) {
         className,
       )}
     >
-      {/* Shimmer ring for dark mode */}
-      {isDark && (
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 rounded-xl"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(0,194,255,0.12) 0%, transparent 60%)",
-            pointerEvents: "none",
-          }}
-        />
-      )}
-
       {/* Icon with animated swap */}
       <span
         className={cn(
