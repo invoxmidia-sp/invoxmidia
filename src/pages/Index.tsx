@@ -324,12 +324,12 @@ export default function Index() {
             <AnimatedSection direction="right" delay={0.2}>
               <div className="relative">
                 {/* Big "vinyl" disc */}
-                <div className="relative aspect-square max-w-md mx-auto">
+                <div className="relative aspect-square max-w-md mx-auto animate-[spin-slow_8s_linear_infinite]">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-invox-navy-deep via-invox-navy to-invox-navy-light shadow-broadcast" />
                   <div className="absolute inset-4 rounded-full vinyl-rings opacity-60" />
                   <div className="absolute inset-0 rounded-full border border-secondary/10" />
-                  <div className="absolute inset-[35%] rounded-full bg-gradient-to-br from-secondary to-invox-orange flex items-center justify-center shadow-gold-glow">
-                    <Mic className="w-10 h-10 text-invox-navy-deep" />
+                  <div className="absolute inset-[35%] rounded-full bg-[#3FB9FE] flex items-center justify-center shadow-gold-glow">
+                    <Music className="w-10 h-10 text-invox-navy-deep" />
                   </div>
                   {/* Highlight reflection */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-invox-cream/5 to-invox-cream/15" />
