@@ -5,7 +5,7 @@ const FAQ_ITEMS = [
   {
     question: "O que é Invox Mídia?",
     answer:
-      "Somos uma Empresa de Implementação de Rádio Interna, instalação da Programação Musical e Comercial, Vinhetas e suporte em equipamentos se necessário etc."
+      "Somos uma empresa especializada na implementação de Rádios Internas. Oferecemos a gestão completa da sua rádio, incluindo programação musical e comercial, produção de vinhetas e suporte técnico se necessário."
   },
   {
     question: "O que é o Clube Invox?",
