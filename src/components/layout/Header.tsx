@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Radio, User } from "lucide-react";
 import { OnAir } from "@/components/broadcast/OnAir";
 import { cn } from "@/lib/utils";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,10 +56,10 @@ export function Header() {
               />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-display font-bold text-lg text-invox-navy tracking-tight">
+              <span className="font-display font-bold text-lg text-invox-navy dark:text-invox-cream tracking-tight transition-colors duration-300">
                 Invox<span className="text-secondary">.</span>
               </span>
-              <span className="mono-label text-invox-navy/50 text-[0.6rem] mt-0.5">
+              <span className="mono-label text-invox-navy/50 dark:text-invox-cream/50 text-[0.6rem] mt-0.5 transition-colors duration-300">
                 Mídia · Studio
               </span>
             </div>
@@ -74,7 +75,7 @@ export function Header() {
                   "relative px-4 py-2 text-sm font-medium transition-colors rounded-lg",
                   isActive(link.href)
                     ? "text-secondary"
-                    : "text-invox-navy/75 hover:text-invox-navy",
+                    : "text-invox-navy/75 hover:text-invox-navy dark:text-invox-cream/70 dark:hover:text-invox-cream",
                 )}
               >
                 {link.label}
@@ -89,11 +90,12 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <OnAir className="opacity-90" />
+            <DarkModeToggle />
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 text-sm text-invox-navy/75 hover:text-invox-navy transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-invox-navy/75 hover:text-invox-navy dark:text-invox-cream/75 dark:hover:text-invox-cream transition-colors"
             >
               <User className="w-4 h-4" />
               Entrar
@@ -104,14 +106,17 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-invox-navy"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <DarkModeToggle />
+            <button
+              className="p-2 text-invox-navy dark:text-invox-cream"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -126,7 +131,7 @@ export function Header() {
                     "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                     isActive(link.href)
                       ? "bg-secondary/10 text-secondary"
-                      : "text-invox-navy/80 hover:bg-invox-navy/5",
+                      : "text-invox-navy/80 hover:bg-invox-navy/5 dark:text-invox-cream/80 dark:hover:bg-invox-cream/5",
                   )}
                 >
                   {link.label}

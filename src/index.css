@@ -98,33 +98,111 @@
   }
 
   .dark {
-    --background: 222 47% 8%;
-    --foreground: 45 100% 96%;
-    --card: 222 47% 11%;
-    --card-foreground: 45 100% 96%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 45 100% 96%;
-    --primary: 38 92% 50%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 222 50% 28%;
-    --secondary-foreground: 45 100% 96%;
-    --muted: 222 32% 17%;
-    --muted-foreground: 220 14% 70%;
-    --accent: 32 95% 54%;
-    --accent-foreground: 222 47% 11%;
+    /* ── Deep Dark Palette ────────────────────────────────────────── */
+    /* Background: #050505  →  hsl(0 0% 2%) */
+    --background: 0 0% 2%;
+    /* Surfaces: #111315  →  hsl(210 8% 8%) */
+    --card: 210 8% 8%;
+    --card-foreground: 213 18% 82%;
+    --popover: 210 8% 8%;
+    --popover-foreground: 213 18% 82%;
+    /* Foreground: silver metallic #BFC7D5  →  hsl(213 18% 82%) */
+    --foreground: 213 18% 82%;
+    /* Primary action: electric neon blue #00C2FF  →  hsl(194 100% 50%) */
+    --primary: 194 100% 50%;
+    --primary-foreground: 0 0% 2%;
+    /* Secondary: dark graphite surface */
+    --secondary: 210 8% 12%;
+    --secondary-foreground: 213 18% 82%;
+    --muted: 210 8% 11%;
+    --muted-foreground: 213 12% 55%;
+    --accent: 194 100% 50%;
+    --accent-foreground: 0 0% 2%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
-    --border: 222 32% 17%;
-    --input: 222 32% 17%;
-    --ring: 38 92% 50%;
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 45 100% 96%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 222 32% 17%;
-    --sidebar-accent-foreground: 45 100% 96%;
-    --sidebar-border: 222 32% 17%;
-    --sidebar-ring: 38 92% 50%;
+    --border: 210 8% 14%;
+    --input: 210 8% 11%;
+    --ring: 194 100% 50%;
+
+    /* ── Dark custom tokens (Mapped to new palette) ──────────────── */
+    --invox-navy:        210 8% 8%;   /* Graphite #111315 */
+    --invox-navy-deep:   0 0% 2%;     /* Black #050505 */
+    --invox-navy-light:  210 8% 12%;
+    --invox-cream:       213 18% 82%; /* Silver #BFC7D5 */
+    --invox-gold:        194 100% 50%; /* Neon Blue #00C2FF */
+    --invox-gold-light:  194 100% 65%;
+    --invox-gold-deep:   194 100% 40%;
+    --invox-orange:      180 100% 45%;
+    --invox-onair:       194 100% 50%; /* Neon blue pulse in dark mode */
+
+    /* ── Gradients (dark) ────────────────────────────────────────── */
+    --gradient-hero:
+      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
+    --gradient-broadcast:
+      radial-gradient(at 20% 20%, rgba(0,194,255,0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(0,194,255,0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(191,199,213,0.04) 0px, transparent 40%),
+      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
+    --gradient-mesh-light:
+      radial-gradient(at 15% 10%, rgba(0,194,255,0.06) 0px, transparent 40%),
+      radial-gradient(at 85% 85%, rgba(191,199,213,0.04) 0px, transparent 40%),
+      #050505;
+    --gradient-gold:
+      linear-gradient(135deg, #00C2FF 0%, rgba(0,194,255,0.6) 100%);
+    --gradient-card:
+      linear-gradient(145deg, #111315 0%, #0d1117 100%);
+    --gradient-premium:
+      linear-gradient(135deg, #00C2FF 0%, rgba(0,194,255,0.7) 100%);
+    --gradient-gold-border:
+      linear-gradient(135deg,
+        rgba(0,194,255,0.6) 0%,
+        rgba(0,194,255,0.1) 35%,
+        rgba(0,194,255,0.05) 65%,
+        rgba(0,194,255,0.5) 100%);
+    --gradient-cream-border:
+      linear-gradient(135deg,
+        rgba(191,199,213,0.25) 0%,
+        rgba(191,199,213,0.04) 50%,
+        rgba(191,199,213,0.18) 100%);
+
+    /* ── Shadows (dark — layered depth) ──────────────────────────── */
+    --shadow-sm:
+      0 1px 3px 0 rgba(0,0,0,0.6);
+    --shadow-md:
+      0 4px 12px -2px rgba(0,0,0,0.7),
+      0 2px 4px -2px rgba(0,0,0,0.5);
+    --shadow-lg:
+      0 10px 25px -4px rgba(0,0,0,0.8),
+      0 4px 8px -4px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(191,199,213,0.05);
+    --shadow-xl:
+      0 25px 50px -8px rgba(0,0,0,0.9),
+      0 12px 20px -6px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(191,199,213,0.07);
+    --shadow-gold:
+      0 0 20px rgba(0,194,255,0.3),
+      0 8px 24px -8px rgba(0,194,255,0.5);
+    --shadow-gold-glow:
+      0 0 40px rgba(0,194,255,0.35),
+      0 0 80px rgba(0,194,255,0.15),
+      0 10px 30px -10px rgba(0,194,255,0.5);
+    --shadow-card:
+      0 4px 20px 0 rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(191,199,213,0.05),
+      inset 0 0 0 1px rgba(191,199,213,0.04);
+    --shadow-broadcast:
+      0 30px 80px -20px rgba(0,0,0,0.9),
+      0 0 60px rgba(0,194,255,0.15),
+      inset 0 1px 0 rgba(191,199,213,0.06);
+
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 213 18% 82%;
+    --sidebar-primary: 194 100% 50%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 210 8% 11%;
+    --sidebar-accent-foreground: 213 18% 82%;
+    --sidebar-border: 210 8% 14%;
+    --sidebar-ring: 194 100% 50%;
   }
 }
 
@@ -137,6 +215,13 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: 'ss01', 'cv11';
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* Dark mode: deep black body */
+  .dark body,
+  .dark {
+    background-color: #050505;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -193,11 +278,67 @@
     background: hsl(0 0% 100% / 0.85);
     border: 1px solid hsl(220 13% 87% / 0.5);
   }
+  .dark .glass-effect {
+    background: rgba(17, 19, 21, 0.75);
+    border: 1px solid rgba(191, 199, 213, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(191, 199, 213, 0.06),
+      0 8px 32px rgba(0, 0, 0, 0.6);
+  }
 
   .glass-dark {
     backdrop-filter: blur(20px) saturate(140%);
     background: hsl(var(--invox-navy-deep) / 0.6);
     border: 1px solid hsl(var(--invox-cream) / 0.08);
+  }
+  .dark .glass-dark {
+    backdrop-filter: blur(24px) saturate(160%);
+    background: rgba(5, 5, 5, 0.72);
+    border: 1px solid rgba(0, 194, 255, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(0, 194, 255, 0.06),
+      inset 0 1px 0 rgba(191, 199, 213, 0.08),
+      0 16px 48px rgba(0, 0, 0, 0.8);
+  }
+
+  /* ── Dark mode: ambient neon glow on cards / surfaces ───────── */
+  .dark .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .dark .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  .dark .shadow-gold-glow {
+    box-shadow: var(--shadow-gold-glow);
+  }
+  .dark .shadow-broadcast {
+    box-shadow: var(--shadow-broadcast);
+  }
+
+  /* ── Dark mode: neon glow highlight class ───────────────────── */
+  .dark-neon-glow {
+    box-shadow: 0 0 20px rgba(0,194,255,0.25), 0 0 40px rgba(0,194,255,0.1);
+  }
+  .dark .dark-neon-glow {
+    box-shadow: 0 0 24px rgba(0,194,255,0.35), 0 0 60px rgba(0,194,255,0.18);
+  }
+
+  /* ── Dark mode: reflective surface with inner light ─────────── */
+  .dark-surface {
+    background: var(--dark-surface, #111315);
+  }
+  .dark .dark-surface {
+    background: #111315;
+    box-shadow:
+      inset 0 1px 0 rgba(191,199,213,0.06),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      0 4px 16px rgba(0,0,0,0.5);
+  }
+
+  /* ── Dark: smooth color transitions on interactive elements ─── */
+  .dark a,
+  .dark button {
+    transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
 
   /* === STUDIO BROADCAST EFFECTS === */
