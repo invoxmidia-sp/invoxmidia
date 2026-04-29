@@ -136,8 +136,8 @@ export default function Apresentacao() {
               <div className="space-y-6">
                 <AnimatedItem delay={0.2}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                      <Radio className="w-6 h-6 text-black dark:text-black" />
+                    <div className="w-12 h-12 rounded-xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border dark:border-[#3FB9FE]/40 flex items-center justify-center shrink-0">
+                      <Radio className="w-6 h-6 text-black dark:text-[#3FB9FE]" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-2">Rádio Interna Personalizada</h3>
@@ -149,8 +149,8 @@ export default function Apresentacao() {
                 </AnimatedItem>
                 <AnimatedItem delay={0.3}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                      <Megaphone className="w-6 h-6 text-black dark:text-black" />
+                    <div className="w-12 h-12 rounded-xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border dark:border-[#3FB9FE]/40 flex items-center justify-center shrink-0">
+                      <Megaphone className="w-6 h-6 text-black dark:text-[#3FB9FE]" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-2">Conteúdo Estratégico</h3>
@@ -164,9 +164,9 @@ export default function Apresentacao() {
             </AnimatedSection>
             <AnimatedSection direction="right" delay={0.2}>
               <div className="relative">
-                <div className="w-full aspect-square max-w-md mx-auto rounded-3xl hero-gradient p-8 flex items-center justify-center">
+                <div className="w-full aspect-square max-w-md mx-auto rounded-3xl hero-gradient dark:bg-none dark:bg-invox-navy-light dark:border dark:border-[#3FB9FE]/30 p-8 flex items-center justify-center">
                   <div className="text-center">
-                    <Volume2 className="w-24 h-24 text-black dark:text-black mx-auto mb-6 animate-pulse" />
+                    <Volume2 className="w-24 h-24 text-black dark:text-[#3FB9FE] mx-auto mb-6 animate-pulse" />
                     <p className="text-invox-cream text-xl font-semibold">
                       Sua marca no ouvido do cliente
                     </p>
@@ -191,8 +191,8 @@ export default function Apresentacao() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <ShoppingCart className="w-10 h-10 text-black dark:text-black" />
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6">
+                  <ShoppingCart className="w-10 h-10 text-black dark:text-[#3FB9FE]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Compras por Impulso</h3>
                 <p className="text-invox-cream/80">
@@ -202,8 +202,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-10 h-10 text-black dark:text-black" />
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6">
+                  <Zap className="w-10 h-10 text-black dark:text-[#3FB9FE]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Destaca Ofertas</h3>
                 <p className="text-invox-cream/80">
@@ -213,8 +213,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-10 h-10 text-black dark:text-black" />
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6">
+                  <Heart className="w-10 h-10 text-black dark:text-[#3FB9FE]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Influencia Comportamento</h3>
                 <p className="text-invox-cream/80">
@@ -336,7 +336,7 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 7 - Diferenciais */}
-      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary to-invox-navy-light text-invox-cream">
+      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary to-invox-navy-light dark:from-invox-navy-deep dark:to-invox-navy-light text-invox-cream">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
@@ -405,8 +405,8 @@ export default function Apresentacao() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <BarChart3 className="w-12 h-12 text-black dark:text-black" />
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6 shadow-gold">
+                  <BarChart3 className="w-12 h-12 text-black dark:text-[#3FB9FE]" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Aumento do Ticket Médio</h3>
                 <p className="text-muted-foreground">
@@ -416,8 +416,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <Target className="w-12 h-12 text-black dark:text-black" />
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6 shadow-gold">
+                  <Target className="w-12 h-12 text-black dark:text-[#3FB9FE]" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Mais Atenção às Ofertas</h3>
                 <p className="text-muted-foreground">
@@ -427,8 +427,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <Award className="w-12 h-12 text-black dark:text-black" />
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6 shadow-gold">
+                  <Award className="w-12 h-12 text-black dark:text-[#3FB9FE]" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Marca Fortalecida</h3>
                 <p className="text-muted-foreground">
@@ -571,8 +571,8 @@ export default function Apresentacao() {
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Zap className="w-10 h-10 text-black dark:text-black" />
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Zap className="w-10 h-10 text-black dark:text-[#3FB9FE]" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Valores Exclusivos</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -587,8 +587,8 @@ export default function Apresentacao() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#3FB9FE]/10 rounded-full blur-2xl group-hover:bg-[#3FB9FE]/20 transition-all duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Target className="w-10 h-10 text-black dark:text-black" />
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Target className="w-10 h-10 text-black dark:text-[#3FB9FE]" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Cota Inclusa</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -602,8 +602,8 @@ export default function Apresentacao() {
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Music className="w-10 h-10 text-black dark:text-black" />
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-[#3FB9FE] flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Music className="w-10 h-10 text-black dark:text-[#3FB9FE]" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Suporte & Vinhetas</h3>
                   <p className="text-muted-foreground leading-relaxed">
