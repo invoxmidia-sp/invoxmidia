@@ -99,69 +99,69 @@
 
   .dark {
     /* ── Deep Dark Palette ────────────────────────────────────────── */
-    /* Background: #050505  →  hsl(0 0% 2%) */
-    --background: 0 0% 2%;
-    /* Surfaces: #111315  →  hsl(210 8% 8%) */
-    --card: 210 8% 8%;
-    --card-foreground: 213 18% 82%;
-    --popover: 210 8% 8%;
-    --popover-foreground: 213 18% 82%;
-    /* Foreground: silver metallic #BFC7D5  →  hsl(213 18% 82%) */
-    --foreground: 213 18% 82%;
-    /* Primary action: bright sky blue #3FB9FE  →  hsl(201 98% 62%) */
+    /* Strict palette: BLUE · BLACK · WHITE only */
+    /* Background: deep black */
+    --background: 0 0% 4%;
+    /* Surfaces: slightly lifted near-black */
+    --card: 220 12% 9%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 12% 9%;
+    --popover-foreground: 0 0% 100%;
+    /* Foreground: pure white */
+    --foreground: 0 0% 100%;
+    /* Primary action: signature sky blue #3FB9FE */
     --primary: 201 98% 62%;
-    --primary-foreground: 0 0% 0%; /* Solid black */
-    /* Secondary: graphite surface for cards/sections */
-    --secondary: 210 8% 12%; 
-    --secondary-foreground: 213 18% 82%;
-    --muted: 210 8% 11%;
-    --muted-foreground: 213 18% 85%; /* Light silver/white */
+    --primary-foreground: 0 0% 0%;
+    /* Secondary now ALSO blue (no gold in dark) */
+    --secondary: 201 98% 62%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 12% 12%;
+    --muted-foreground: 0 0% 88%;
     --accent: 201 98% 62%;
     --accent-foreground: 0 0% 0%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 8% 14%;
-    --input: 210 8% 11%;
+    --border: 220 12% 18%;
+    --input: 220 12% 14%;
     --ring: 201 98% 62%;
 
-    /* ── Dark custom tokens (Mapped to new palette) ──────────────── */
-    --invox-navy:        213 18% 85%; /* Mapped to Silver for text visibility */
-    --invox-navy-deep:   0 0% 2%;     /* Black #050505 */
-    --invox-navy-light:  210 8% 14%;  /* Dark graphite */
-    --invox-cream:       213 18% 85%; /* Silver #BFC7D5 */
-    --invox-gold:        201 98% 62%; /* Sky Blue #3FB9FE */
+    /* ── Dark custom tokens (BLUE / BLACK / WHITE only) ──────────── */
+    --invox-navy:        220 15% 9%;   /* near-black surface base */
+    --invox-navy-deep:   0 0% 4%;       /* deepest black */
+    --invox-navy-light:  220 14% 14%;   /* lifted black surface */
+    --invox-cream:       0 0% 100%;     /* pure white text */
+    --invox-gold:        201 98% 62%;   /* sky blue accent */
     --invox-gold-light:  201 98% 75%;
     --invox-gold-deep:   201 98% 50%;
-    --invox-orange:      201 80% 55%;
-    --invox-onair:       201 98% 62%; 
+    --invox-orange:      201 98% 62%;   /* alias to blue */
+    --invox-gray:        220 12% 12%;
+    --invox-onair:       0 84% 60%;     /* keep red for ON AIR dot */
 
     /* ── Gradients (dark) ────────────────────────────────────────── */
     --gradient-hero:
-      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
+      linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(220 18% 8%) 60%, hsl(220 14% 12%) 100%);
     --gradient-broadcast:
-      radial-gradient(at 20% 20%, rgba(63,185,254,0.08) 0px, transparent 50%),
-      radial-gradient(at 80% 80%, rgba(63,185,254,0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(191,199,213,0.04) 0px, transparent 40%),
-      linear-gradient(135deg, #050505 0%, #0d1117 60%, #111315 100%);
+      radial-gradient(at 20% 20%, rgba(63,185,254,0.10) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(63,185,254,0.06) 0px, transparent 50%),
+      linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(220 18% 8%) 60%, hsl(220 14% 12%) 100%);
     --gradient-mesh-light:
-      radial-gradient(at 15% 10%, rgba(63,185,254,0.06) 0px, transparent 40%),
-      radial-gradient(at 85% 85%, rgba(191,199,213,0.04) 0px, transparent 40%),
-      #050505;
-    --gradient-gold: #3FB9FE; /* Solid sky blue from image */
+      radial-gradient(at 15% 10%, rgba(63,185,254,0.08) 0px, transparent 40%),
+      hsl(0 0% 4%);
+    --gradient-gold: linear-gradient(135deg, hsl(201 98% 62%) 0%, hsl(201 98% 50%) 100%);
     --gradient-card:
-      linear-gradient(145deg, #111315 0%, #0d1117 100%);
-    --gradient-premium: #3FB9FE; /* Solid sky blue from image */
+      linear-gradient(145deg, hsl(220 14% 12%) 0%, hsl(220 18% 8%) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(201 98% 62%) 0%, hsl(201 98% 75%) 100%);
     --gradient-gold-border:
       linear-gradient(135deg,
-        rgba(63,185,254,0.4) 0%,
+        rgba(63,185,254,0.5) 0%,
         rgba(63,185,254,0.1) 35%,
         rgba(63,185,254,0.05) 65%,
-        rgba(63,185,254,0.3) 100%);
+        rgba(63,185,254,0.4) 100%);
     --gradient-cream-border:
       linear-gradient(135deg,
-        rgba(191,199,213,0.25) 0%,
-        rgba(191,199,213,0.04) 50%,
-        rgba(191,199,213,0.18) 100%);
+        rgba(255,255,255,0.20) 0%,
+        rgba(255,255,255,0.04) 50%,
+        rgba(255,255,255,0.15) 100%);
 
     /* ── Shadows (dark — removed neon glow) ──────────────────────── */
     --shadow-sm:
@@ -189,14 +189,14 @@
       0 30px 80px -20px rgba(0,0,0,0.9),
       inset 0 1px 0 rgba(191,199,213,0.06);
 
-    --sidebar-background: 0 0% 2%;
-    --sidebar-foreground: 213 18% 82%;
-    --sidebar-primary: 194 100% 50%;
-    --sidebar-primary-foreground: 0 0% 2%;
-    --sidebar-accent: 210 8% 11%;
-    --sidebar-accent-foreground: 213 18% 82%;
-    --sidebar-border: 210 8% 14%;
-    --sidebar-ring: 194 100% 50%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 201 98% 62%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 220 12% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 12% 18%;
+    --sidebar-ring: 201 98% 62%;
   }
 }
 
@@ -215,7 +215,7 @@
   /* Dark mode: deep black body */
   .dark body,
   .dark {
-    background-color: #050505;
+    background-color: hsl(0 0% 4%);
   }
 
   h1, h2, h3, h4, h5, h6 {

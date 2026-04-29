@@ -47,7 +47,7 @@ export default function Apresentacao() {
           <AnimatedSection delay={0.3}>
             <p className="text-xl md:text-2xl text-invox-cream/75 max-w-3xl mx-auto leading-relaxed">
               Rádio interna para lojas que{" "}
-              <span className="text-[#3FB9FE] font-semibold">vendem mais</span>{" "}
+              <span className="text-primary font-semibold">vendem mais</span>{" "}
               todos os dias.
             </p>
           </AnimatedSection>
@@ -72,7 +72,7 @@ export default function Apresentacao() {
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-7 h-11 border border-invox-cream/40 rounded-full flex items-start justify-center p-1.5">
-            <div className="w-1.5 h-2.5 bg-[#3FB9FE] rounded-full" />
+            <div className="w-1.5 h-2.5 bg-primary rounded-full" />
           </div>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function Apresentacao() {
       <section className="min-h-screen flex items-center py-20 bg-background">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">O Cenário Atual</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">O Cenário Atual</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4">
               O Desafio do Varejo Atual
             </h2>
@@ -129,15 +129,15 @@ export default function Apresentacao() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
-              <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">A Solução</span>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">A Solução</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-8">
-                O Que é a <span className="text-[#3FB9FE]">INVOX MÍDIA</span>
+                O Que é a <span className="text-primary">INVOX MÍDIA</span>
               </h2>
               <div className="space-y-6">
                 <AnimatedItem delay={0.2}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                      <Radio className="w-6 h-6 text-black dark:text-black" />
+                    <div className="w-12 h-12 rounded-xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border dark:border-primary/40 flex items-center justify-center shrink-0">
+                      <Radio className="w-6 h-6 text-black dark:text-primary" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-2">Rádio Interna Personalizada</h3>
@@ -149,8 +149,8 @@ export default function Apresentacao() {
                 </AnimatedItem>
                 <AnimatedItem delay={0.3}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                      <Megaphone className="w-6 h-6 text-black dark:text-black" />
+                    <div className="w-12 h-12 rounded-xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border dark:border-primary/40 flex items-center justify-center shrink-0">
+                      <Megaphone className="w-6 h-6 text-black dark:text-primary" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-2">Conteúdo Estratégico</h3>
@@ -164,9 +164,9 @@ export default function Apresentacao() {
             </AnimatedSection>
             <AnimatedSection direction="right" delay={0.2}>
               <div className="relative">
-                <div className="w-full aspect-square max-w-md mx-auto rounded-3xl hero-gradient p-8 flex items-center justify-center">
+                <div className="w-full aspect-square max-w-md mx-auto rounded-3xl hero-gradient dark:bg-none dark:bg-invox-navy-light dark:border dark:border-primary/30 p-8 flex items-center justify-center">
                   <div className="text-center">
-                    <Volume2 className="w-24 h-24 text-black dark:text-black mx-auto mb-6 animate-pulse" />
+                    <Volume2 className="w-24 h-24 text-black dark:text-primary mx-auto mb-6 animate-pulse" />
                     <p className="text-invox-cream text-xl font-semibold">
                       Sua marca no ouvido do cliente
                     </p>
@@ -180,19 +180,19 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 4 - Como a Rádio Aumenta Vendas */}
-      <section className="min-h-screen flex items-center py-20 bg-primary text-invox-cream">
+      <section className="min-h-screen flex items-center py-20 bg-primary dark:bg-invox-navy-deep text-invox-cream dark:text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">O Poder do Som</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4">
-              Como a Rádio Interna <span className="text-[#3FB9FE]">Aumenta as Vendas</span>
+            <span className="text-secondary dark:text-primary font-semibold text-sm uppercase tracking-wider">O Poder do Som</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 text-invox-cream dark:text-white">
+              Como a Rádio Interna <span className="text-secondary dark:text-primary">Aumenta as Vendas</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <ShoppingCart className="w-10 h-10 text-black dark:text-black" />
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6">
+                  <ShoppingCart className="w-10 h-10 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Compras por Impulso</h3>
                 <p className="text-invox-cream/80">
@@ -202,8 +202,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-10 h-10 text-black dark:text-black" />
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6">
+                  <Zap className="w-10 h-10 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Destaca Ofertas</h3>
                 <p className="text-invox-cream/80">
@@ -213,8 +213,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl text-center hover:bg-white/10 transition-colors h-full">
-                <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-10 h-10 text-black dark:text-black" />
+                <div className="w-20 h-20 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-deep dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6">
+                  <Heart className="w-10 h-10 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Influencia Comportamento</h3>
                 <p className="text-invox-cream/80">
@@ -234,21 +234,21 @@ export default function Apresentacao() {
               <div className="grid grid-cols-2 gap-6">
                 <AnimatedItem delay={0.1}>
                   <div className="glass-effect p-6 rounded-2xl h-full">
-                    <TrendingUp className="w-10 h-10 text-[#3FB9FE] mb-4" />
+                    <TrendingUp className="w-10 h-10 text-primary mb-4" />
                     <h4 className="font-bold text-foreground mb-2">Mais Vendas</h4>
                     <p className="text-sm text-muted-foreground">No mesmo espaço físico</p>
                   </div>
                 </AnimatedItem>
                 <AnimatedItem delay={0.2}>
                   <div className="glass-effect p-6 rounded-2xl h-full">
-                    <Users className="w-10 h-10 text-[#3FB9FE] mb-4" />
+                    <Users className="w-10 h-10 text-primary mb-4" />
                     <h4 className="font-bold text-foreground mb-2">Melhor Experiência</h4>
                     <p className="text-sm text-muted-foreground">Cliente satisfeito volta</p>
                   </div>
                 </AnimatedItem>
                 <AnimatedItem delay={0.3} className="col-span-2">
                   <div className="glass-effect p-6 rounded-2xl">
-                    <Megaphone className="w-10 h-10 text-[#3FB9FE] mb-4" />
+                    <Megaphone className="w-10 h-10 text-primary mb-4" />
                     <h4 className="font-bold text-foreground mb-2">Comunicação Constante</h4>
                     <p className="text-sm text-muted-foreground">
                       Mantenha o cliente informado sobre novidades e promoções durante toda a visita
@@ -258,9 +258,9 @@ export default function Apresentacao() {
               </div>
             </div>
             <AnimatedSection direction="right" className="order-1 lg:order-2">
-              <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">Resultados Reais</span>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Resultados Reais</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-8">
-                Benefícios Diretos para a <span className="text-[#3FB9FE]">Sua Loja</span>
+                Benefícios Diretos para a <span className="text-primary">Sua Loja</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 A rádio interna não é um custo, é um investimento com retorno mensurável. Transforme cada momento da 
@@ -281,16 +281,16 @@ export default function Apresentacao() {
       <section className="min-h-screen flex items-center py-20 bg-muted">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">Programação</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Programação</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4">
-              Conteúdos da <span className="text-[#3FB9FE]">INVOX MÍDIA</span>
+              Conteúdos da <span className="text-primary">INVOX MÍDIA</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="bg-card p-6 rounded-2xl border border-border hover:border-secondary transition-colors group h-full">
-                <div className="w-14 h-14 rounded-xl bg-[#3FB9FE]/10 flex items-center justify-center mb-4 group-hover:bg-[#3FB9FE]/20 transition-colors">
-                  <Megaphone className="w-7 h-7 text-[#3FB9FE]" />
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Megaphone className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">Spots Promocionais</h3>
                 <p className="text-muted-foreground text-sm">
@@ -300,8 +300,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="bg-card p-6 rounded-2xl border border-border hover:border-secondary transition-colors group h-full">
-                <div className="w-14 h-14 rounded-xl bg-[#3FB9FE]/10 flex items-center justify-center mb-4 group-hover:bg-[#3FB9FE]/20 transition-colors">
-                  <Zap className="w-7 h-7 text-[#3FB9FE]" />
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Zap className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">Ofertas do Dia</h3>
                 <p className="text-muted-foreground text-sm">
@@ -311,8 +311,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="bg-card p-6 rounded-2xl border border-border hover:border-secondary transition-colors group h-full">
-                <div className="w-14 h-14 rounded-xl bg-[#3FB9FE]/10 flex items-center justify-center mb-4 group-hover:bg-[#3FB9FE]/20 transition-colors">
-                  <Award className="w-7 h-7 text-[#3FB9FE]" />
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Award className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">Mensagens Institucionais</h3>
                 <p className="text-muted-foreground text-sm">
@@ -322,8 +322,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.4}>
               <div className="bg-card p-6 rounded-2xl border border-border hover:border-secondary transition-colors group h-full">
-                <div className="w-14 h-14 rounded-xl bg-[#3FB9FE]/10 flex items-center justify-center mb-4 group-hover:bg-[#3FB9FE]/20 transition-colors">
-                  <Music className="w-7 h-7 text-[#3FB9FE]" />
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Music className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">Música Adequada</h3>
                 <p className="text-muted-foreground text-sm">
@@ -336,20 +336,20 @@ export default function Apresentacao() {
       </section>
 
       {/* Slide 7 - Diferenciais */}
-      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary to-invox-navy-light text-invox-cream">
+      <section className="min-h-screen flex items-center py-20 bg-gradient-to-br from-primary to-invox-navy-light dark:from-invox-navy-deep dark:to-invox-navy-light text-invox-cream dark:text-white">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4">
-              Diferenciais da <span className="text-[#3FB9FE]">INVOX MÍDIA</span>
+            <span className="text-secondary dark:text-primary font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 text-invox-cream dark:text-white">
+              Diferenciais da <span className="text-secondary dark:text-primary">INVOX MÍDIA</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Conteúdo Profissional</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Conteúdo Profissional</h3>
                   <p className="text-invox-cream/80">
                     Locução e produção de alta qualidade que transmite credibilidade para sua marca
                   </p>
@@ -358,9 +358,9 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Linguagem Comercial Estratégica</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Linguagem Comercial Estratégica</h3>
                   <p className="text-invox-cream/80">
                     Textos criados para converter ouvintes em compradores
                   </p>
@@ -369,9 +369,9 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Atualizações Frequentes</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Atualizações Frequentes</h3>
                   <p className="text-invox-cream/80">
                     Programação sempre renovada para manter o interesse e relevância
                   </p>
@@ -380,9 +380,9 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.4}>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                <CheckCircle className="w-8 h-8 text-secondary dark:text-primary shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Personalização Total</h3>
+                  <h3 className="text-xl font-bold mb-2 text-invox-cream dark:text-white">Personalização Total</h3>
                   <p className="text-invox-cream/80">
                     Adaptamos o conteúdo para cada loja ou rede, respeitando suas particularidades
                   </p>
@@ -397,16 +397,16 @@ export default function Apresentacao() {
       <section className="min-h-screen flex items-center py-20 bg-background">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">O que você ganha</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">O que você ganha</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4">
-              Resultados <span className="text-[#3FB9FE]">Esperados</span>
+              Resultados <span className="text-primary">Esperados</span>
             </h2>
           </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <BarChart3 className="w-12 h-12 text-black dark:text-black" />
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold">
+                  <BarChart3 className="w-12 h-12 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Aumento do Ticket Médio</h3>
                 <p className="text-muted-foreground">
@@ -416,8 +416,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.2}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <Target className="w-12 h-12 text-black dark:text-black" />
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold">
+                  <Target className="w-12 h-12 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Mais Atenção às Ofertas</h3>
                 <p className="text-muted-foreground">
@@ -427,8 +427,8 @@ export default function Apresentacao() {
             </AnimatedItem>
             <AnimatedItem delay={0.3}>
               <div className="text-center">
-                <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold">
-                  <Award className="w-12 h-12 text-black dark:text-black" />
+                <div className="w-24 h-24 rounded-full gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold">
+                  <Award className="w-12 h-12 text-black dark:text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-3">Marca Fortalecida</h3>
                 <p className="text-muted-foreground">
@@ -444,9 +444,9 @@ export default function Apresentacao() {
       <section className="min-h-screen flex items-center py-20 bg-muted">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">Segmentos Atendidos</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Segmentos Atendidos</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4">
-              Para Quem é a <span className="text-[#3FB9FE]">INVOX MÍDIA</span>
+              Para Quem é a <span className="text-primary">INVOX MÍDIA</span>
             </h2>
           </AnimatedSection>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -462,7 +462,7 @@ export default function Apresentacao() {
             ].map((item, index) => (
               <AnimatedItem key={index} delay={index * 0.1}>
                 <div className="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform h-full">
-                  <item.icon className="w-10 h-10 text-[#3FB9FE] mx-auto mb-3" />
+                  <item.icon className="w-10 h-10 text-primary mx-auto mb-3" />
                   <p className="font-semibold text-foreground">{item.label}</p>
                 </div>
               </AnimatedItem>
@@ -486,20 +486,20 @@ export default function Apresentacao() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                    <div className="flex flex-col gap-2">
                      <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 w-max">
-                       <Radio className="w-5 h-5 text-[#3FB9FE] animate-pulse" />
+                       <Radio className="w-5 h-5 text-primary animate-pulse" />
                        <span className="text-sm font-medium text-white">Playlist Personalizada</span>
                      </div>
                    </div>
                 </div>
               </div>
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10" />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#3FB9FE]/20 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10" />
             </AnimatedSection>
 
             <AnimatedSection direction="right" className="order-1 lg:order-2" delay={0.2}>
-              <span className="text-[#3FB9FE] font-semibold text-sm uppercase tracking-wider">Tecnologia Própria</span>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">Tecnologia Própria</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-                Conheça o <span className="text-[#3FB9FE]">INVOX PLAYER</span>
+                Conheça o <span className="text-primary">INVOX PLAYER</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Esqueça softwares complicados ou taxas abusivas. Criamos um reprodutor moderno, simples e funcional, feito exclusivamente para facilitar a rotina da sua loja.
@@ -508,7 +508,7 @@ export default function Apresentacao() {
               <div className="space-y-6 mb-10">
                 <AnimatedItem delay={0.3}>
                   <div className="flex items-start gap-4">
-                    <Monitor className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                    <Monitor className="w-8 h-8 text-primary shrink-0 mt-1" />
                     <div>
                       <h4 className="font-bold text-foreground">PC e Smartphones</h4>
                       <p className="text-sm text-muted-foreground">Totalmente responsivo, gerencie e toque sua rádio de qualquer dispositivo.</p>
@@ -517,7 +517,7 @@ export default function Apresentacao() {
                 </AnimatedItem>
                 <AnimatedItem delay={0.4}>
                   <div className="flex items-start gap-4">
-                    <Zap className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                    <Zap className="w-8 h-8 text-primary shrink-0 mt-1" />
                     <div>
                       <h4 className="font-bold text-foreground">Sem Licença Extra</h4>
                       <p className="text-sm text-muted-foreground">Economize! Você não paga licenças de software adicionais para usar nosso player.</p>
@@ -526,7 +526,7 @@ export default function Apresentacao() {
                 </AnimatedItem>
                 <AnimatedItem delay={0.5}>
                   <div className="flex items-start gap-4">
-                    <Music className="w-8 h-8 text-[#3FB9FE] shrink-0 mt-1" />
+                    <Music className="w-8 h-8 text-primary shrink-0 mt-1" />
                     <div>
                       <h4 className="font-bold text-foreground">Playlists Exclusivas</h4>
                       <p className="text-sm text-muted-foreground">Músicas, vinhetas, spots e locução de ofertas em perfeita harmonia.</p>
@@ -552,7 +552,7 @@ export default function Apresentacao() {
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/10 via-background to-background" />
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center mb-16">
-            <span className="inline-block py-1.5 px-4 rounded-full bg-[#3FB9FE]/20 text-[#3FB9FE] font-semibold text-sm uppercase tracking-widest mb-6 animate-pulse border border-secondary/30">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-primary/20 text-primary font-semibold text-sm uppercase tracking-widest mb-6 animate-pulse border border-secondary/30">
               NOVIDADE EXCLUSIVA
             </span>
             <h2 className="font-display text-5xl md:text-7xl font-bold text-foreground mt-4 leading-tight">
@@ -571,8 +571,8 @@ export default function Apresentacao() {
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Zap className="w-10 h-10 text-black dark:text-black" />
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Zap className="w-10 h-10 text-black dark:text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Valores Exclusivos</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -585,10 +585,10 @@ export default function Apresentacao() {
             <AnimatedItem delay={0.2}>
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#3FB9FE]/10 rounded-full blur-2xl group-hover:bg-[#3FB9FE]/20 transition-all duration-500" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Target className="w-10 h-10 text-black dark:text-black" />
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Target className="w-10 h-10 text-black dark:text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Cota Inclusa</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -602,8 +602,8 @@ export default function Apresentacao() {
               <div className="relative group p-8 rounded-3xl bg-card border-2 border-secondary/30 hover:border-secondary transition-all duration-500 overflow-hidden h-full transform hover:-translate-y-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10 text-center">
-                  <div className="w-20 h-20 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
-                    <Music className="w-10 h-10 text-black dark:text-black" />
+                  <div className="w-20 h-20 rounded-2xl gold-gradient dark:bg-none dark:bg-invox-navy-light dark:border-2 dark:border-primary flex items-center justify-center mx-auto mb-6 shadow-gold transform group-hover:scale-110 transition-transform duration-500">
+                    <Music className="w-10 h-10 text-black dark:text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Suporte & Vinhetas</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -631,7 +631,7 @@ export default function Apresentacao() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection delay={0.1}>
             <div className="flex justify-center mb-8">
-              <Equalizer className="text-[#3FB9FE] h-10" />
+              <Equalizer className="text-primary h-10" />
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
@@ -643,7 +643,7 @@ export default function Apresentacao() {
           <AnimatedSection delay={0.3}>
             <p className="text-xl md:text-2xl text-invox-cream/75 max-w-3xl mx-auto mb-12">
               A rádio interna que transforma{" "}
-              <span className="text-[#3FB9FE] font-semibold">movimento em vendas</span>{" "}
+              <span className="text-primary font-semibold">movimento em vendas</span>{" "}
               todos os dias.
             </p>
           </AnimatedSection>

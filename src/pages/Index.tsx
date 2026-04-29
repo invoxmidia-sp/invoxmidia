@@ -139,7 +139,7 @@ export default function Index() {
                     key={s.label}
                     className="bg-invox-navy-deep/60 backdrop-blur px-4 py-4"
                   >
-                    <p className="font-display tabular text-2xl font-bold text-[#3FB9FE] leading-tight">
+                    <p className="font-display tabular text-2xl font-bold text-primary leading-tight">
                       {s.value}
                     </p>
                     <p className="mono-label text-invox-cream/50 mt-1">{s.label}</p>
@@ -153,15 +153,15 @@ export default function Index() {
               <AnimatedSection direction="right" delay={0.3}>
                 <div className="relative">
                   {/* Decorative offset cards */}
-                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-2xl bg-[#3FB9FE]/20 blur-2xl" />
+                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-2xl bg-primary/20 blur-2xl" />
                   <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-2xl bg-invox-navy-light/40 blur-2xl" />
 
                   <div className="relative rounded-3xl bg-invox-navy-deep/70 backdrop-blur-xl border border-invox-cream/10 p-7 shadow-broadcast border-gradient-cream noise-overlay">
                     {/* Console header */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#3FB9FE]/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#3FB9FE]/60" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary/60" />
                         <span className="w-2.5 h-2.5 rounded-full bg-invox-cream/30" />
                       </div>
                       <span className="mono-label text-invox-cream/40">
@@ -171,9 +171,9 @@ export default function Index() {
 
                     {/* Now playing */}
                     <div className="flex items-center gap-4 mb-5">
-                      <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-[#3FB9FE] flex items-center justify-center shadow-gold">
+                      <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center shadow-gold">
                         <Music className="w-6 h-6 text-invox-navy-deep" />
-                        <span className="absolute -top-1 -right-1 on-air-dot bg-[#3FB9FE]" />
+                        <span className="absolute -top-1 -right-1 on-air-dot bg-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="mono-label text-invox-cream/50 mb-1">
@@ -183,12 +183,12 @@ export default function Index() {
                           Playlist: Loja Premium
                         </p>
                       </div>
-                      <Equalizer className="text-[#3FB9FE]" />
+                      <Equalizer className="text-primary" />
                     </div>
 
                     {/* Waveform */}
                     <div className="rounded-xl bg-invox-navy-deep/60 border border-invox-cream/5 p-4 mb-5">
-                      <SoundWave bars={48} className="h-12 text-[#3FB9FE]" />
+                      <SoundWave bars={48} className="h-12 text-primary" />
                       <div className="flex justify-between mono-label text-invox-cream/40 mt-2">
                         <span className="tabular">02:45</span>
                         <span className="tabular">04:12</span>
@@ -204,17 +204,17 @@ export default function Index() {
                             Spot: Ofertas da Semana
                           </p>
                         </div>
-                        <Play className="w-4 h-4 text-[#3FB9FE]/60" />
+                        <Play className="w-4 h-4 text-primary/60" />
                       </div>
                     </div>
 
                     {/* Frequency strip */}
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-invox-cream/10">
                       <div className="flex items-center gap-2 text-invox-cream/60">
-                        <Volume2 className="w-4 h-4 text-[#3FB9FE]" />
+                        <Volume2 className="w-4 h-4 text-primary" />
                         <span className="mono-label">PLAYER PERSONALIZADO</span>
                       </div>
-                      <span className="mono-label text-[#3FB9FE]">HD AUDIO · 320kbps</span>
+                      <span className="mono-label text-primary">HD AUDIO · 320kbps</span>
                     </div>
                   </div>
                 </div>
@@ -228,7 +228,7 @@ export default function Index() {
           <SoundWave
             bars={120}
             amplitude={0.5}
-            className="h-12 text-[#3FB9FE]/40"
+            className="h-12 text-primary/40"
           />
         </div>
       </section>
@@ -239,7 +239,7 @@ export default function Index() {
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-16" direction="up">
             <SectionLabel className="justify-center mb-4">Clube Invox</SectionLabel>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-              Vantagens que <span className="text-[#3FB9FE]">soam alto</span>.
+              Vantagens que <span className="text-primary">soam alto</span>.
             </h2>
             <p className="text-muted-foreground text-lg">
               Ao participar do Clube, você garante recursos exclusivos que farão suas
@@ -257,7 +257,7 @@ export default function Index() {
                   </span>
 
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-invox-navy to-invox-navy-light flex items-center justify-center mb-5 group-hover:from-secondary group-hover:to-invox-orange transition-all duration-500 shadow-md">
-                    <feature.icon className="w-6 h-6 text-[#3FB9FE] group-hover:text-invox-navy-deep transition-colors duration-500" />
+                    <feature.icon className="w-6 h-6 text-primary group-hover:text-invox-navy-deep transition-colors duration-500" />
                   </div>
                   <h3 className="font-display font-semibold text-lg text-foreground mb-2 tracking-tight">
                     {feature.title}
@@ -293,7 +293,7 @@ export default function Index() {
               <SectionLabel className="mb-4">Por que Invox?</SectionLabel>
               <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
                 Mais do que som,{" "}
-                <span className="text-[#3FB9FE]">uma estratégia</span>.
+                <span className="text-primary">uma estratégia</span>.
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
                 Nosso serviço de rádio interna vai além da música. Criamos uma
@@ -304,8 +304,8 @@ export default function Index() {
                 {benefits.map((benefit, index) => (
                   <AnimatedItem key={index} delay={index * 0.08}>
                     <li className="flex items-start gap-3">
-                      <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-[#3FB9FE]/15 flex items-center justify-center">
-                        <CheckCircle2 className="w-4 h-4 text-[#3FB9FE]" />
+                      <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-primary/15 flex items-center justify-center">
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
                       </span>
                       <span className="text-foreground/90">{benefit}</span>
                     </li>
@@ -328,7 +328,7 @@ export default function Index() {
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-invox-navy-deep via-invox-navy to-invox-navy-light shadow-broadcast" />
                   <div className="absolute inset-4 rounded-full vinyl-rings opacity-60" />
                   <div className="absolute inset-0 rounded-full border border-secondary/10" />
-                  <div className="absolute inset-[35%] rounded-full bg-[#3FB9FE] flex items-center justify-center shadow-gold-glow">
+                  <div className="absolute inset-[35%] rounded-full bg-primary flex items-center justify-center shadow-gold-glow">
                     <Music className="w-10 h-10 text-invox-navy-deep" />
                   </div>
                   {/* Highlight reflection */}
@@ -338,7 +338,7 @@ export default function Index() {
                 {/* Floating stat card */}
                 <div className="absolute -bottom-4 -left-4 rounded-2xl bg-card shadow-broadcast border border-border/50 p-5 w-56">
                   <div className="flex items-center gap-3 mb-2">
-                    <Equalizer className="text-[#3FB9FE] h-6" />
+                    <Equalizer className="text-primary h-6" />
                     <span className="mono-label text-muted-foreground">Live · 24/7</span>
                   </div>
                   <p className="font-display font-bold text-foreground text-lg leading-tight">
