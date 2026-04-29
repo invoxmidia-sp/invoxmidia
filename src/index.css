@@ -586,6 +586,16 @@
   animation: shimmer 2s infinite;
 }
 
+/* Hide Lovable badge/button */
+#lovable-badge, 
+.lovable-badge,
+[id^="lovable-"],
+[class^="lovable-"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
