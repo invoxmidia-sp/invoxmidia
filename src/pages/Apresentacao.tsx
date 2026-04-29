@@ -137,7 +137,7 @@ export default function Apresentacao() {
                 <AnimatedItem delay={0.2}>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                      <Radio className="w-6 h-6 text-primary" />
+                      <Radio className="w-6 h-6 text-black dark:text-black" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-2">Rádio Interna Personalizada</h3>
@@ -150,7 +150,7 @@ export default function Apresentacao() {
                 <AnimatedItem delay={0.3}>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                      <Megaphone className="w-6 h-6 text-primary" />
+                      <Megaphone className="w-6 h-6 text-black dark:text-black" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-2">Conteúdo Estratégico</h3>
