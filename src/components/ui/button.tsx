@@ -16,9 +16,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Custom Invox variants
-        hero: "gold-gradient text-primary font-bold shadow-button hover:shadow-gold hover:scale-105 active:scale-100",
+        hero: "gold-gradient text-black font-bold shadow-button hover:shadow-gold hover:scale-105 active:scale-100",
         "hero-outline": "border-2 border-invox-cream bg-transparent text-invox-cream hover:bg-invox-cream/10",
-        gold: "gold-gradient text-primary font-semibold shadow-button hover:shadow-gold hover:brightness-110",
+        gold: "gold-gradient text-black font-semibold shadow-button hover:shadow-gold hover:brightness-110",
         "gold-outline": "border-2 border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-primary",
         navy: "bg-invox-navy text-invox-cream hover:bg-invox-navy-light shadow-md hover:shadow-lg"
       },

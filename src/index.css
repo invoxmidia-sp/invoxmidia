@@ -110,14 +110,14 @@
     --foreground: 213 18% 82%;
     /* Primary action: electric neon blue #00C2FF  →  hsl(194 100% 50%) */
     --primary: 194 100% 50%;
-    --primary-foreground: 0 0% 2%;
+    --primary-foreground: 0 0% 0%; /* Solid black */
     /* Secondary: dark graphite surface */
     --secondary: 210 8% 12%;
     --secondary-foreground: 213 18% 82%;
     --muted: 210 8% 11%;
     --muted-foreground: 213 12% 55%;
     --accent: 194 100% 50%;
-    --accent-foreground: 0 0% 2%;
+    --accent-foreground: 0 0% 0%; /* Solid black */
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
     --border: 210 8% 14%;
@@ -147,12 +147,10 @@
       radial-gradient(at 15% 10%, rgba(0,194,255,0.06) 0px, transparent 40%),
       radial-gradient(at 85% 85%, rgba(191,199,213,0.04) 0px, transparent 40%),
       #050505;
-    --gradient-gold:
-      linear-gradient(135deg, #00C2FF 0%, rgba(0,194,255,0.6) 100%);
+    --gradient-gold: #00C2FF; /* Solid vivid blue */
     --gradient-card:
       linear-gradient(145deg, #111315 0%, #0d1117 100%);
-    --gradient-premium:
-      linear-gradient(135deg, #00C2FF 0%, rgba(0,194,255,0.7) 100%);
+    --gradient-premium: #00C2FF; /* Solid vivid blue */
     --gradient-gold-border:
       linear-gradient(135deg,
         rgba(0,194,255,0.6) 0%,
