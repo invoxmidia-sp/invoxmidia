@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Profile = Tables<"profiles">;
-type RecordingOrder = Tables<"recording_orders">;
+type RecordingOrder = Tables<"recording_orders"> & { email?: string };
 type Contact = Tables<"contacts">;
 type Subscription = Tables<"plan_subscriptions"> & { company_name?: string; email?: string };
 
@@ -64,19 +64,30 @@ export default function Admin() {
       supabase.from("contacts").select("*").order("created_at", { ascending: false }),
       supabase.from("plan_subscriptions").select("*").order("created_at", { ascending: false }),
     ]);
-    if (profilesRes.data) setProfiles(profilesRes.data);
-    if (ordersRes.data) setOrders(ordersRes.data);
-    if (contactsRes.data) setContacts(contactsRes.data);
-    if (subsRes.data) {
-      // Enrich subscriptions with company_name from profiles
+    if (profilesRes.data) {
+      setProfiles(profilesRes.data);
       const profilesById: Record<string, Profile> = {};
-      (profilesRes.data ?? []).forEach(p => { profilesById[p.user_id] = p; });
-      setSubscriptions(subsRes.data.map(s => ({
-        ...s,
-        company_name: profilesById[s.user_id]?.company_name ?? "—",
-        email: profilesById[s.user_id]?.email ?? "—",
-      })));
+      profilesRes.data.forEach(p => { profilesById[p.user_id] = p; });
+
+      if (ordersRes.data) {
+        setOrders(ordersRes.data.map(o => ({
+          ...o,
+          email: profilesById[o.user_id]?.email ?? "—",
+        })));
+      }
+
+      if (subsRes.data) {
+        setSubscriptions(subsRes.data.map(s => ({
+          ...s,
+          company_name: profilesById[s.user_id]?.company_name ?? "—",
+          email: profilesById[s.user_id]?.email ?? "—",
+        })));
+      }
+    } else {
+      if (ordersRes.data) setOrders(ordersRes.data);
+      if (subsRes.data) setSubscriptions(subsRes.data as Subscription[]);
     }
+    if (contactsRes.data) setContacts(contactsRes.data);
   };
 
   const handleStatusChange = async (orderId: string, newStatus: string) => {
@@ -84,6 +95,45 @@ export default function Admin() {
     if (error) { toast({ title: "Erro ao atualizar", variant: "destructive" }); return; }
     setOrders(orders.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
     toast({ title: "Status atualizado" });
+  };
+
+  const handleAudioUpload = async (orderId: string, event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const ext = file.name.split(".").pop();
+      const path = `${orderId}/${Date.now()}.${ext}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("finished-recordings")
+        .upload(path, file, { upsert: false });
+
+      if (uploadError) throw uploadError;
+
+      const { data: urlData } = supabase.storage
+        .from("finished-recordings")
+        .getPublicUrl(path);
+
+      const audioUrl = urlData?.publicUrl;
+
+      const { error: updateError } = await supabase
+        .from("recording_orders")
+        .update({
+          audio_url: audioUrl,
+          audio_filename: file.name,
+          status: "concluido",
+        })
+        .eq("id", orderId);
+
+      if (updateError) throw updateError;
+
+      setOrders(orders.map(o => o.id === orderId ? { ...o, status: "concluido", audio_url: audioUrl, audio_filename: file.name } : o));
+      toast({ title: "Áudio enviado com sucesso!" });
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Erro ao enviar áudio", variant: "destructive" });
+    }
   };
 
   const handleApproveSubscription = async (sub: Subscription, action: "approved" | "rejected") => {
@@ -345,6 +395,7 @@ export default function Admin() {
                       <TableHeader>
                         <TableRow>
                           <TableHead>Empresa</TableHead>
+                          <TableHead>E-mail</TableHead>
                           <TableHead>Produto/Campanha</TableHead>
                           <TableHead>Tipo</TableHead>
                           <TableHead>Tom</TableHead>
@@ -352,12 +403,14 @@ export default function Admin() {
                           <TableHead>Status</TableHead>
                           <TableHead>Data</TableHead>
                           <TableHead>Ações</TableHead>
+                          <TableHead>Áudio</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {orders.map((order) => (
                           <TableRow key={order.id}>
                             <TableCell className="font-medium">{order.company_name}</TableCell>
+                            <TableCell className="text-sm text-muted-foreground">{order.email}</TableCell>
                             <TableCell>{order.product_campaign}</TableCell>
                             <TableCell><Badge variant="outline">{order.recording_type}</Badge></TableCell>
                             <TableCell>{order.tone}</TableCell>
@@ -374,6 +427,28 @@ export default function Admin() {
                                   <SelectItem value="cancelado">Cancelado</SelectItem>
                                 </SelectContent>
                               </Select>
+                            </TableCell>
+                            <TableCell>
+                              <div className="flex flex-col gap-2">
+                                {order.audio_url && (
+                                  <a href={order.audio_url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline truncate w-32 inline-block">
+                                    {order.audio_filename ?? "Ver Áudio"}
+                                  </a>
+                                )}
+                                <div className="relative">
+                                  <Button variant="outline" size="sm" className="w-full text-xs h-8">
+                                    <ExternalLink className="w-3 h-3 mr-1" />
+                                    Enviar Áudio
+                                  </Button>
+                                  <input 
+                                    type="file" 
+                                    accept="audio/*" 
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                    onChange={(e) => handleAudioUpload(order.id, e)}
+                                    title="Enviar áudio MP3 ou WAV"
+                                  />
+                                </div>
+                              </div>
                             </TableCell>
                           </TableRow>
                         ))}

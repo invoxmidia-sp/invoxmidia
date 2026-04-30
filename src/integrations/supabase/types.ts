@@ -168,6 +168,8 @@ export type Database = {
           tone: Database["public"]["Enums"]["tone_type"]
           updated_at: string
           user_id: string
+          audio_url: string | null
+          audio_filename: string | null
         }
         Insert: {
           company_name: string
@@ -181,6 +183,8 @@ export type Database = {
           tone: Database["public"]["Enums"]["tone_type"]
           updated_at?: string
           user_id: string
+          audio_url?: string | null
+          audio_filename?: string | null
         }
         Update: {
           company_name?: string
@@ -194,6 +198,8 @@ export type Database = {
           tone?: Database["public"]["Enums"]["tone_type"]
           updated_at?: string
           user_id?: string
+          audio_url?: string | null
+          audio_filename?: string | null
         }
         Relationships: []
       }

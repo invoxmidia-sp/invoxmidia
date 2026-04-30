@@ -20,6 +20,8 @@ interface Order {
   duration: string;
   status: string;
   created_at: string;
+  audio_url?: string;
+  audio_filename?: string;
 }
 
 interface Profile {
@@ -392,6 +394,16 @@ export default function Dashboard() {
                         <Calendar className="w-3 h-3" />
                         {new Date(order.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
                       </div>
+                      {order.audio_url && (
+                        <div className="mt-4">
+                          <Button variant="gold" size="sm" asChild>
+                            <a href={order.audio_url} target="_blank" rel="noopener noreferrer" download>
+                              <FileAudio className="w-4 h-4 mr-2" />
+                              Baixar Gravação
+                            </a>
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
