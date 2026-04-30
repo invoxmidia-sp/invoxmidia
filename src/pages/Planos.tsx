@@ -146,7 +146,7 @@ export default function Planos() {
             {plans.map((plan, index) => (
               <AnimatedItem key={plan.id} delay={index * 0.15}>
                 <div
-                  className={`relative h-full rounded-3xl bg-card shadow-card border transition-all duration-500 lift-on-hover overflow-hidden ${
+                  className={`relative h-full rounded-3xl bg-card shadow-card border transition-all duration-500 lift-on-hover ${
                     plan.popular
                       ? "border-secondary/60 md:scale-[1.04] shadow-lg"
                       : "border-border/40 hover:border-primary/50"
@@ -155,8 +155,8 @@ export default function Planos() {
                   {plan.popular && (
                     <>
                       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span className="bg-primary text-black mono-label px-4 py-1.5 rounded-full shadow-md inline-flex items-center gap-2">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                        <span className="bg-primary text-black mono-label px-4 py-1.5 rounded-full shadow-md inline-flex items-center gap-2 whitespace-nowrap">
                           <span className="on-air-dot scale-75" />
                           Mais Popular
                         </span>
