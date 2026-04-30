@@ -130,9 +130,9 @@ export default function Admin() {
 
       setOrders(orders.map(o => o.id === orderId ? { ...o, status: "concluido", audio_url: audioUrl, audio_filename: file.name } : o));
       toast({ title: "Áudio enviado com sucesso!" });
-    } catch (err) {
-      console.error(err);
-      toast({ title: "Erro ao enviar áudio", variant: "destructive" });
+    } catch (err: any) {
+      console.error("Audio upload error:", err);
+      toast({ title: "Erro ao enviar áudio", description: err.message || JSON.stringify(err), variant: "destructive" });
     }
   };
 
