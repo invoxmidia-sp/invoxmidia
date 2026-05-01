@@ -124,9 +124,9 @@ export function Footer() {
           >
             adm
           </Link>
-          <p className="text-xs text-muted-foreground/50 mono-label">
-            © {new Date().getFullYear()} · Clube Invox Mídia · O Clube que sabe vender!
-          </p>
+        <p className="text-xs text-muted-foreground/50 mono-label">
+          © 2026 · INVOX - Desenv. PRO IMAGE DESIGN
+        </p>
           <div className="w-6" />
         </div>
       </div>
