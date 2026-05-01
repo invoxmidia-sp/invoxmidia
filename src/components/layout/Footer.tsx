@@ -40,7 +40,7 @@ export function Footer() {
                   Invox<span className="text-secondary">.</span>
                 </span>
                 <span className="mono-label text-invox-navy/50 dark:text-invox-cream/50 text-[0.6rem] mt-0.5 transition-colors duration-300">
-                  Mídia · Studio
+                  Mídia
                 </span>
               </div>
             </Link>
