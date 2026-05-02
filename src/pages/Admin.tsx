@@ -136,6 +136,40 @@ export default function Admin() {
     }
   };
 
+  const handleClientAudioUpload = async (clientId: string, event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    toast({ title: "Enviando áudio...", description: "Por favor, aguarde." });
+
+    try {
+      const ext = file.name.split(".").pop();
+      const path = `${clientId}/${Date.now()}.${ext}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("client_audios_bucket")
+        .upload(path, file, { upsert: false });
+
+      if (uploadError) throw uploadError;
+
+      const { error: dbError } = await supabase
+        .from("client_audios")
+        .insert({
+          client_id: clientId,
+          file_name: file.name,
+          file_path: path,
+          file_size_bytes: file.size,
+        });
+
+      if (dbError) throw dbError;
+
+      toast({ title: "Áudio do painel enviado com sucesso!" });
+    } catch (err: any) {
+      console.error("Client audio upload error:", err);
+      toast({ title: "Erro ao enviar áudio", description: err.message || JSON.stringify(err), variant: "destructive" });
+    }
+  };
+
   const handleApproveSubscription = async (sub: Subscription, action: "approved" | "rejected") => {
     setApprovingId(sub.id);
     try {
@@ -350,6 +384,7 @@ export default function Admin() {
                           <TableHead>Status</TableHead>
                           <TableHead>Cota</TableHead>
                           <TableHead>Cadastro</TableHead>
+                          <TableHead>Ações</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -371,6 +406,21 @@ export default function Admin() {
                                 {p.monthly_quota ? `${p.recordings_used ?? 0}/${p.monthly_quota} (+${p.recordings_balance ?? 0})` : "-"}
                               </TableCell>
                               <TableCell className="text-sm text-muted-foreground">{formatDate(profile.created_at)}</TableCell>
+                              <TableCell>
+                                <div className="relative inline-block">
+                                  <Button variant="outline" size="sm" className="text-xs h-8">
+                                    <ExternalLink className="w-3 h-3 mr-1" />
+                                    Enviar Áudio
+                                  </Button>
+                                  <input 
+                                    type="file" 
+                                    accept="audio/*" 
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                    onChange={(e) => handleClientAudioUpload(profile.user_id, e)}
+                                    title="Enviar áudio para este cliente"
+                                  />
+                                </div>
+                              </TableCell>
                             </TableRow>
                           );
                         })}

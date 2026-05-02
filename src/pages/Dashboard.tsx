@@ -24,6 +24,15 @@ interface Order {
   audio_filename?: string;
 }
 
+interface ClientAudio {
+  id: string;
+  client_id: string;
+  file_name: string;
+  file_path: string;
+  file_size_bytes: number;
+  created_at: string;
+}
+
 interface Profile {
   id: string;
   company_name: string;
@@ -59,18 +68,21 @@ export default function Dashboard() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [orders, setOrders] = useState<Order[]>([]);
+  const [clientAudios, setClientAudios] = useState<ClientAudio[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showPlanModal, setShowPlanModal] = useState(false);
   const [pixModalType, setPixModalType] = useState<"subscription" | "avulsa">("subscription");
   const [pixModalPlan, setPixModalPlan] = useState("bronze");
 
   const fetchData = async (userId: string) => {
-    const [profileRes, ordersRes] = await Promise.all([
+    const [profileRes, ordersRes, audiosRes] = await Promise.all([
       supabase.from("profiles").select("*").eq("user_id", userId).single(),
       supabase.from("recording_orders").select("*").eq("user_id", userId).order("created_at", { ascending: false }),
+      supabase.from("client_audios").select("*").eq("client_id", userId).order("created_at", { ascending: false }),
     ]);
     if (profileRes.data) setProfile(profileRes.data as Profile);
     if (ordersRes.data) setOrders(ordersRes.data);
+    if (audiosRes.data) setClientAudios(audiosRes.data);
     setIsLoading(false);
   };
 
@@ -335,6 +347,43 @@ export default function Dashboard() {
             </p>
             <p className="text-muted-foreground text-sm">Em andamento</p>
           </div>
+        </div>
+
+        {/* Client Audios Section */}
+        <div className="bg-card rounded-2xl shadow-card border border-border/50 overflow-hidden mb-8">
+          <div className="p-6 border-b border-border">
+            <h2 className="font-display text-xl font-bold text-foreground">Meus Áudios</h2>
+            <p className="text-muted-foreground text-sm">Arquivos de áudio enviados pela equipe (disponíveis por 30 dias)</p>
+          </div>
+          
+          {clientAudios.length === 0 ? (
+            <div className="p-8 text-center">
+              <p className="text-muted-foreground text-sm">Nenhum áudio disponível no momento.</p>
+            </div>
+          ) : (
+            <div className="divide-y divide-border">
+              {clientAudios.map((audio) => {
+                const { data } = supabase.storage.from("client_audios_bucket").getPublicUrl(audio.file_path);
+                return (
+                  <div key={audio.id} className="p-6 hover:bg-muted/50 transition-colors flex items-center justify-between">
+                    <div>
+                      <h4 className="font-semibold text-foreground">{audio.file_name}</h4>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
+                        <Calendar className="w-3 h-3" />
+                        {new Date(audio.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+                      </div>
+                    </div>
+                    <Button variant="gold" size="sm" asChild>
+                      <a href={data.publicUrl} target="_blank" rel="noopener noreferrer" download>
+                        <FileAudio className="w-4 h-4 mr-2" />
+                        Baixar Áudio
+                      </a>
+                    </Button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Orders Section */}
