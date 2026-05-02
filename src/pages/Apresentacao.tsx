@@ -501,7 +501,7 @@ export default function Apresentacao() {
                 Conheça o <span className="text-primary">INVOX PLAYER</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Esqueça softwares complicados ou taxas abusivas. Criamos um reprodutor moderno, simples e funcional, feito exclusivamente para facilitar a rotina da sua loja.
+                Player moderno, fácil de atualizar e com suporte remoto incluso quando precisar. Controle total da programação com total praticidade.
               </p>
               
               <div className="space-y-6 mb-10">

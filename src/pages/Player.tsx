@@ -23,7 +23,7 @@ export default function Player() {
                 INVOX <span className="text-gradient-gold">PLAYER</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
-                O reprodutor oficial da sua loja. Moderno, simples, funcional e criado para dar vida às suas playlists.
+                Player moderno, fácil de atualizar e com suporte remoto incluso quando precisar. Controle total da programação com total praticidade.
               </p>
 
               <div className="space-y-6 mb-10">
