@@ -56,10 +56,7 @@ export function Header() {
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-display font-bold text-lg text-invox-navy dark:text-invox-cream tracking-tight transition-colors duration-300">
-                Invox<span className="text-secondary">.</span>
-              </span>
-              <span className="mono-label text-invox-navy/70 dark:text-invox-cream/80 text-[0.6rem] mt-0.5 transition-colors duration-300">
-                Mídia · Studio
+                INVOX MÍDIA
               </span>
             </div>
           </Link>
