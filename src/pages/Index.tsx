@@ -5,7 +5,6 @@ import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
 import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
 import { SoundWave } from "@/components/broadcast/SoundWave";
 import { Equalizer } from "@/components/broadcast/Equalizer";
-import { OnAir } from "@/components/broadcast/OnAir";
 import { SectionLabel } from "@/components/broadcast/SectionLabel";
 import {
   Radio,
@@ -86,10 +85,8 @@ export default function Index() {
             {/* Left: copy */}
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-8">
-                <OnAir />
-                <span className="hidden sm:block w-px h-4 bg-invox-cream/20" />
-                <span className="hidden sm:inline mono-label text-invox-cream/50">
-                  Clube Invox · Estúdio 01
+                <span className="mono-label text-invox-cream/50">
+                  Rádio Interna que vende mais todos os dias!
                 </span>
               </div>
 
