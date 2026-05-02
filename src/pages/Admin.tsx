@@ -36,6 +36,7 @@ export default function Admin() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [selectedOrderText, setSelectedOrderText] = useState<{title: string, text: string} | null>(null);
   const [isDialogMinimized, setIsDialogMinimized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -450,6 +451,7 @@ export default function Admin() {
                           <TableHead>Tipo</TableHead>
                           <TableHead>Tom</TableHead>
                           <TableHead>Duração</TableHead>
+                          <TableHead>Texto</TableHead>
                           <TableHead>Status</TableHead>
                           <TableHead>Data</TableHead>
                           <TableHead>Ações</TableHead>
@@ -465,6 +467,15 @@ export default function Admin() {
                             <TableCell><Badge variant="outline">{order.recording_type}</Badge></TableCell>
                             <TableCell>{order.tone}</TableCell>
                             <TableCell>{order.duration}</TableCell>
+                            <TableCell>
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                onClick={() => setSelectedOrderText({ title: order.company_name, text: order.offer_text || "Sem texto fornecido." })}
+                              >
+                                Ver Texto
+                              </Button>
+                            </TableCell>
                             <TableCell>{getStatusBadge(order.status)}</TableCell>
                             <TableCell className="text-sm text-muted-foreground">{formatDate(order.created_at)}</TableCell>
                             <TableCell>
@@ -585,6 +596,20 @@ export default function Admin() {
                 </div>
               </div>
             )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Order Text Dialog */}
+        <Dialog open={!!selectedOrderText} onOpenChange={(open) => { if (!open) setSelectedOrderText(null); }}>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle>Texto da Oferta - {selectedOrderText?.title}</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <p className="text-sm whitespace-pre-wrap bg-muted/50 rounded-lg p-4 max-h-[60vh] overflow-y-auto">
+                {selectedOrderText?.text}
+              </p>
+            </div>
           </DialogContent>
         </Dialog>
       </main>

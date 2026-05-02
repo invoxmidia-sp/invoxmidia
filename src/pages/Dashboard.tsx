@@ -10,6 +10,7 @@ import {
   User, FileAudio, Calendar, Star, Zap, Crown, Mic, ShieldAlert,
 } from "lucide-react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface Order {
   id: string;
@@ -20,6 +21,7 @@ interface Order {
   duration: string;
   status: string;
   created_at: string;
+  offer_text?: string;
   audio_url?: string;
   audio_filename?: string;
 }
@@ -69,6 +71,7 @@ export default function Dashboard() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [orders, setOrders] = useState<Order[]>([]);
   const [clientAudios, setClientAudios] = useState<ClientAudio[]>([]);
+  const [selectedOrderText, setSelectedOrderText] = useState<{title: string, text: string} | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showPlanModal, setShowPlanModal] = useState(false);
   const [pixModalType, setPixModalType] = useState<"subscription" | "avulsa">("subscription");
@@ -439,9 +442,19 @@ export default function Dashboard() {
                       <p className="text-sm text-muted-foreground mb-2">
                         {order.company_name} • {order.recording_type} • {order.tone} • {order.duration}
                       </p>
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Calendar className="w-3 h-3" />
-                        {new Date(order.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <Calendar className="w-3 h-3" />
+                          {new Date(order.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
+                        </div>
+                        {order.offer_text && (
+                          <button
+                            onClick={() => setSelectedOrderText({ title: order.product_campaign, text: order.offer_text || "" })}
+                            className="text-xs text-primary hover:underline font-medium"
+                          >
+                            Ver texto enviado
+                          </button>
+                        )}
                       </div>
                       {order.audio_url && (
                         <div className="mt-4">
@@ -461,6 +474,20 @@ export default function Dashboard() {
           )}
         </div>
       </main>
+
+      {/* Order Text Dialog */}
+      <Dialog open={!!selectedOrderText} onOpenChange={(open) => { if (!open) setSelectedOrderText(null); }}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Texto Enviado - {selectedOrderText?.title}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-sm whitespace-pre-wrap bg-muted/50 rounded-lg p-4 max-h-[60vh] overflow-y-auto">
+              {selectedOrderText?.text}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* PIX Modal */}
       {user && profile && showPlanModal && (
