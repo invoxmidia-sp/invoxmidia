@@ -106,20 +106,20 @@ export default function Player() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="font-display text-4xl font-bold text-foreground mb-4">
-              A Gestão Musical nas <span className="text-secondary">Suas Mãos</span>
+              Gestão de Programação <span className="text-secondary">Intuitiva</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              O Invox Player foi desenhado para facilitar a rotina do lojista, unindo design profissional com a máxima praticidade.
+              O Invox Player foi desenhado para facilitar a rotina do lojista, unindo design profissional com a máxima praticidade. Com poucos minutos de treinamento, o(a) funcionário(a) responsável já domina todas as funções.
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <AnimatedItem delay={0.1}>
               <div className="bg-background p-8 rounded-2xl border border-border h-full hover:border-secondary transition-colors">
                 <Smartphone className="w-10 h-10 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-3">Controle Remoto</h3>
+                <h3 className="text-xl font-bold mb-3">Fácil de Atualizar e Personalizar</h3>
                 <p className="text-muted-foreground">
-                  Acesse pelo celular de onde estiver. Pausar, pular ou mudar a programação nunca foi tão fácil.
+                  Um player moderno, muito simples de atualizar e personalizar — e oferecemos suporte remoto incluso quando necessário.
                 </p>
               </div>
             </AnimatedItem>
@@ -129,17 +129,7 @@ export default function Player() {
                 <Sparkles className="w-10 h-10 text-secondary mb-4" />
                 <h3 className="text-xl font-bold mb-3">Layout Moderno</h3>
                 <p className="text-muted-foreground">
-                  Interface escura premium que não cansa a vista e dá um toque tecnológico ao seu painel administrativo.
-                </p>
-              </div>
-            </AnimatedItem>
-
-            <AnimatedItem delay={0.3}>
-              <div className="bg-background p-8 rounded-2xl border border-border h-full hover:border-secondary transition-colors">
-                <PlayCircle className="w-10 h-10 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-3">Intervenção de Áudio</h3>
-                <p className="text-muted-foreground">
-                  Dispare spots promocionais ou avisos no meio da programação musical com um simples clique.
+                  Interface Clean que não cansa a vista e dá um toque tecnológico ao seu painel administrativo.
                 </p>
               </div>
             </AnimatedItem>
