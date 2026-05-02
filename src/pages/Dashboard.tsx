@@ -8,6 +8,7 @@ import { PixPaymentModal } from "@/components/payment/PixPaymentModal";
 import {
   Radio, LogOut, Plus, Clock, CheckCircle2,
   User, FileAudio, Calendar, Star, Zap, Crown, Mic, ShieldAlert,
+  MessageCircle,
 } from "lucide-react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -455,6 +456,22 @@ export default function Dashboard() {
                             Ver texto enviado
                           </button>
                         )}
+                        <button
+                          onClick={() => {
+                            const msg = `🎙️ *Pedido de Gravação - Invox Mídia*\n\n` +
+                              `🏢 *Empresa:* ${order.company_name}\n` +
+                              `📦 *Produto/Campanha:* ${order.product_campaign}\n` +
+                              `🎤 *Tipo:* ${order.recording_type}\n` +
+                              `🎵 *Tom:* ${order.tone}\n` +
+                              `⏱️ *Duração:* ${order.duration}\n\n` +
+                              `📝 *Texto da Oferta:*\n${order.offer_text || "Sem texto fornecido."}`;
+                            window.open(`https://wa.me/5511937237949?text=${encodeURIComponent(msg)}`, "_blank");
+                          }}
+                          className="text-xs text-green-600 hover:text-green-700 hover:underline font-medium flex items-center gap-1 ml-2"
+                        >
+                          <MessageCircle className="w-3 h-3" />
+                          Enviar no WhatsApp
+                        </button>
                       </div>
                       {order.audio_url && (
                         <div className="mt-4">

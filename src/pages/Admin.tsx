@@ -131,6 +131,15 @@ export default function Admin() {
 
       setOrders(orders.map(o => o.id === orderId ? { ...o, status: "concluido", audio_url: audioUrl, audio_filename: file.name } : o));
       toast({ title: "Áudio enviado com sucesso!" });
+
+      // Check if user has phone to send whatsapp
+      const order = orders.find(o => o.id === orderId);
+      const profile = profiles.find(p => p.user_id === order?.user_id);
+      if (profile?.phone) {
+        const cleanedPhone = profile.phone.replace(/\D/g, "");
+        const msg = `Olá! O seu áudio para a campanha "${order?.product_campaign}" já está disponível no seu painel da Invox Mídia. Acesse para baixar!`;
+        window.open(`https://wa.me/55${cleanedPhone}?text=${encodeURIComponent(msg)}`, "_blank");
+      }
     } catch (err: any) {
       console.error("Audio upload error:", err);
       toast({ title: "Erro ao enviar áudio", description: err.message || JSON.stringify(err), variant: "destructive" });
@@ -165,6 +174,14 @@ export default function Admin() {
       if (dbError) throw dbError;
 
       toast({ title: "Áudio do painel enviado com sucesso!" });
+
+      // Check if user has phone to send whatsapp
+      const profile = profiles.find(p => p.user_id === clientId);
+      if (profile?.phone) {
+        const cleanedPhone = profile.phone.replace(/\D/g, "");
+        const msg = `Olá! Um novo áudio foi enviado para você e já está disponível no seu painel da Invox Mídia. Acesse para baixar!`;
+        window.open(`https://wa.me/55${cleanedPhone}?text=${encodeURIComponent(msg)}`, "_blank");
+      }
     } catch (err: any) {
       console.error("Client audio upload error:", err);
       toast({ title: "Erro ao enviar áudio", description: err.message || JSON.stringify(err), variant: "destructive" });
