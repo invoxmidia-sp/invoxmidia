@@ -19,7 +19,7 @@ export function Footer() {
       <div className="container mx-auto px-4 pt-16 pb-10 relative z-10">
         {/* Top: SoundWave + tagline */}
         <div className="mb-12 text-center">
-          <SectionLabel className="justify-center mb-4">Sintonia das Vendas</SectionLabel>
+          <SectionLabel className="justify-center mb-4">Invox Mídia - Rádio Indoor</SectionLabel>
           <div className="max-w-3xl mx-auto opacity-60">
             <SoundWave bars={48} amplitude={0.7} className="h-10" />
           </div>
