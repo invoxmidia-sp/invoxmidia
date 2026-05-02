@@ -234,6 +234,7 @@ export default function Planos() {
               { q: "Como funciona a implementação?", a: "Nossa equipe orienta você em todo o processo de configuração do sistema de som e do player." },
               { q: "Quanto tempo leva para começar?", a: "Após a confirmação do pagamento, em até 48h sua rádio estará pronta." },
               { q: "Qual é o prazo de entrega das gravações?", a: "O prazo padrão para entrega é de até 4 horas." },
+              { q: "Quantos segundos inclusos em cada gravação?", a: "Cada gravação do plano contempla áudios de até 45 segundos. Caso o texto ultrapasse esse tempo, será descontada uma gravação adicional para cada bloco de 45 segundos extras." },
               { q: "Posso cancelar quando quiser?", a: "Sim, não há fidelidade. Você pode cancelar a qualquer momento sem multa." },
             ].map((faq, index) => (
               <AnimatedItem key={index} delay={index * 0.1}>
