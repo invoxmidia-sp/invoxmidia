@@ -15,7 +15,7 @@ const FAQ_ITEMS = [
   {
     question: "Quais são os planos do Clube?",
     answer:
-      "Temos 3 planos focados no seu crescimento:\n\n🥉 Clube Bronze (R$ 69,90): 2 gravações/mês\n🥈 Clube Prata (R$ 99,90): 1 gravação/semana\n🥇 Clube Ouro (R$ 129,90): 2 gravações/semana + spots sazonais."
+      "Temos 3 planos focados no seu crescimento:\n\n🥉 Clube Bronze (R$ 499,90): 2 gravações/mês\n🥈 Clube Prata (R$ 550,00): 1 gravação/semana\n🥇 Clube Ouro (R$ 699,00): 2 gravações/semana + spots sazonais."
   },
   {
     question: "O que está incluso na assinatura?",

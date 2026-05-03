@@ -227,9 +227,9 @@ export default function Dashboard() {
               Após a confirmação, seu plano será ativado em até 24h.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="gold" onClick={() => handleContratarPlano("bronze")}>Assinar Bronze — R$ 69,90/mês</Button>
-              <Button variant="outline" onClick={() => handleContratarPlano("prata")}>Assinar Prata — R$ 99,90/mês</Button>
-              <Button variant="outline" onClick={() => handleContratarPlano("ouro")}>Assinar Ouro — R$ 129,90/mês</Button>
+              <Button variant="gold" onClick={() => handleContratarPlano("bronze")}>Assinar Bronze — R$ 499,90/mês</Button>
+              <Button variant="outline" onClick={() => handleContratarPlano("prata")}>Assinar Prata — R$ 550,00/mês</Button>
+              <Button variant="outline" onClick={() => handleContratarPlano("ouro")}>Assinar Ouro — R$ 699,00/mês</Button>
             </div>
             <p className="text-xs text-muted-foreground mt-4">
               <Link to="/planos" className="underline hover:text-primary">Ver todos os planos →</Link>
