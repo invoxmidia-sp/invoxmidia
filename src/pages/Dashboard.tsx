@@ -8,7 +8,7 @@ import { PixPaymentModal } from "@/components/payment/PixPaymentModal";
 import {
   Radio, LogOut, Plus, Clock, CheckCircle2,
   User, FileAudio, Calendar, Star, Zap, Crown, Mic, ShieldAlert,
-  MessageCircle, AlertCircle,
+  MessageCircle,
 } from "lucide-react";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";

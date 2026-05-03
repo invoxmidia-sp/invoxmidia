@@ -103,8 +103,7 @@ serve(async (req) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     logStep("ERROR in check-subscription", { message: errorMessage });
-    console.error("[check-subscription] Error:", errorMessage);
-    return new Response(JSON.stringify({ error: "Não foi possível verificar a assinatura. Tente novamente." }), {
+    return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
     });
