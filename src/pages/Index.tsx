@@ -320,16 +320,13 @@ export default function Index() {
 
             <AnimatedSection direction="right" delay={0.2}>
               <div className="relative">
-                {/* Big "vinyl" disc */}
-                <div className="relative aspect-square max-w-md mx-auto animate-[spin-slow_8s_linear_infinite]">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-invox-navy-deep via-invox-navy to-invox-navy-light shadow-broadcast" />
-                  <div className="absolute inset-4 rounded-full vinyl-rings opacity-60" />
-                  <div className="absolute inset-0 rounded-full border border-secondary/10" />
-                  <div className="absolute inset-[35%] rounded-full bg-primary flex items-center justify-center shadow-gold-glow">
-                    <Music className="w-10 h-10 text-invox-navy-deep" />
-                  </div>
-                  {/* Highlight reflection */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-invox-cream/5 to-invox-cream/15" />
+                {/* Office Image */}
+                <div className="relative max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl border border-border/50">
+                  <img 
+                    src="/office-logo.jpg" 
+                    alt="Ambiente com rádio interna Invox" 
+                    className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
 
                 {/* Floating stat card */}

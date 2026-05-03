@@ -80,8 +80,8 @@ export default function Player() {
             <AnimatedSection direction="right" delay={0.3} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 glow-effect">
                 <img 
-                  src="/invox-player-mockup.png" 
-                  alt="Interface moderna do Invox Player" 
+                  src="/phone-app.jpg" 
+                  alt="Interface moderna do Invox Player no Celular" 
                   className="w-full h-auto object-cover rounded-2xl"
                 />
                 

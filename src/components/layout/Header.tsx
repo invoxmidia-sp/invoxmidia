@@ -46,8 +46,8 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-invox-navy-light to-invox-navy/20 flex items-center justify-center shadow-md transition-all duration-500 border border-primary/30 group-hover:border-primary/50">
-                <Radio className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-all duration-500 overflow-hidden">
+                <img src="/logo-square.jpg" alt="Invox Mídia Logo" className="w-full h-full object-cover" />
               </div>
               <span
                 className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--invox-gold))]"
