@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      client_audios: {
+        Row: {
+          client_id: string
+          created_at: string
+          file_name: string
+          file_path: string
+          file_size_bytes: number | null
+          id: string
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          file_name: string
+          file_path: string
+          file_size_bytes?: number | null
+          id?: string
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          file_size_bytes?: number | null
+          id?: string
+        }
+        Relationships: []
+      }
       contacts: {
         Row: {
           created_at: string
@@ -67,43 +94,43 @@ export type Database = {
       }
       plan_subscriptions: {
         Row: {
-          id: string
-          user_id: string
-          plan: string
-          type: string
-          status: string
-          proof_url: string | null
-          proof_filename: string | null
           admin_notes: string | null
           avulsa_price: number | null
-          created_at: string
-          updated_at: string
+          created_at: string | null
+          id: string
+          plan: string
+          proof_filename: string | null
+          proof_url: string | null
+          status: string
+          type: string
+          updated_at: string | null
+          user_id: string
         }
         Insert: {
-          id?: string
-          user_id: string
-          plan: string
-          type?: string
-          status?: string
-          proof_url?: string | null
-          proof_filename?: string | null
           admin_notes?: string | null
           avulsa_price?: number | null
-          created_at?: string
-          updated_at?: string
+          created_at?: string | null
+          id?: string
+          plan: string
+          proof_filename?: string | null
+          proof_url?: string | null
+          status?: string
+          type?: string
+          updated_at?: string | null
+          user_id: string
         }
         Update: {
-          id?: string
-          user_id?: string
-          plan?: string
-          type?: string
-          status?: string
-          proof_url?: string | null
-          proof_filename?: string | null
           admin_notes?: string | null
           avulsa_price?: number | null
-          created_at?: string
-          updated_at?: string
+          created_at?: string | null
+          id?: string
+          plan?: string
+          proof_filename?: string | null
+          proof_url?: string | null
+          status?: string
+          type?: string
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -113,13 +140,14 @@ export type Database = {
           created_at: string
           email: string
           id: string
+          monthly_quota: number
           phone: string | null
           plan: Database["public"]["Enums"]["plan_type"] | null
-          plan_status: string | null
           plan_expires_at: string | null
-          monthly_quota: number
-          recordings_used: number
+          plan_status: string | null
           recordings_balance: number
+          recordings_used: number
+          role: string | null
           updated_at: string
           user_id: string
         }
@@ -128,13 +156,14 @@ export type Database = {
           created_at?: string
           email: string
           id?: string
+          monthly_quota?: number
           phone?: string | null
           plan?: Database["public"]["Enums"]["plan_type"] | null
-          plan_status?: string | null
           plan_expires_at?: string | null
-          monthly_quota?: number
-          recordings_used?: number
+          plan_status?: string | null
           recordings_balance?: number
+          recordings_used?: number
+          role?: string | null
           updated_at?: string
           user_id: string
         }
@@ -143,13 +172,14 @@ export type Database = {
           created_at?: string
           email?: string
           id?: string
+          monthly_quota?: number
           phone?: string | null
           plan?: Database["public"]["Enums"]["plan_type"] | null
-          plan_status?: string | null
           plan_expires_at?: string | null
-          monthly_quota?: number
-          recordings_used?: number
+          plan_status?: string | null
           recordings_balance?: number
+          recordings_used?: number
+          role?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -157,6 +187,8 @@ export type Database = {
       }
       recording_orders: {
         Row: {
+          audio_filename: string | null
+          audio_url: string | null
           company_name: string
           created_at: string
           duration: Database["public"]["Enums"]["duration_type"]
@@ -168,10 +200,10 @@ export type Database = {
           tone: Database["public"]["Enums"]["tone_type"]
           updated_at: string
           user_id: string
-          audio_url: string | null
-          audio_filename: string | null
         }
         Insert: {
+          audio_filename?: string | null
+          audio_url?: string | null
           company_name: string
           created_at?: string
           duration: Database["public"]["Enums"]["duration_type"]
@@ -183,10 +215,10 @@ export type Database = {
           tone: Database["public"]["Enums"]["tone_type"]
           updated_at?: string
           user_id: string
-          audio_url?: string | null
-          audio_filename?: string | null
         }
         Update: {
+          audio_filename?: string | null
+          audio_url?: string | null
           company_name?: string
           created_at?: string
           duration?: Database["public"]["Enums"]["duration_type"]
@@ -198,8 +230,6 @@ export type Database = {
           tone?: Database["public"]["Enums"]["tone_type"]
           updated_at?: string
           user_id?: string
-          audio_url?: string | null
-          audio_filename?: string | null
         }
         Relationships: []
       }
@@ -230,6 +260,14 @@ export type Database = {
     }
     Functions: {
       admin_exists: { Args: never; Returns: boolean }
+      approve_subscription: {
+        Args: {
+          p_action: string
+          p_admin_notes?: string
+          p_subscription_id: string
+        }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -238,14 +276,6 @@ export type Database = {
         Returns: boolean
       }
       register_first_admin: { Args: { _user_id: string }; Returns: boolean }
-      approve_subscription: {
-        Args: {
-          p_subscription_id: string
-          p_action: string
-          p_admin_notes?: string | null
-        }
-        Returns: void
-      }
     }
     Enums: {
       app_role: "admin" | "user"
