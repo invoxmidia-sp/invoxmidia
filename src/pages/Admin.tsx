@@ -16,6 +16,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import type { Tables } from "@/integrations/supabase/types";
+import { openSignedStorageUrl } from "@/lib/storage";
 
 type Profile = Tables<"profiles">;
 type RecordingOrder = Tables<"recording_orders"> & { email?: string };
@@ -112,11 +113,8 @@ export default function Admin() {
 
       if (uploadError) throw uploadError;
 
-      const { data: urlData } = supabase.storage
-        .from("finished-recordings")
-        .getPublicUrl(path);
-
-      const audioUrl = urlData?.publicUrl;
+      // Bucket is private — persist the storage path; clients fetch via signed URL.
+      const audioUrl = path;
 
       const { error: updateError } = await supabase
         .from("recording_orders")
@@ -509,9 +507,12 @@ export default function Admin() {
                             <TableCell>
                               <div className="flex flex-col gap-2">
                                 {order.audio_url && (
-                                  <a href={order.audio_url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline truncate w-32 inline-block">
+                                  <button
+                                    onClick={() => openSignedStorageUrl("finished-recordings", order.audio_url)}
+                                    className="text-xs text-primary hover:underline truncate w-32 inline-block text-left"
+                                  >
                                     {order.audio_filename ?? "Ver Áudio"}
-                                  </a>
+                                  </button>
                                 )}
                                 <div className="relative">
                                   <Button variant="outline" size="sm" className="w-full text-xs h-8">
