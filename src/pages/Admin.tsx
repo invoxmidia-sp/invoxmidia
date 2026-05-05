@@ -112,11 +112,8 @@ export default function Admin() {
 
       if (uploadError) throw uploadError;
 
-      const { data: urlData } = supabase.storage
-        .from("finished-recordings")
-        .getPublicUrl(path);
-
-      const audioUrl = urlData?.publicUrl;
+      // Bucket is private — persist the storage path; clients fetch via signed URL.
+      const audioUrl = path;
 
       const { error: updateError } = await supabase
         .from("recording_orders")

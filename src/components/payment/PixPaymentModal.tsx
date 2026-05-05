@@ -100,10 +100,8 @@ export function PixPaymentModal({
         console.warn("Storage upload failed:", uploadError.message);
         toast("Comprovante não pôde ser enviado ao servidor. Continue pelo WhatsApp.", { icon: "⚠️" });
       } else {
-        const { data: urlData } = supabase.storage
-          .from("payment-proofs")
-          .getPublicUrl(path);
-        proofUrl = urlData?.publicUrl ?? null;
+        // Bucket is private — store the storage path; admins read via signed URL.
+        proofUrl = path;
       }
 
       // Save subscription request
