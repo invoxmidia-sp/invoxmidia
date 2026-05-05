@@ -506,9 +506,12 @@ export default function Admin() {
                             <TableCell>
                               <div className="flex flex-col gap-2">
                                 {order.audio_url && (
-                                  <a href={order.audio_url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline truncate w-32 inline-block">
+                                  <button
+                                    onClick={() => openSignedStorageUrl("finished-recordings", order.audio_url)}
+                                    className="text-xs text-primary hover:underline truncate w-32 inline-block text-left"
+                                  >
                                     {order.audio_filename ?? "Ver Áudio"}
-                                  </a>
+                                  </button>
                                 )}
                                 <div className="relative">
                                   <Button variant="outline" size="sm" className="w-full text-xs h-8">

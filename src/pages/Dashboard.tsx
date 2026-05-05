@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { PixPaymentModal } from "@/components/payment/PixPaymentModal";
+import { openSignedStorageUrl } from "@/lib/storage";
 import {
   Radio, LogOut, Plus, Clock, CheckCircle2,
   User, FileAudio, Calendar, Star, Zap, Crown, Mic, ShieldAlert,
@@ -367,7 +368,6 @@ export default function Dashboard() {
           ) : (
             <div className="divide-y divide-border">
               {clientAudios.map((audio) => {
-                const { data } = supabase.storage.from("client_audios_bucket").getPublicUrl(audio.file_path);
                 return (
                   <div key={audio.id} className="p-6 hover:bg-muted/50 transition-colors flex items-center justify-between">
                     <div>
@@ -377,11 +377,13 @@ export default function Dashboard() {
                         {new Date(audio.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
                       </div>
                     </div>
-                    <Button variant="gold" size="sm" asChild>
-                      <a href={data.publicUrl} target="_blank" rel="noopener noreferrer" download>
-                        <FileAudio className="w-4 h-4 mr-2" />
-                        Baixar Áudio
-                      </a>
+                    <Button
+                      variant="gold"
+                      size="sm"
+                      onClick={() => openSignedStorageUrl("client_audios_bucket", audio.file_path)}
+                    >
+                      <FileAudio className="w-4 h-4 mr-2" />
+                      Baixar Áudio
                     </Button>
                   </div>
                 );
@@ -475,11 +477,13 @@ export default function Dashboard() {
                       </div>
                       {order.audio_url && (
                         <div className="mt-4">
-                          <Button variant="gold" size="sm" asChild>
-                            <a href={order.audio_url} target="_blank" rel="noopener noreferrer" download>
-                              <FileAudio className="w-4 h-4 mr-2" />
-                              Baixar Gravação
-                            </a>
+                          <Button
+                            variant="gold"
+                            size="sm"
+                            onClick={() => openSignedStorageUrl("finished-recordings", order.audio_url)}
+                          >
+                            <FileAudio className="w-4 h-4 mr-2" />
+                            Baixar Gravação
                           </Button>
                         </div>
                       )}
