@@ -16,6 +16,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import type { Tables } from "@/integrations/supabase/types";
+import { openSignedStorageUrl } from "@/lib/storage";
 
 type Profile = Tables<"profiles">;
 type RecordingOrder = Tables<"recording_orders"> & { email?: string };
