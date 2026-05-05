@@ -117,23 +117,48 @@ serve(async (req) => {
       { role: "user", content: message },
     ];
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const OPENROUTER_API_KEY = Deno.env.get("OPENROUTER_API_KEY");
+    if (!OPENROUTER_API_KEY) {
+      throw new Error("OPENROUTER_API_KEY is not configured");
+    }
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${Deno.env.get("LOVABLE_API_KEY")}`,
+        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+        "HTTP-Referer": "https://invoxmidia.lovable.app",
+        "X-Title": "Invox Pro ChatBot",
       },
       body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
+        model: "openai/gpt-4o-mini",
         messages,
-        max_tokens: 500,
+        max_tokens: 600,
         temperature: 0.7,
       }),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("AI Gateway error:", errorText);
+      console.error("OpenRouter error:", response.status, errorText);
+      if (response.status === 401) {
+        return new Response(
+          JSON.stringify({ reply: "Chave da OpenRouter inválida. Avise o administrador." }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (response.status === 402) {
+        return new Response(
+          JSON.stringify({ reply: "Sem créditos disponíveis no momento. Por favor, fale conosco no WhatsApp (11) 93723-7949." }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({ reply: "Muitas mensagens em sequência. Aguarde alguns segundos e tente novamente." }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
       throw new Error("Failed to get AI response");
     }
 
