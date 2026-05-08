@@ -558,12 +558,7 @@ export default function Admin() {
                                 </div>
                               </TableCell>
                               <TableCell>
-                                <div className="flex items-center gap-2">
-                                  <Badge variant="outline" className="text-[10px] uppercase font-mono py-0 h-4">
-                                    {order.recording_type}
-                                  </Badge>
-                                  <span className="font-medium truncate max-w-[150px]">{order.product_campaign}</span>
-                                </div>
+                                <span className="font-medium truncate max-w-[200px] block">{order.product_campaign}</span>
                               </TableCell>
                               <TableCell>{getStatusBadge(order.status)}</TableCell>
                               <TableCell className="text-sm text-muted-foreground tabular-nums">
@@ -585,6 +580,12 @@ export default function Admin() {
                                     <div className="space-y-4">
                                       <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Detalhes Técnicos</h4>
                                       <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                          <p className="text-[10px] text-muted-foreground uppercase">Tipo</p>
+                                          <Badge variant="outline" className="text-[10px] uppercase font-mono py-0 h-4 mt-1">
+                                            {order.recording_type}
+                                          </Badge>
+                                        </div>
                                         <div>
                                           <p className="text-[10px] text-muted-foreground uppercase">Tom de Voz</p>
                                           <p className="text-sm font-medium">{order.tone}</p>
