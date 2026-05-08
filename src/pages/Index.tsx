@@ -358,7 +358,7 @@ export default function Index() {
           muted
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none"
           src="https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.mp4"
         />
         <div
