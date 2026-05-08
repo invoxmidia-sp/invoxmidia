@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Copy, Check, Upload, MessageCircle, X, Loader2 } from "lucide-react";
+import { Copy, Check, Upload, MessageCircle, X, Loader2, ShieldAlert } from "lucide-react";
 
 const PIX_KEY = "056cf89f-597c-4206-bd64-23ab2dbf63aa";
 const WHATSAPP_NUMBER = "5511937237949";
@@ -23,6 +23,18 @@ const AVULSA_PRICES: Record<string, number> = {
   bronze: 50,
   prata: 50,
   ouro: 30,
+};
+
+const SUBSCRIPTION_PRICES: Record<string, string> = {
+  bronze: "499,90",
+  prata: "550,00",
+  ouro: "699,00",
+};
+
+const PLAN_BENEFITS: Record<string, string[]> = {
+  bronze: ["5 Gravações mensais", "Áudio de até 45s", "Entrega em 24h", "Suporte VIP"],
+  prata: ["10 Gravações mensais", "Áudio de até 60s", "Entrega prioritária", "Suporte VIP"],
+  ouro: ["15 Gravações mensais", "Áudio de até 90s", "Entrega imediata", "Gestor de conta"],
 };
 
 interface PixPaymentModalProps {
@@ -56,10 +68,13 @@ export function PixPaymentModal({
 
   const isAvulsa = type === "avulsa";
   const avulsaPrice = AVULSA_PRICES[plan] ?? 50;
+  const subscriptionPrice = SUBSCRIPTION_PRICES[plan] ?? "0,00";
   const planLabel = PLAN_LABELS[plan] ?? plan;
+  const benefits = PLAN_BENEFITS[plan] ?? [];
+  
   const displayPrice = isAvulsa
-    ? `R$ ${avulsaPrice},00 (gravação avulsa)`
-    : "";
+    ? `R$ ${avulsaPrice},00`
+    : `R$ ${subscriptionPrice}`;
 
   const handleCopyPix = async () => {
     await navigator.clipboard.writeText(PIX_KEY);
@@ -175,15 +190,35 @@ export function PixPaymentModal({
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-center text-xl">
-            {isAvulsa ? "Pagar Gravação Avulsa" : `Contratar ${planLabel}`}
+        <DialogHeader className="space-y-3 pb-2">
+          <DialogTitle className="text-center text-2xl font-display font-bold">
+            {isAvulsa ? "Checkout Avulso" : "Finalizar Assinatura"}
           </DialogTitle>
-          {displayPrice && (
-            <p className="text-center text-sm text-primary font-semibold">
-              {displayPrice}
-            </p>
-          )}
+          
+          <div className="bg-muted/40 rounded-2xl p-5 border border-border/50 shadow-inner">
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">Valor a pagar</span>
+              <span className="text-4xl font-display font-black text-primary drop-shadow-sm">
+                {displayPrice}
+              </span>
+              <span className="text-xs text-muted-foreground mt-1">
+                {isAvulsa ? `Pagamento único para ${planLabel}` : `${planLabel} — Pagamento mensal`}
+              </span>
+            </div>
+            
+            {!isAvulsa && (
+              <div className="mt-4 pt-4 border-t border-border/50">
+                <div className="grid grid-cols-2 gap-2">
+                  {benefits.map((b, i) => (
+                    <div key={i} className="flex items-center gap-1.5 text-[11px] text-foreground/80">
+                      <Check className="w-3 h-3 text-green-500 shrink-0" />
+                      {b}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </DialogHeader>
 
         {submitted ? (
@@ -204,16 +239,20 @@ export function PixPaymentModal({
         ) : (
           <div className="space-y-5 pt-2">
             {/* QR Code */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="bg-white p-3 rounded-xl border border-border shadow-sm">
+            <div className="flex flex-col items-center gap-3 py-2">
+              <div className="bg-white p-4 rounded-3xl border-4 border-muted/50 shadow-xl relative group">
                 <img
                   src="/pix-qrcode.jpeg"
                   alt="QR Code PIX"
-                  className="w-48 h-48 object-contain"
+                  className="w-40 h-40 object-contain"
                 />
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl flex items-center justify-center pointer-events-none">
+                  <span className="bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold shadow-sm">QR CODE PIX</span>
+                </div>
               </div>
-              <p className="text-xs text-muted-foreground">
-                Escaneie com o app do seu banco
+              <p className="text-xs text-muted-foreground font-medium flex items-center gap-1.5 mt-1">
+                <ShieldAlert className="w-3.5 h-3.5 text-secondary" />
+                Escaneie com o aplicativo do seu banco
               </p>
             </div>
 
