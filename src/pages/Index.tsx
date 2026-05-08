@@ -8,57 +8,17 @@ import { Equalizer } from "@/components/broadcast/Equalizer";
 import { SectionLabel } from "@/components/broadcast/SectionLabel";
 import { OnAir } from "@/components/broadcast/OnAir";
 import {
-  Radio,
   Music,
-  Mic,
+  Mic2,
   Calendar,
-  RefreshCw,
   Headphones,
-  Settings,
   CheckCircle2,
   ArrowRight,
   Play,
+  PlayCircle,
+  LayoutDashboard,
   Volume2,
 } from "lucide-react";
-
-const features = [
-  {
-    icon: Music,
-    title: "Player Musical Personalizado",
-    description: "Playlist exclusiva para o perfil do seu negócio, criando a atmosfera perfeita.",
-    code: "01",
-  },
-  {
-    icon: Radio,
-    title: "Vinhetas com sua Marca",
-    description: "Locução profissional com o nome da sua empresa em todos os intervalos.",
-    code: "02",
-  },
-  {
-    icon: Calendar,
-    title: "Spots Sazonais",
-    description: "Campanhas especiais para datas comemorativas e promoções.",
-    code: "03",
-  },
-  {
-    icon: RefreshCw,
-    title: "Músicas Atualizadas",
-    description: "Renovação semanal do repertório para manter o ambiente sempre fresco.",
-    code: "04",
-  },
-  {
-    icon: Headphones,
-    title: "Locutores Profissionais",
-    description: "Vozes Reais para resultados reais.",
-    code: "05",
-  },
-  {
-    icon: Settings,
-    title: "Assistência Técnica",
-    description: "Suporte na implementação e manutenção do sistema de som.",
-    code: "06",
-  },
-];
 
 const benefits = [
   "Pague valores exclusivos em qualquer gravação avulsa extra",
@@ -293,38 +253,119 @@ export default function Index() {
         </div>
       </section>
 
-      {/* === FEATURES === */}
-      <section className="py-20 md:py-32 bg-background mesh-light-gradient relative">
+      {/* === O DESAFIO (Slide 3 da Apresentação) === */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <AnimatedSection direction="up">
+              <SectionLabel className="justify-center mb-6">O Desafio do Varejo</SectionLabel>
+              <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8 tracking-tight leading-tight">
+                Sua loja está em <span className="text-primary italic">silêncio?</span>
+              </h2>
+              <div className="grid md:grid-cols-2 gap-12 text-left mt-16">
+                <div className="p-8 rounded-3xl bg-muted/30 border border-border/50">
+                  <h3 className="text-xl font-bold mb-4 text-primary">O Erro Comum</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Muitas lojas usam rádio FM comum (com anúncios de concorrentes), playlists pessoais 
+                    ou, pior ainda, ficam em silêncio absoluto. 
+                  </p>
+                </div>
+                <div className="p-8 rounded-3xl bg-primary/5 border border-primary/20">
+                  <h3 className="text-xl font-bold mb-4 text-primary">O Resultado</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Isso gera um ambiente "frio", onde o cliente se sente vigiado e apressado, 
+                    diminuindo drasticamente o tempo de permanência e o ticket médio.
+                  </p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* === O QUE É A INVOX (Slide 4/5 da Apresentação) === */}
+      <section className="py-24 bg-muted/20 relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <AnimatedSection className="text-center max-w-2xl mx-auto mb-16" direction="up">
-            <SectionLabel className="justify-center mb-4">Clube Invox</SectionLabel>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-              Vantagens que <span className="text-primary">soam alto</span>.
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection direction="left">
+              <SectionLabel className="mb-6">A Solução</SectionLabel>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8 tracking-tight leading-tight">
+                Uma vendedora <span className="text-primary">invisível</span> dentro da sua loja.
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                A INVOX MÍDIA não é apenas música. É uma ferramenta de neuromarketing que 
+                utiliza a sonorização estratégica para criar o clima perfeito de compra.
+              </p>
+              <div className="space-y-6">
+                {[
+                  { t: "Curadoria Especializada", d: "Músicas selecionadas para o perfil do seu público." },
+                  { t: "Anúncios Próprios", d: "Sua rádio fala das suas ofertas, não dos outros." },
+                  { t: "Ambiente Acolhedor", d: "O som que faz o cliente querer ficar mais tempo." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-12 h-12 shrink-0 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-bold">
+                      0{i+1}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-foreground">{item.t}</h4>
+                      <p className="text-sm text-muted-foreground">{item.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="right" delay={0.2} className="relative">
+              <div className="aspect-video rounded-3xl bg-invox-navy-deep border border-primary/20 shadow-broadcast overflow-hidden relative group">
+                <img 
+                  src="/invox-player-mockup.png" 
+                  alt="Interface do Player Invox" 
+                  className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span className="mono-label text-primary">Sistema Ativo</span>
+                  </div>
+                  <p className="font-display font-bold text-xl">Tecnologia que impulsiona vendas</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* === FEATURES (Slides 7/8 da Apresentação) === */}
+      <section className="py-20 md:py-32 bg-background relative overflow-hidden" id="vantagens">
+        <div className="container mx-auto px-4 relative z-10">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-20" direction="up">
+            <SectionLabel className="justify-center mb-4">Diferenciais</SectionLabel>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight leading-tight">
+              Tudo o que sua rádio <span className="text-primary">precisa</span>.
             </h2>
             <p className="text-muted-foreground text-lg">
-              Ao participar do Clube, você garante recursos exclusivos que farão suas
-              vendas decolarem.
+              Uma solução completa, do hardware à curadoria musical, pensada para 
+              facilitar a gestão do seu PDV.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((feature, index) => (
-              <AnimatedItem key={feature.title} delay={index * 0.08}>
-                <div className="group relative h-full p-7 bg-card rounded-2xl shadow-card lift-on-hover border border-border/40 overflow-hidden border-gradient-gold-hover">
-                  {/* Code badge */}
-                  <span className="absolute top-5 right-5 mono-label text-muted-foreground/40 tabular">
-                    {feature.code}
-                  </span>
-
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-invox-navy to-invox-navy-light flex items-center justify-center mb-5 group-hover:from-secondary group-hover:to-invox-orange transition-all duration-500 shadow-md">
-                    <feature.icon className="w-6 h-6 text-primary group-hover:text-invox-navy-deep transition-colors duration-500" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { t: "Player Inteligente", d: "Funciona offline e atualiza automaticamente via nuvem.", i: PlayCircle },
+              { t: "Curadoria Musical", d: "Playlists montadas por especialistas para o seu nicho.", i: Music },
+              { t: "Spots & Vinhetas", d: "Produção profissional de áudio inclusa no seu plano.", i: Mic2 },
+              { t: "Gestão Centralizada", d: "Controle todas as suas lojas em um único painel.", i: LayoutDashboard },
+              { t: "Suporte VIP", d: "Atendimento humano e rápido via WhatsApp.", i: Headphones },
+              { t: "Agendamentos", d: "Programe ofertas e avisos para horários específicos.", i: Calendar }
+            ].map((feature, index) => (
+              <AnimatedItem key={index} delay={index * 0.1}>
+                <div className="p-8 rounded-3xl bg-card border border-border/50 hover:border-primary/40 transition-all duration-500 group transform hover:-translate-y-2 h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                    <feature.i className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="font-display font-semibold text-lg text-foreground mb-2 tracking-tight">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{feature.t}</h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{feature.d}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -455,6 +496,34 @@ export default function Index() {
                 </div>
               </div>
             </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* === RESULTADOS (Slide 9 da Apresentação) === */}
+      <section className="py-24 bg-primary/5 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <AnimatedSection direction="up" className="text-center mb-16">
+              <SectionLabel className="justify-center mb-4">Resultados</SectionLabel>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+                O que esperar da <span className="text-primary">Invox</span>
+              </h2>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { v: "+15%", t: "Ticket Médio", d: "Aumento nas compras por impulso através de anúncios estratégicos." },
+                { v: "+25%", t: "Tempo de Loja", d: "Ambiente agradável faz o cliente permanecer mais tempo." },
+                { v: "100%", t: "Identidade", d: "Sua marca fortalecida com uma voz própria e profissional." }
+              ].map((res, i) => (
+                <div key={i} className="text-center p-8 rounded-3xl bg-background border border-primary/10 shadow-sm">
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-3">{res.v}</div>
+                  <div className="text-lg font-bold text-foreground mb-3">{res.t}</div>
+                  <p className="text-sm text-muted-foreground">{res.d}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
