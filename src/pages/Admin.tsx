@@ -42,6 +42,9 @@ export default function Admin() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [approvingId, setApprovingId] = useState<string | null>(null);
+  const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
+  const [expandedClientId, setExpandedClientId] = useState<string | null>(null);
+  const [expandedContactId, setExpandedContactId] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -418,52 +421,96 @@ export default function Admin() {
                   <div className="overflow-x-auto">
                     <Table>
                       <TableHeader>
-                        <TableRow>
-                          <TableHead>Empresa</TableHead>
-                          <TableHead>E-mail</TableHead>
-                          <TableHead>Telefone</TableHead>
+                        <TableRow className="hover:bg-transparent border-none">
+                          <TableHead className="w-[40%]">Cliente</TableHead>
                           <TableHead>Plano</TableHead>
                           <TableHead>Status</TableHead>
-                          <TableHead>Cota</TableHead>
-                          <TableHead>Cadastro</TableHead>
-                          <TableHead>Ações</TableHead>
+                          <TableHead className="text-right">Ações</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {profiles.map((profile) => {
                           const p = profile as Profile & { plan_status?: string; monthly_quota?: number; recordings_used?: number; recordings_balance?: number };
+                          const isExpanded = expandedClientId === profile.id;
                           return (
-                            <TableRow key={profile.id}>
-                              <TableCell className="font-medium">{profile.company_name}</TableCell>
-                              <TableCell><div className="flex items-center gap-1"><Mail className="w-3 h-3 text-muted-foreground" />{profile.email}</div></TableCell>
-                              <TableCell>{profile.phone ? <div className="flex items-center gap-1"><Phone className="w-3 h-3 text-muted-foreground" />{profile.phone}</div> : <span className="text-muted-foreground">-</span>}</TableCell>
-                              <TableCell>{getPlanBadge(profile.plan)}</TableCell>
-                              <TableCell>
-                                {p.plan_status === "active" ? <Badge className="bg-green-600 text-white">Ativo</Badge> :
-                                 p.plan_status === "pending" ? <Badge variant="secondary">Pendente</Badge> :
-                                 p.plan_status === "expired" ? <Badge variant="destructive">Expirado</Badge> :
-                                 <Badge variant="outline">-</Badge>}
-                              </TableCell>
-                              <TableCell className="text-sm text-muted-foreground">
-                                {p.monthly_quota ? `${p.recordings_used ?? 0}/${p.monthly_quota} (+${p.recordings_balance ?? 0})` : "-"}
-                              </TableCell>
-                              <TableCell className="text-sm text-muted-foreground">{formatDate(profile.created_at)}</TableCell>
-                              <TableCell>
-                                <div className="relative inline-block">
-                                  <Button variant="outline" size="sm" className="text-xs h-8">
-                                    <ExternalLink className="w-3 h-3 mr-1" />
-                                    Enviar Áudio
+                            <>
+                              <TableRow 
+                                key={profile.id}
+                                className={cn(
+                                  "cursor-pointer transition-all duration-300 border-b border-border/40 hover:bg-muted/30",
+                                  isExpanded && "bg-muted/50 border-primary/20"
+                                )}
+                                onClick={() => setExpandedClientId(isExpanded ? null : profile.id)}
+                              >
+                                <TableCell>
+                                  <div className="flex flex-col">
+                                    <span className="font-bold text-foreground">{profile.company_name}</span>
+                                    <span className="text-xs text-muted-foreground opacity-70">{profile.email}</span>
+                                  </div>
+                                </TableCell>
+                                <TableCell>{getPlanBadge(profile.plan)}</TableCell>
+                                <TableCell>
+                                  {p.plan_status === "active" ? <Badge className="bg-green-600 text-white">Ativo</Badge> :
+                                   p.plan_status === "pending" ? <Badge variant="secondary">Pendente</Badge> :
+                                   p.plan_status === "expired" ? <Badge variant="destructive">Expirado</Badge> :
+                                   <Badge variant="outline">-</Badge>}
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                    {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4 text-primary" />}
                                   </Button>
-                                  <input 
-                                    type="file" 
-                                    accept="audio/*" 
-                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                    onChange={(e) => handleClientAudioUpload(profile.user_id, e)}
-                                    title="Enviar áudio para este cliente"
-                                  />
-                                </div>
-                              </TableCell>
-                            </TableRow>
+                                </TableCell>
+                              </TableRow>
+
+                              {isExpanded && (
+                                <TableRow className="bg-muted/20 hover:bg-muted/20 border-b border-border/40">
+                                  <TableCell colSpan={4} className="p-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-in fade-in slide-in-from-top-2 duration-300">
+                                      <div className="space-y-3">
+                                        <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Informações</h4>
+                                        <div className="flex items-center gap-2 text-sm">
+                                          <Phone className="w-3.5 h-3.5 text-primary" />
+                                          {profile.phone || "Não informado"}
+                                        </div>
+                                        <div className="flex items-center gap-2 text-sm">
+                                          <Mail className="w-3.5 h-3.5 text-primary" />
+                                          {profile.email}
+                                        </div>
+                                        <p className="text-xs text-muted-foreground pt-1">
+                                          Cadastrado em: {formatDate(profile.created_at)}
+                                        </p>
+                                      </div>
+
+                                      <div className="space-y-3">
+                                        <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Uso do Plano</h4>
+                                        <div className="p-3 rounded-xl bg-background/50 border border-border/50">
+                                          <p className="text-[10px] text-muted-foreground uppercase mb-1">Gravações (Mês / Saldo)</p>
+                                          <p className="text-lg font-bold text-foreground">
+                                            {p.monthly_quota ? `${p.recordings_used ?? 0}/${p.monthly_quota} (+${p.recordings_balance ?? 0})` : "Sem limite definido"}
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div className="space-y-3">
+                                        <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Ações Rápidas</h4>
+                                        <div className="relative">
+                                          <Button className="w-full h-10 hero-gradient text-white border-none shadow-gold-glow text-xs">
+                                            <ExternalLink className="w-3.5 h-3.5 mr-2" />
+                                            Enviar Áudio Direto
+                                          </Button>
+                                          <input 
+                                            type="file" 
+                                            accept="audio/*" 
+                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                            onChange={(e) => { e.stopPropagation(); handleClientAudioUpload(profile.user_id, e); }}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </TableCell>
+                                </TableRow>
+                              )}
+                            </>
                           );
                         })}
                       </TableBody>
@@ -485,86 +532,155 @@ export default function Admin() {
                   <div className="overflow-x-auto">
                     <Table>
                       <TableHeader>
-                        <TableRow>
-                          <TableHead>Empresa</TableHead>
-                          <TableHead>E-mail</TableHead>
-                          <TableHead>Produto/Campanha</TableHead>
-                          <TableHead>Tipo</TableHead>
-                          <TableHead>Tom</TableHead>
-                          <TableHead>Duração</TableHead>
-                          <TableHead>Texto</TableHead>
+                        <TableRow className="hover:bg-transparent border-none">
+                          <TableHead className="w-[30%]">Cliente</TableHead>
+                          <TableHead>Campanha</TableHead>
                           <TableHead>Status</TableHead>
                           <TableHead>Data</TableHead>
-                          <TableHead>Ações</TableHead>
-                          <TableHead>Áudio</TableHead>
+                          <TableHead className="text-right">Ações</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {orders.map((order) => (
-                          <TableRow key={order.id}>
-                            <TableCell className="font-medium">{order.company_name}</TableCell>
-                            <TableCell className="text-sm text-muted-foreground">{order.email}</TableCell>
-                            <TableCell>{order.product_campaign}</TableCell>
-                            <TableCell><Badge variant="outline">{order.recording_type}</Badge></TableCell>
-                            <TableCell>{order.tone}</TableCell>
-                            <TableCell>{order.duration}</TableCell>
-                            <TableCell>
-                              <Button 
-                                variant="ghost" 
-                                size="sm" 
-                                onClick={() => setSelectedOrderText({ title: order.company_name, text: order.offer_text || "Sem texto fornecido." })}
-                              >
-                                Ver Texto
-                              </Button>
-                            </TableCell>
-                            <TableCell>{getStatusBadge(order.status)}</TableCell>
-                            <TableCell className="text-sm text-muted-foreground">{formatDate(order.created_at)}</TableCell>
-                            <TableCell>
-                              <Select value={order.status} onValueChange={(v) => handleStatusChange(order.id, v)}>
-                                <SelectTrigger className="w-[140px]"><SelectValue /></SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="pendente">Pendente</SelectItem>
-                                  <SelectItem value="em_producao">Em Produção</SelectItem>
-                                  <SelectItem value="concluido">Concluído</SelectItem>
-                                  <SelectItem value="cancelado">Cancelado</SelectItem>
-                                  <SelectItem value="arquivado">Arquivado</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                                onClick={() => handleDeleteOrder(order.id)}
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </Button>
-                            </TableCell>
-                            <TableCell>
-                              <div className="flex flex-col gap-2">
-                                {order.audio_url && (
-                                  <button
-                                    onClick={() => openSignedStorageUrl("finished-recordings", order.audio_url)}
-                                    className="text-xs text-primary hover:underline truncate w-32 inline-block text-left"
-                                  >
-                                    {order.audio_filename ?? "Ver Áudio"}
-                                  </button>
-                                )}
-                                <div className="relative">
-                                  <Button variant="outline" size="sm" className="w-full text-xs h-8">
-                                    <ExternalLink className="w-3 h-3 mr-1" />
-                                    Enviar Áudio
-                                  </Button>
-                                  <input 
-                                    type="file" 
-                                    accept="audio/*" 
-                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                    onChange={(e) => handleAudioUpload(order.id, e)}
-                                    title="Enviar áudio MP3 ou WAV"
-                                  />
+                          <>
+                            <TableRow 
+                              key={order.id} 
+                              className={cn(
+                                "cursor-pointer transition-all duration-300 border-b border-border/40 hover:bg-muted/30",
+                                expandedOrderId === order.id && "bg-muted/50 border-primary/20"
+                              )}
+                              onClick={() => setExpandedOrderId(expandedOrderId === order.id ? null : order.id)}
+                            >
+                              <TableCell>
+                                <div className="flex flex-col">
+                                  <span className="font-bold text-foreground">{order.company_name}</span>
+                                  <span className="text-xs text-muted-foreground opacity-70">{order.email}</span>
                                 </div>
-                              </div>
-                            </TableCell>
-                          </TableRow>
+                              </TableCell>
+                              <TableCell>
+                                <div className="flex items-center gap-2">
+                                  <Badge variant="outline" className="text-[10px] uppercase font-mono py-0 h-4">
+                                    {order.recording_type}
+                                  </Badge>
+                                  <span className="font-medium truncate max-w-[150px]">{order.product_campaign}</span>
+                                </div>
+                              </TableCell>
+                              <TableCell>{getStatusBadge(order.status)}</TableCell>
+                              <TableCell className="text-sm text-muted-foreground tabular-nums">
+                                {formatDate(order.created_at).split(",")[0]}
+                              </TableCell>
+                              <TableCell className="text-right">
+                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                  {expandedOrderId === order.id ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4 text-primary" />}
+                                </Button>
+                              </TableCell>
+                            </TableRow>
+                            
+                            {/* Expandable Content */}
+                            {expandedOrderId === order.id && (
+                              <TableRow className="bg-muted/20 hover:bg-muted/20 border-b border-border/40">
+                                <TableCell colSpan={5} className="p-6">
+                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-in fade-in slide-in-from-top-2 duration-300">
+                                    {/* Column 1: Specs */}
+                                    <div className="space-y-4">
+                                      <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Detalhes Técnicos</h4>
+                                      <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                          <p className="text-[10px] text-muted-foreground uppercase">Tom de Voz</p>
+                                          <p className="text-sm font-medium">{order.tone}</p>
+                                        </div>
+                                        <div>
+                                          <p className="text-[10px] text-muted-foreground uppercase">Duração</p>
+                                          <p className="text-sm font-medium">{order.duration}</p>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <p className="text-[10px] text-muted-foreground uppercase mb-2">Roteiro / Texto</p>
+                                        <Button 
+                                          variant="outline" 
+                                          size="sm" 
+                                          className="w-full justify-start text-xs bg-background/50"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedOrderText({ title: order.company_name, text: order.offer_text || "Sem texto." });
+                                          }}
+                                        >
+                                          <FileText className="w-3.5 h-3.5 mr-2 text-primary" />
+                                          Visualizar Texto Completo
+                                        </Button>
+                                      </div>
+                                    </div>
+
+                                    {/* Column 2: Status Management */}
+                                    <div className="space-y-4">
+                                      <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Gerenciamento</h4>
+                                      <div>
+                                        <p className="text-[10px] text-muted-foreground uppercase mb-2">Alterar Status</p>
+                                        <Select 
+                                          value={order.status} 
+                                          onValueChange={(v) => handleStatusChange(order.id, v)}
+                                        >
+                                          <SelectTrigger className="w-full bg-background/50 h-9 text-sm">
+                                            <SelectValue />
+                                          </SelectTrigger>
+                                          <SelectContent>
+                                            <SelectItem value="pendente">Pendente</SelectItem>
+                                            <SelectItem value="em_producao">Em Produção</SelectItem>
+                                            <SelectItem value="concluido">Concluído</SelectItem>
+                                            <SelectItem value="cancelado">Cancelado</SelectItem>
+                                            <SelectItem value="arquivado">Arquivado</SelectItem>
+                                          </SelectContent>
+                                        </Select>
+                                      </div>
+                                      <div className="flex gap-2 pt-2">
+                                        <Button 
+                                          variant="ghost" 
+                                          size="sm" 
+                                          className="text-destructive hover:bg-destructive/10 w-full justify-start h-9"
+                                          onClick={(e) => { e.stopPropagation(); handleDeleteOrder(order.id); }}
+                                        >
+                                          <Trash2 className="w-4 h-4 mr-2" />
+                                          Excluir Registro
+                                        </Button>
+                                      </div>
+                                    </div>
+
+                                    {/* Column 3: Audio Actions */}
+                                    <div className="space-y-4">
+                                      <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Entrega de Áudio</h4>
+                                      {order.audio_url ? (
+                                        <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                                          <p className="text-[10px] text-primary uppercase mb-1">Arquivo Pronto</p>
+                                          <button
+                                            onClick={(e) => { e.stopPropagation(); openSignedStorageUrl("finished-recordings", order.audio_url!); }}
+                                            className="text-sm font-medium hover:underline flex items-center gap-2 truncate text-foreground"
+                                          >
+                                            <PlayCircle className="w-4 h-4 text-primary" />
+                                            {order.audio_filename ?? "Ouvir Gravação"}
+                                          </button>
+                                        </div>
+                                      ) : (
+                                        <p className="text-xs text-muted-foreground italic">Nenhum áudio enviado ainda.</p>
+                                      )}
+                                      
+                                      <div className="relative">
+                                        <Button className="w-full h-10 hero-gradient text-white border-none shadow-gold-glow">
+                                          <ExternalLink className="w-4 h-4 mr-2" />
+                                          Enviar Novo Áudio
+                                        </Button>
+                                        <input 
+                                          type="file" 
+                                          accept="audio/*" 
+                                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                          onChange={(e) => { e.stopPropagation(); handleAudioUpload(order.id, e); }}
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </TableCell>
+                              </TableRow>
+                            )}
+                          </>
                         ))}
                       </TableBody>
                     </Table>
@@ -585,42 +701,95 @@ export default function Admin() {
                   <div className="overflow-x-auto">
                     <Table>
                       <TableHeader>
-                        <TableRow>
-                          <TableHead>Nome</TableHead>
-                          <TableHead>E-mail</TableHead>
-                          <TableHead>WhatsApp</TableHead>
+                        <TableRow className="hover:bg-transparent border-none">
+                          <TableHead className="w-[40%]">Nome</TableHead>
                           <TableHead>Preferência</TableHead>
-                          <TableHead>Mensagem</TableHead>
                           <TableHead>Data</TableHead>
-                          <TableHead>Ações</TableHead>
+                          <TableHead className="text-right">Ações</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {contacts.map((contact) => (
-                          <TableRow key={contact.id} className="cursor-pointer hover:bg-muted/50"
-                            onClick={() => { setSelectedContact(contact); setIsDialogMinimized(false); }}>
-                            <TableCell className="font-medium">{contact.name}</TableCell>
-                            <TableCell><span className="flex items-center gap-1"><Mail className="w-3 h-3 text-muted-foreground" />{contact.email}</span></TableCell>
-                            <TableCell><span className="flex items-center gap-1"><Phone className="w-3 h-3 text-muted-foreground" />{contact.whatsapp}</span></TableCell>
-                            <TableCell>
-                              <Badge variant={getContactPreference(contact.message) === "WhatsApp" ? "default" : "secondary"}>
-                                {getContactPreference(contact.message)}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="max-w-xs truncate">{cleanMessage(contact.message)}</TableCell>
-                            <TableCell className="text-sm text-muted-foreground">{formatDate(contact.created_at)}</TableCell>
-                            <TableCell onClick={(e) => e.stopPropagation()}>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                                onClick={() => handleDeleteContact(contact.id)}
+                        {contacts.map((contact) => {
+                          const isExpanded = expandedContactId === contact.id;
+                          return (
+                            <>
+                              <TableRow 
+                                key={contact.id} 
+                                className={cn(
+                                  "cursor-pointer transition-all duration-300 border-b border-border/40 hover:bg-muted/30",
+                                  isExpanded && "bg-muted/50 border-primary/20"
+                                )}
+                                onClick={() => setExpandedContactId(isExpanded ? null : contact.id)}
                               >
-                                <Trash2 className="w-4 h-4" />
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                                <TableCell>
+                                  <div className="flex flex-col">
+                                    <span className="font-bold text-foreground">{contact.name}</span>
+                                    <span className="text-xs text-muted-foreground opacity-70">{contact.whatsapp}</span>
+                                  </div>
+                                </TableCell>
+                                <TableCell>
+                                  <Badge variant={getContactPreference(contact.message) === "WhatsApp" ? "default" : "secondary"} className="text-[10px] uppercase">
+                                    {getContactPreference(contact.message)}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground">
+                                  {formatDate(contact.created_at).split(",")[0]}
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                    {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4 text-primary" />}
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+
+                              {isExpanded && (
+                                <TableRow className="bg-muted/20 hover:bg-muted/20 border-b border-border/40">
+                                  <TableCell colSpan={4} className="p-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-top-2 duration-300">
+                                      <div className="space-y-4">
+                                        <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Conteúdo da Mensagem</h4>
+                                        <div className="p-4 rounded-2xl bg-background/50 border border-border/50 text-sm whitespace-pre-wrap leading-relaxed italic">
+                                          "{cleanMessage(contact.message)}"
+                                        </div>
+                                      </div>
+
+                                      <div className="space-y-4">
+                                        <h4 className="text-xs font-mono uppercase text-primary/70 tracking-widest">Informações & Ações</h4>
+                                        <div className="grid grid-cols-2 gap-4">
+                                          <a 
+                                            href={`mailto:${contact.email}`} 
+                                            className="p-3 rounded-xl bg-background/50 border border-border/50 flex flex-col items-center gap-1 hover:border-primary/30 transition-colors"
+                                          >
+                                            <Mail className="w-4 h-4 text-primary" />
+                                            <span className="text-[10px] uppercase text-muted-foreground">E-mail</span>
+                                          </a>
+                                          <a 
+                                            href={`https://wa.me/55${contact.whatsapp.replace(/\D/g, "")}`} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-xl bg-background/50 border border-border/50 flex flex-col items-center gap-1 hover:border-green-500/30 transition-colors"
+                                          >
+                                            <Phone className="w-4 h-4 text-green-500" />
+                                            <span className="text-[10px] uppercase text-muted-foreground">WhatsApp</span>
+                                          </a>
+                                        </div>
+                                        <Button 
+                                          variant="ghost" 
+                                          size="sm" 
+                                          className="text-destructive hover:bg-destructive/10 w-full justify-start h-10"
+                                          onClick={(e) => { e.stopPropagation(); handleDeleteContact(contact.id); }}
+                                        >
+                                          <Trash2 className="w-4 h-4 mr-2" />
+                                          Excluir esta mensagem
+                                        </Button>
+                                      </div>
+                                    </div>
+                                  </TableCell>
+                                </TableRow>
+                              )}
+                            </>
+                          );
+                        })}
                       </TableBody>
                     </Table>
                   </div>
