@@ -351,6 +351,18 @@ export default function Index() {
       {/* === CTA === */}
       <section className="relative py-20 md:py-32 overflow-hidden noise-overlay">
         <BroadcastBackdrop rings={false} />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-center bg-cover opacity-30 mix-blend-luminosity pointer-events-none"
+          style={{
+            backgroundImage:
+              "url('https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.gif')",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 pointer-events-none"
+        />
 
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="max-w-3xl mx-auto text-center" direction="up">
