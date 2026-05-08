@@ -15,12 +15,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Custom Invox variants
+        // Custom Radio variants
         hero: "bg-primary text-black font-bold hover:scale-105 active:scale-100 shadow-md",
-        "hero-outline": "border-2 border-invox-cream bg-transparent text-invox-cream hover:bg-invox-cream/10",
+        "hero-outline": "border-2 border-radio-white bg-transparent text-radio-white hover:bg-radio-white/10",
         gold: "bg-primary text-black font-semibold hover:brightness-110 shadow-md",
         "gold-outline": "border-2 border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-primary",
-        navy: "bg-invox-navy text-invox-cream hover:bg-invox-navy-light dark:bg-[#111315] dark:text-invox-cream shadow-md hover:shadow-lg"
+        navy: "bg-radio-navy text-radio-white hover:bg-radio-navy-light dark:bg-[#111315] dark:text-radio-white shadow-md hover:shadow-lg"
       },
       size: {
         default: "h-11 px-6 py-2",
