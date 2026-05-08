@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Radio, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { SoundWave } from "@/components/broadcast/SoundWave";
 import { OnAir } from "@/components/broadcast/OnAir";
 import { SectionLabel } from "@/components/broadcast/SectionLabel";
@@ -19,7 +19,7 @@ export function Footer() {
       <div className="container mx-auto px-4 pt-16 pb-10 relative z-10">
         {/* Top: SoundWave + tagline */}
         <div className="mb-12 text-center">
-          <SectionLabel className="justify-center mb-4">Invox Mídia - Rádio Indoor</SectionLabel>
+          <SectionLabel className="justify-center mb-4">INVOX MÍDIA - Rádio Indoor</SectionLabel>
           <div className="max-w-3xl mx-auto opacity-60">
             <SoundWave bars={48} amplitude={0.7} className="h-10" />
           </div>
@@ -29,18 +29,12 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="inline-flex items-center gap-3 mb-5 group">
-              <div className="relative">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-invox-navy-light to-invox-navy flex items-center justify-center border border-secondary/30 transition-colors duration-500">
-                  <Radio className="w-5 h-5 text-secondary" />
-                </div>
-                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--invox-gold))]" />
+              <div className="w-11 h-11 flex items-center justify-center transition-all duration-500">
+                <img src="/logo.png" alt="INVOX MÍDIA" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="font-display font-bold text-lg text-invox-navy dark:text-invox-cream transition-colors duration-300">
-                  Invox<span className="text-secondary">.</span>
-                </span>
-                <span className="mono-label text-invox-navy/50 dark:text-invox-cream/50 text-[0.6rem] mt-0.5 transition-colors duration-300">
-                  Mídia
+                <span className="font-display font-bold text-lg text-invox-navy dark:text-invox-cream transition-colors duration-300 uppercase">
+                  INVOX MÍDIA
                 </span>
               </div>
             </Link>
@@ -124,9 +118,9 @@ export function Footer() {
           >
             adm
           </Link>
-        <p className="text-xs text-muted-foreground/50 mono-label">
-          © 2026 · INVOX - Desenv. PRO IMAGE DESIGN
-        </p>
+          <p className="text-xs text-muted-foreground/50 mono-label">
+            © 2026 · INVOX - Desenv. PRO IMAGE DESIGN
+          </p>
           <div className="w-6" />
         </div>
       </div>
