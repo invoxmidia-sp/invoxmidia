@@ -426,9 +426,12 @@ export default function Index() {
                     }}
                   />
 
+                  {/* Center hole — rendered BEFORE label so icon appears on top */}
+                  <div className="absolute inset-[47%] rounded-full bg-background/90 shadow-inner z-10" />
+
                   {/* Center label — gold+cyan glow */}
                   <div
-                    className="absolute inset-[33%] rounded-full flex items-center justify-center"
+                    className="absolute inset-[33%] rounded-full flex items-center justify-center z-20"
                     style={{
                       background: "radial-gradient(circle at 40% 40%, hsl(var(--secondary)) 0%, hsl(var(--primary)) 60%, hsl(var(--primary)/0.7) 100%)",
                       boxShadow: "0 0 20px hsl(var(--primary)/0.8), 0 0 40px hsl(var(--primary)/0.4)"
@@ -436,25 +439,9 @@ export default function Index() {
                   >
                     <Music className="w-8 h-8 md:w-10 md:h-10 text-invox-navy-deep drop-shadow" />
                   </div>
-
-                  {/* Center hole */}
-                  <div className="absolute inset-[47%] rounded-full bg-background/90 shadow-inner" />
                 </div>
 
-                {/* Needle arm — stops spinning */}
-                <div
-                  className="absolute top-4 right-4 md:top-2 md:right-6 w-20 h-28 pointer-events-none"
-                  style={{ transformOrigin: "top right", transform: "rotate(-20deg)" }}
-                >
-                  {/* Arm body */}
-                  <div className="absolute top-0 right-0 w-3 h-3 rounded-full bg-primary/80 shadow-[0_0_8px_hsl(var(--primary))]" />
-                  <div
-                    className="absolute top-1.5 right-1.5 w-0.5 h-24 rounded-full"
-                    style={{ background: "linear-gradient(to bottom, hsl(var(--secondary)), hsl(var(--primary)/0.3))" }}
-                  />
-                  {/* Stylus tip */}
-                  <div className="absolute bottom-0 right-0.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_hsl(var(--secondary))]" />
-                </div>
+
 
                 {/* Floating stat card */}
                 <div className="absolute -bottom-4 -left-4 rounded-2xl bg-card shadow-broadcast border border-border/50 p-5 w-56">
