@@ -80,6 +80,20 @@ export default function Index() {
       {/* === HERO — Capa (igual à Apresentação) === */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden noise-overlay">
         <BroadcastBackdrop />
+        <video
+          aria-hidden="true"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none"
+          src="https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.mp4"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 pointer-events-none"
+        />
         <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection delay={0.1}>
             <div className="flex justify-center mb-8">
@@ -400,20 +414,6 @@ export default function Index() {
       {/* === CTA === */}
       <section className="relative py-20 md:py-32 overflow-hidden noise-overlay">
         <BroadcastBackdrop rings={false} />
-        <video
-          aria-hidden="true"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none"
-          src="https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.mp4"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 pointer-events-none"
-        />
 
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="max-w-3xl mx-auto text-center" direction="up">
