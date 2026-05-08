@@ -334,17 +334,22 @@ export default function Index() {
 
       {/* === BENEFITS === */}
       <section className="py-20 md:py-32 bg-muted/40 relative overflow-hidden">
-        {/* Decorative vinyl rings on right */}
+        {/* Decorative glowing rings background */}
         <div
           aria-hidden="true"
-          className="absolute -right-1/3 top-1/2 -translate-y-1/2 w-[120%] h-[200%] opacity-[0.04]"
+          className="absolute -right-1/4 top-1/2 -translate-y-1/2 w-[80%] h-[80%] opacity-[0.07]"
           style={{
             backgroundImage: `repeating-radial-gradient(circle at center,
-              hsl(var(--invox-navy)) 0px,
-              hsl(var(--invox-navy)) 1px,
-              transparent 1px,
-              transparent 12px)`,
+              hsl(var(--primary)) 0px,
+              hsl(var(--primary)) 1.5px,
+              transparent 1.5px,
+              transparent 14px)`,
           }}
+        />
+        {/* Ambient glow blob */}
+        <div
+          aria-hidden="true"
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-primary/10 blur-[80px] pointer-events-none"
         />
 
         <div className="container mx-auto px-4 relative z-10">
@@ -382,17 +387,73 @@ export default function Index() {
             </AnimatedSection>
 
             <AnimatedSection direction="right" delay={0.2}>
-              <div className="relative">
-                {/* Big "vinyl" disc */}
-                <div className="relative aspect-square max-w-md mx-auto animate-[spin-slow_8s_linear_infinite]">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-invox-navy-deep via-invox-navy to-invox-navy-light shadow-broadcast" />
-                  <div className="absolute inset-4 rounded-full vinyl-rings opacity-60" />
-                  <div className="absolute inset-0 rounded-full border border-secondary/10" />
-                  <div className="absolute inset-[35%] rounded-full bg-primary flex items-center justify-center shadow-gold-glow">
-                    <Music className="w-10 h-10 text-invox-navy-deep" />
+              <div className="relative flex items-center justify-center">
+
+                {/* === MODERN VINYL DISC === */}
+                <div className="relative w-80 h-80 md:w-96 md:h-96 animate-[spin_18s_linear_infinite]">
+
+                  {/* Outer disc — dark gloss */}
+                  <div className="absolute inset-0 rounded-full shadow-2xl"
+                    style={{
+                      background: "radial-gradient(circle at 35% 35%, #1a1a2e 0%, #0d0d1a 55%, #050508 100%)",
+                      boxShadow: "0 0 60px hsl(var(--primary)/0.25), 0 0 120px hsl(var(--primary)/0.10), inset 0 0 40px rgba(0,0,0,0.6)"
+                    }}
+                  />
+
+                  {/* Groove rings via SVG — visible concentric lines */}
+                  <svg
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full opacity-40"
+                    viewBox="0 0 400 400"
+                  >
+                    {[30,50,70,90,110,128,143,156,168].map((r, i) => (
+                      <circle
+                        key={i}
+                        cx="200" cy="200" r={r}
+                        fill="none"
+                        stroke={i % 3 === 0 ? "hsl(var(--primary))" : "hsl(var(--secondary))"}
+                        strokeWidth={i % 3 === 0 ? "0.8" : "0.4"}
+                        opacity={0.6 - i * 0.04}
+                      />
+                    ))}
+                  </svg>
+
+                  {/* Sheen / reflection highlight */}
+                  <div
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{
+                      background: "conic-gradient(from 200deg, transparent 0deg, hsl(var(--invox-cream)/0.06) 30deg, transparent 80deg, hsl(var(--primary)/0.04) 160deg, transparent 200deg)"
+                    }}
+                  />
+
+                  {/* Center label — gold+cyan glow */}
+                  <div
+                    className="absolute inset-[33%] rounded-full flex items-center justify-center"
+                    style={{
+                      background: "radial-gradient(circle at 40% 40%, hsl(var(--secondary)) 0%, hsl(var(--primary)) 60%, hsl(var(--primary)/0.7) 100%)",
+                      boxShadow: "0 0 20px hsl(var(--primary)/0.8), 0 0 40px hsl(var(--primary)/0.4)"
+                    }}
+                  >
+                    <Music className="w-8 h-8 md:w-10 md:h-10 text-invox-navy-deep drop-shadow" />
                   </div>
-                  {/* Highlight reflection */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-invox-cream/5 to-invox-cream/15" />
+
+                  {/* Center hole */}
+                  <div className="absolute inset-[47%] rounded-full bg-background/90 shadow-inner" />
+                </div>
+
+                {/* Needle arm — stops spinning */}
+                <div
+                  className="absolute top-4 right-4 md:top-2 md:right-6 w-20 h-28 pointer-events-none"
+                  style={{ transformOrigin: "top right", transform: "rotate(-20deg)" }}
+                >
+                  {/* Arm body */}
+                  <div className="absolute top-0 right-0 w-3 h-3 rounded-full bg-primary/80 shadow-[0_0_8px_hsl(var(--primary))]" />
+                  <div
+                    className="absolute top-1.5 right-1.5 w-0.5 h-24 rounded-full"
+                    style={{ background: "linear-gradient(to bottom, hsl(var(--secondary)), hsl(var(--primary)/0.3))" }}
+                  />
+                  {/* Stylus tip */}
+                  <div className="absolute bottom-0 right-0.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_hsl(var(--secondary))]" />
                 </div>
 
                 {/* Floating stat card */}
