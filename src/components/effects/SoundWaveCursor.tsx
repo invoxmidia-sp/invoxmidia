@@ -95,8 +95,8 @@ export const SoundWaveCursor: React.FC<SoundWaveCursorProps> = ({
 
       // Draw Waves
       waves.current.forEach((wave, index) => {
-        wave.r += wave.speed;
-        wave.opacity *= 0.96;
+        wave.r += wave.speed * 0.4; // 60% slower expansion
+        wave.opacity *= 0.92; // Faster fade out
 
         if (wave.opacity < 0.01) {
           waves.current.splice(index, 1);
@@ -106,41 +106,41 @@ export const SoundWaveCursor: React.FC<SoundWaveCursorProps> = ({
         ctx.beginPath();
         ctx.arc(easedMouse.current.x, easedMouse.current.y, wave.r, 0, Math.PI * 2);
         ctx.strokeStyle = wave.color;
-        ctx.lineWidth = 1.5;
-        ctx.globalAlpha = wave.opacity * intensity;
+        ctx.lineWidth = 1; // Thinner lines
+        ctx.globalAlpha = wave.opacity * (intensity * 0.5); // 50% less intense
         
-        // Add glow
-        ctx.shadowBlur = glow;
+        // Add subtle glow
+        ctx.shadowBlur = glow / 2;
         ctx.shadowColor = wave.color;
         
         ctx.stroke();
       });
 
-      // Draw central "energy core"
-      const corePulse = Math.sin(time * 0.01) * 3;
-      const coreSize = (size / 4) + (v * 0.1) + corePulse;
+      // Draw central "energy core" - smaller and subtler
+      const corePulse = Math.sin(time * 0.01) * 1.5;
+      const coreSize = (size / 6) + (v * 0.05) + corePulse;
       
       const gradient = ctx.createRadialGradient(
         easedMouse.current.x, easedMouse.current.y, 0,
-        easedMouse.current.x, easedMouse.current.y, coreSize * 2
+        easedMouse.current.x, easedMouse.current.y, coreSize * 1.5
       );
-      gradient.addColorStop(0, colors[0]);
-      gradient.addColorStop(0.5, colors[1] + '88');
+      gradient.addColorStop(0, colors[0] + 'aa');
+      gradient.addColorStop(0.6, colors[1] + '44');
       gradient.addColorStop(1, 'transparent');
 
-      ctx.shadowBlur = glow * 2;
+      ctx.shadowBlur = glow;
       ctx.shadowColor = colors[0];
       ctx.fillStyle = gradient;
       ctx.beginPath();
       ctx.arc(easedMouse.current.x, easedMouse.current.y, coreSize, 0, Math.PI * 2);
       ctx.fill();
 
-      // Draw frequency bars around the cursor
-      const barCount = 12;
-      const radius = coreSize + 10 + (v * 0.2);
+      // Draw frequency bars around the cursor - fewer and shorter
+      const barCount = 8;
+      const radius = coreSize + 6 + (v * 0.1);
       for (let i = 0; i < barCount; i++) {
-        const angle = (i / barCount) * Math.PI * 2 + (time * 0.002);
-        const barLen = 4 + Math.random() * (6 + v * 0.5);
+        const angle = (i / barCount) * Math.PI * 2 + (time * 0.001);
+        const barLen = 2 + Math.random() * (3 + v * 0.2);
         
         const x1 = easedMouse.current.x + Math.cos(angle) * radius;
         const y1 = easedMouse.current.y + Math.sin(angle) * radius;
@@ -151,7 +151,8 @@ export const SoundWaveCursor: React.FC<SoundWaveCursorProps> = ({
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.strokeStyle = colors[Math.min(i, colors.length - 1)];
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.6;
         ctx.stroke();
       }
 
