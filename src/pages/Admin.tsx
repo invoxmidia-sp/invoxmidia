@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import {
   Shield, Users, FileText, LogOut, Loader2, Phone, Mail,
   MessageSquare, Minimize2, Maximize2, CreditCard, CheckCircle, XCircle,
-  ExternalLink,
+  ExternalLink, Trash2, Archive,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
@@ -97,6 +97,31 @@ export default function Admin() {
     if (error) { toast({ title: "Erro ao atualizar", variant: "destructive" }); return; }
     setOrders(orders.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
     toast({ title: "Status atualizado" });
+  };
+
+  const handleDeleteOrder = async (orderId: string) => {
+    if (!window.confirm("Tem certeza que deseja excluir este pedido permanentemente? Esta ação não pode ser desfeita.")) return;
+    
+    const { error } = await supabase.from("recording_orders").delete().eq("id", orderId);
+    if (error) {
+      toast({ title: "Erro ao excluir pedido", variant: "destructive" });
+      return;
+    }
+    setOrders(orders.filter(o => o.id !== orderId));
+    toast({ title: "Pedido excluído com sucesso" });
+  };
+
+  const handleDeleteContact = async (contactId: string) => {
+    if (!window.confirm("Tem certeza que deseja excluir esta mensagem permanentemente?")) return;
+    
+    const { error } = await supabase.from("contacts").delete().eq("id", contactId);
+    if (error) {
+      toast({ title: "Erro ao excluir mensagem", variant: "destructive" });
+      return;
+    }
+    setContacts(contacts.filter(c => c.id !== contactId));
+    setSelectedContact(null);
+    toast({ title: "Mensagem excluída com sucesso" });
   };
 
   const handleAudioUpload = async (orderId: string, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -214,6 +239,7 @@ export default function Admin() {
       em_producao: { variant: "default", label: "Em Produção" },
       concluido: { variant: "outline", label: "Concluído" },
       cancelado: { variant: "destructive", label: "Cancelado" },
+      arquivado: { variant: "secondary", label: "Arquivado" },
     };
     const s = map[status] ?? { variant: "secondary" as const, label: status };
     return <Badge variant={s.variant}>{s.label}</Badge>;
@@ -501,8 +527,17 @@ export default function Admin() {
                                   <SelectItem value="em_producao">Em Produção</SelectItem>
                                   <SelectItem value="concluido">Concluído</SelectItem>
                                   <SelectItem value="cancelado">Cancelado</SelectItem>
+                                  <SelectItem value="arquivado">Arquivado</SelectItem>
                                 </SelectContent>
                               </Select>
+                              <Button 
+                                variant="ghost" 
+                                size="icon" 
+                                className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                                onClick={() => handleDeleteOrder(order.id)}
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </Button>
                             </TableCell>
                             <TableCell>
                               <div className="flex flex-col gap-2">
@@ -557,6 +592,7 @@ export default function Admin() {
                           <TableHead>Preferência</TableHead>
                           <TableHead>Mensagem</TableHead>
                           <TableHead>Data</TableHead>
+                          <TableHead>Ações</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -573,6 +609,16 @@ export default function Admin() {
                             </TableCell>
                             <TableCell className="max-w-xs truncate">{cleanMessage(contact.message)}</TableCell>
                             <TableCell className="text-sm text-muted-foreground">{formatDate(contact.created_at)}</TableCell>
+                            <TableCell onClick={(e) => e.stopPropagation()}>
+                              <Button 
+                                variant="ghost" 
+                                size="icon" 
+                                className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                                onClick={() => handleDeleteContact(contact.id)}
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </Button>
+                            </TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
