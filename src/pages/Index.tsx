@@ -477,7 +477,7 @@ export default function Index() {
               <Button variant="hero" size="xl" asChild>
                 <Link to="/contato" className="flex items-center gap-2">
                   <Play className="w-5 h-5" />
-                  Falar com Especialista
+                  Aumentar Vendas
                 </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
