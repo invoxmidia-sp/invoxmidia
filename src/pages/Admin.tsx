@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import {
   Shield, Users, FileText, LogOut, Loader2, Phone, Mail,
   MessageSquare, Minimize2, Maximize2, CreditCard, CheckCircle, XCircle,
-  ExternalLink, Trash2, Archive,
+  ExternalLink, Trash2, Archive, MousePointer2,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
@@ -534,10 +534,10 @@ export default function Admin() {
                       <TableHeader>
                         <TableRow className="hover:bg-transparent border-none">
                           <TableHead className="w-[30%]">Cliente</TableHead>
-                          <TableHead>Campanha</TableHead>
+                          <TableHead className="text-center w-[100px]">Gerenciar</TableHead>
                           <TableHead>Status</TableHead>
                           <TableHead>Data</TableHead>
-                          <TableHead className="text-right">Ações</TableHead>
+                          <TableHead className="text-right">Campanha</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -557,17 +557,24 @@ export default function Admin() {
                                   <span className="text-xs text-muted-foreground opacity-70">{order.email}</span>
                                 </div>
                               </TableCell>
-                              <TableCell>
-                                <span className="font-medium truncate max-w-[200px] block">{order.product_campaign}</span>
+                              <TableCell className="text-center">
+                                <Button 
+                                  variant="default" 
+                                  size="sm" 
+                                  className={cn(
+                                    "h-9 w-9 p-0 transition-all duration-300 shadow-sm",
+                                    expandedOrderId === order.id ? "bg-primary hover:bg-primary/90" : "bg-green-600 hover:bg-green-700"
+                                  )}
+                                >
+                                  <MousePointer2 className={cn("w-4 h-4 text-white", expandedOrderId === order.id && "animate-pulse")} />
+                                </Button>
                               </TableCell>
                               <TableCell>{getStatusBadge(order.status)}</TableCell>
                               <TableCell className="text-sm text-muted-foreground tabular-nums">
                                 {formatDate(order.created_at).split(",")[0]}
                               </TableCell>
                               <TableCell className="text-right">
-                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                                  {expandedOrderId === order.id ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4 text-primary" />}
-                                </Button>
+                                <span className="font-medium truncate max-w-[200px] inline-block">{order.product_campaign}</span>
                               </TableCell>
                             </TableRow>
                             
