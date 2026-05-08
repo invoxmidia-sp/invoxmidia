@@ -6,7 +6,6 @@ import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
 import { SoundWave } from "@/components/broadcast/SoundWave";
 import { Equalizer } from "@/components/broadcast/Equalizer";
 import { SectionLabel } from "@/components/broadcast/SectionLabel";
-import heroBg from "@/assets/hero-bg.gif";
 import {
   Radio,
   Music,
@@ -79,13 +78,6 @@ export default function Index() {
     <Layout>
       {/* === HERO — Studio Broadcast === */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden noise-overlay">
-        <img
-          src={heroBg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
-        />
-        <div className="absolute inset-0 bg-invox-navy-deep/60 z-0" aria-hidden="true" />
         <BroadcastBackdrop />
 
         <div className="container mx-auto px-4 relative z-10 pt-16 pb-20">
