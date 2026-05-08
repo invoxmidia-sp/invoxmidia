@@ -353,7 +353,7 @@ export default function Index() {
         <BroadcastBackdrop rings={false} />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-center bg-cover pointer-events-none"
+          className="absolute inset-0 bg-center bg-cover opacity-30 mix-blend-luminosity pointer-events-none"
           style={{
             backgroundImage:
               "url('https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.gif')",
@@ -361,7 +361,7 @@ export default function Index() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/50 pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 pointer-events-none"
         />
 
         <div className="container mx-auto px-4 relative z-10">
