@@ -351,13 +351,15 @@ export default function Index() {
       {/* === CTA === */}
       <section className="relative py-20 md:py-32 overflow-hidden noise-overlay">
         <BroadcastBackdrop rings={false} />
-        <div
+        <video
           aria-hidden="true"
-          className="absolute inset-0 bg-center bg-cover opacity-30 mix-blend-luminosity pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.gif')",
-          }}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity pointer-events-none"
+          src="https://aeanuzizuwxsptlpktkm.supabase.co/storage/v1/object/public/site-assets/hero-bg.mp4"
         />
         <div
           aria-hidden="true"
