@@ -32,8 +32,8 @@ const SUBSCRIPTION_PRICES: Record<string, string> = {
 };
 
 const PLAN_BENEFITS: Record<string, string[]> = {
-  bronze: ["5 Gravações mensais", "Áudio de até 45s", "Entrega em 24h", "Suporte VIP"],
-  prata: ["10 Gravações mensais", "Áudio de até 60s", "Entrega prioritária", "Suporte VIP"],
+  bronze: ["5 Gravações mensais", "Áudio de até 45s", "Entrega em até 4h", "Suporte VIP"],
+  prata: ["10 Gravações mensais", "Áudio de até 60s", "Entrega em até 4h", "Suporte VIP"],
   ouro: ["15 Gravações mensais", "Áudio de até 90s", "Entrega imediata", "Gestor de conta"],
 };
 
