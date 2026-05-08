@@ -6,6 +6,7 @@ import { BroadcastBackdrop } from "@/components/broadcast/BroadcastBackdrop";
 import { SoundWave } from "@/components/broadcast/SoundWave";
 import { Equalizer } from "@/components/broadcast/Equalizer";
 import { SectionLabel } from "@/components/broadcast/SectionLabel";
+import { OnAir } from "@/components/broadcast/OnAir";
 import {
   Radio,
   Music,
@@ -76,11 +77,59 @@ const stats = [
 export default function Index() {
   return (
     <Layout>
-      {/* === HERO — Studio Broadcast === */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden noise-overlay">
+      {/* === HERO — Capa (igual à Apresentação) === */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden noise-overlay">
         <BroadcastBackdrop />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <AnimatedSection delay={0.1}>
+            <div className="flex justify-center mb-8">
+              <OnAir label="Transmissão ao vivo" />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-invox-cream mb-6 tracking-tight leading-[0.95]">
+              <span className="text-primary">INVOX MÍDIA</span>
+            </h1>
+          </AnimatedSection>
+          <AnimatedSection delay={0.3}>
+            <p className="text-xl md:text-2xl text-invox-cream/75 max-w-3xl mx-auto leading-relaxed">
+              Rádio interna para lojas que{" "}
+              <span className="text-primary font-semibold">vendem mais</span>{" "}
+              todos os dias.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.4}>
+            <div className="max-w-2xl mx-auto mt-10 opacity-70">
+              <SoundWave bars={56} amplitude={0.7} className="h-12" />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.5}>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/planos">
+                  Conheça Nossos Planos
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <Link to="/contato">Fale Conosco</Link>
+              </Button>
+            </div>
+          </AnimatedSection>
+        </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-7 h-11 border border-invox-cream/40 rounded-full flex items-start justify-center p-1.5">
+            <div className="w-1.5 h-2.5 bg-primary rounded-full" />
+          </div>
+        </div>
+      </section>
 
-        <div className="container mx-auto px-4 relative z-10 pt-16 pb-20">
+      {/* === CLUBE INVOX — copy + console widget === */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden noise-overlay">
+        <BroadcastBackdrop rings={false} />
+
+        <div className="container mx-auto px-4 relative z-10 py-20">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             {/* Left: copy */}
             <div className="lg:col-span-7">
@@ -90,7 +139,7 @@ export default function Index() {
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-6 tracking-tight animate-slide-up">
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-6 tracking-tight animate-slide-up">
                 Faça Parte do{" "}
                 <span className="relative inline-block">
                   <span className="text-primary">Clube Invox</span>
@@ -99,7 +148,7 @@ export default function Index() {
                     className="absolute -inset-x-2 -bottom-1 h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
                   />
                 </span>
-              </h1>
+              </h2>
 
               <p
                 className="text-lg lg:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-in"
