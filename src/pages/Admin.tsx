@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import {
   Shield, Users, FileText, LogOut, Loader2, Phone, Mail,
   MessageSquare, Minimize2, Maximize2, CreditCard, CheckCircle, XCircle,
-  ExternalLink, Trash2, Archive, MousePointer2,
+  ExternalLink, Trash2, Archive, MousePointer2, PlayCircle,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
