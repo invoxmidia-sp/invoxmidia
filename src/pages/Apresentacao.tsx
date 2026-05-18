@@ -515,34 +515,34 @@ export default function Apresentacao() {
                 Conheça o <span className="text-primary">INVOX PLAYER</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Player moderno, fácil de atualizar e com suporte remoto incluso quando precisar. Controle total da programação com total praticidade.
+                Player moderno, sem instalação em PC. Roda em Smartphones, Box e outros dispositivos, funciona offline e continua tocando mesmo sem internet. Suporte remoto incluso.
               </p>
               
               <div className="space-y-6 mb-10">
                 <AnimatedItem delay={0.3}>
                   <div className="flex items-start gap-4">
                     <Monitor className="w-8 h-8 text-primary shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-foreground">PC e Smartphones</h4>
-                      <p className="text-sm text-muted-foreground">Totalmente responsivo, gerencie e toque sua rádio de qualquer dispositivo.</p>
+                     <div>
+                      <h4 className="font-bold text-foreground">Sem Instalação em PC</h4>
+                      <p className="text-sm text-muted-foreground">Roda em Smartphones, Box de TV e outros dispositivos sem ocupar computador da loja.</p>
                     </div>
                   </div>
                 </AnimatedItem>
                 <AnimatedItem delay={0.4}>
                   <div className="flex items-start gap-4">
                     <Zap className="w-8 h-8 text-primary shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-foreground">Sem Licença Extra</h4>
-                      <p className="text-sm text-muted-foreground">Economize! Você não paga licenças de software adicionais para usar nosso player.</p>
+                     <div>
+                      <h4 className="font-bold text-foreground">100% Isento de Licenças</h4>
+                      <p className="text-sm text-muted-foreground">Sem taxas adicionais de licenciamento de software para usar nosso player.</p>
                     </div>
                   </div>
                 </AnimatedItem>
                 <AnimatedItem delay={0.5}>
                   <div className="flex items-start gap-4">
                     <Music className="w-8 h-8 text-primary shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-foreground">Playlists Exclusivas</h4>
-                      <p className="text-sm text-muted-foreground">Músicas, vinhetas, spots e locução de ofertas em perfeita harmonia.</p>
+                     <div>
+                      <h4 className="font-bold text-foreground">Funciona Offline</h4>
+                      <p className="text-sm text-muted-foreground">Carrega a programação no dispositivo e continua tocando mesmo se a internet cair.</p>
                     </div>
                   </div>
                 </AnimatedItem>
