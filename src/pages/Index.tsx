@@ -352,7 +352,7 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { t: "Player Inteligente", d: "Funciona offline e atualiza automaticamente via nuvem.", i: PlayCircle },
+              { t: "Player Inteligente", d: "Sem instalação em PC. Roda em Smartphones e Box, funciona offline e continua tocando mesmo sem internet.", i: PlayCircle },
               { t: "Curadoria Musical", d: "Playlists montadas por especialistas para o seu nicho.", i: Music },
               { t: "Spots & Vinhetas", d: "Produção profissional de áudio inclusa no seu plano.", i: Mic2 },
               { t: "Gestão Centralizada", d: "Controle todas as suas lojas em um único painel.", i: LayoutDashboard },
