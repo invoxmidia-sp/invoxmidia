@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { AnimatedSection, AnimatedItem } from "@/components/AnimatedSection";
-import { PlayCircle, Smartphone, Monitor, ShieldCheck, Music, Sparkles, ArrowRight } from "lucide-react";
+import { PlayCircle, Smartphone, Monitor, ShieldCheck, Music, Sparkles, ArrowRight, WifiOff } from "lucide-react";
 
 export default function Player() {
   return (
@@ -23,7 +23,7 @@ export default function Player() {
                 INVOX <span className="text-gradient-gold">PLAYER</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
-                Player moderno, fácil de atualizar e com suporte remoto incluso quando precisar. Controle total da programação com total praticidade.
+                Player moderno, sem instalação em PC, roda em Smartphones, Box e outros dispositivos. Funciona offline e continua tocando mesmo se a internet cair. Suporte remoto incluso quando precisar.
               </p>
 
               <div className="space-y-6 mb-10">
@@ -42,11 +42,11 @@ export default function Player() {
                 <AnimatedItem delay={0.3}>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <Monitor className="w-6 h-6 text-primary" />
+                      <Smartphone className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-foreground">Para PC e Smartphones</h3>
-                      <p className="text-muted-foreground">Totalmente responsivo. Gerencie e toque a rádio da sua loja de qualquer dispositivo com acesso à internet.</p>
+                      <h3 className="text-lg font-bold text-foreground">Sem Instalação em PC</h3>
+                      <p className="text-muted-foreground">Roda direto em Smartphones, Box de TV e outros dispositivos. Não ocupa computador da loja e é fácil de configurar.</p>
                     </div>
                   </div>
                 </AnimatedItem>
@@ -54,11 +54,11 @@ export default function Player() {
                 <AnimatedItem delay={0.4}>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
-                      <Music className="w-6 h-6 text-secondary" />
+                      <WifiOff className="w-6 h-6 text-secondary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-foreground">Playlists Personalizadas</h3>
-                      <p className="text-muted-foreground">Músicas, vinhetas, spots e locuções de ofertas organizadas de forma estratégica para o seu negócio.</p>
+                      <h3 className="text-lg font-bold text-foreground">Funciona Offline</h3>
+                      <p className="text-muted-foreground">Carrega a programação no dispositivo e continua tocando mesmo se a internet cair. Sua loja nunca fica em silêncio.</p>
                     </div>
                   </div>
                 </AnimatedItem>
